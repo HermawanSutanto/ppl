@@ -55,6 +55,12 @@ function hapussales($id){
     return mysqli_affected_rows($conn);
 
 }
+function hapuspetani($id){
+    global $conn;
+    mysqli_query($conn,"DELETE FROM petani WHERE id = $id ");
+    return mysqli_affected_rows($conn);
+
+}
 
 
 function ubah($data){
@@ -93,7 +99,6 @@ function ubah($data){
 
 mysqli_query($conn,$querry);
 return mysqli_affected_rows($conn);
-
 }
 
 function ubahsales($data){
@@ -151,6 +156,20 @@ function carisales($keyword){
              perusahaan LIKE '%$keyword%' OR
              nomorhp LIKE '%$keyword%' OR
              email LIKE '%$keyword%'
+             ";// Like dengan %cari yang mirip dari depan
+    
+    return query($query);
+
+}
+function caripetani($keyword){
+
+    $query = "SELECT * FROM petani
+            WHERE 
+             nama LIKE '%$keyword%' OR 
+             username LIKE '%$keyword%' OR
+             nomorhp LIKE '%$keyword%' OR
+             email LIKE '%$keyword%' OR
+             status LIKE '%$keyword%'
              ";// Like dengan %cari yang mirip dari depan
     
     return query($query);
@@ -216,8 +235,9 @@ function registrasisales($data){
     $nomorhp = htmlspecialchars($data["nomorhp"]);
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
-    $password = htmlspecialchars($data["password"]);
-    $password2 = htmlspecialchars($data["password2"]);
+    $password = mysqli_real_escape_string($conn,$data["password"]);
+    $password2 = mysqli_real_escape_string($conn,$data["password2"]);
+
     
     // cek username sudah ada apa lom
     
@@ -249,9 +269,86 @@ function registrasisales($data){
     // tambah user baru ke database
     return mysqli_affected_rows($conn);
 
+}
+function registrasipetani($data){
+    // vambil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id = $data["id"];
+    $nama = htmlspecialchars($data["nama"]);
+    $username = htmlspecialchars($data["username"]);
+    $email = htmlspecialchars($data["email"]);
+    $nomorhp = htmlspecialchars($data["nomorhp"]);
+    $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
+    $alamat = htmlspecialchars($data["alamat"]);
+    $status = htmlspecialchars($data["status"]);
+    $password = mysqli_real_escape_string($conn,$data["password"]);
+    $password2 = mysqli_real_escape_string($conn,$data["password2"]);
+
+    
+    
+    // cek username sudah ada apa lom
+    
+    $result = mysqli_query($conn,"SELECT username FROM 
+    petani WHERE username = '$username'");
+    if (mysqli_fetch_assoc($result)){
+        echo"<script>
+        alert('username sudah terdaftar');
+        </script>";
+        return false;
+    }
+    // cek konfirmasi password
+    if($password!==$password2){
+        echo "<script>
+        alert('Konfirmasi password tidak sesuai');
+        </script>";
+        return false;
+
+    }
+    // enkripsi password
+    $password = password_hash($password,PASSWORD_DEFAULT);
+   
+   mysqli_query($conn,"INSERT INTO petani
+   Values
+   ('','$nama','$username','$email','$nomorhp',
+   '$jeniskelamin','$alamat','$password','$status')
+   ");
+    // tambah user baru ke database
+    return mysqli_affected_rows($conn);
+
     
 
 }
+function ubahpetani($data){
+    // vambil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id = $data["id"];
+    $nama = htmlspecialchars($data["nama"]);
+    $username = htmlspecialchars($data["username"]);
+    $email = htmlspecialchars($data["email"]);
+    $nomorhp = htmlspecialchars($data["nomorhp"]);
+    $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
+    $alamat = htmlspecialchars($data["alamat"]);
+    $status = htmlspecialchars($data["status"]);
+    $password = mysqli_real_escape_string($conn,$data["password"]);
+
+    $querry = "UPDATE sales SET 
+                    nama = '$nama',
+                    username ='$username',
+                    email = '$email',
+                    nomorhp = '$nomorhp',
+                    jeniskelamin = '$jeniskelamin',
+                    alamat = '$alamat',
+                    status = '$status',
+                    password ='$password'
+                    WHERE id = $id
+    ";
+
+mysqli_query($conn,$querry);
+return mysqli_affected_rows($conn);}
 
 
 ?>
