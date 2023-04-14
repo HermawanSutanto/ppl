@@ -85,6 +85,13 @@ function hapuspetani($id){
     return mysqli_affected_rows($conn);
 
 }
+function hapusmodul($id){
+    global $conn;
+    mysqli_query($conn,"DELETE FROM modul WHERE id = $id ");
+    return mysqli_affected_rows($conn);
+
+}
+
 
 function ubah($data){
     // vambil data dari tiap elemen form
@@ -454,27 +461,165 @@ function tambahmodul($data){
     global $conn;
     // html special char agar kode html yang diinputkan tidak berjalan
     // ndak wajib se, cuman buat keamanan
-    $nama = htmlspecialchars($data["nama"]);
-    $username = htmlspecialchars($data["username"]);
-    $perusahaan = htmlspecialchars($data["perusahaan"]);
-    $email = htmlspecialchars($data["email"]);
-    $tanggallahir = htmlspecialchars($data["tanggallahir"]);
-    $nomorhp = htmlspecialchars($data["nomorhp"]);
-    $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
-    $alamat = htmlspecialchars($data["alamat"]);
-    $password = htmlspecialchars($data["password"]);
+    $judul = htmlspecialchars($data["judul"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
+    $narasumber = htmlspecialchars($data["narasumber"]);
+    $video = htmlspecialchars($data["video"]);
+    // upload gambar/modul  
+
+    $gambarsampul= upload();
+    if (!$gambarsampul) {
+        return false;
+    }
+    $modul= uploadmodul();
+    if (!$gambarsampul) {
+        return false;
+    }
+
     
-    
-    $password = password_hash($password,PASSWORD_DEFAULT);
-    $querry = "INSERT INTO sales
-    Values
-    ('','$nama','$username','$perusahaan','$email','$tanggallahir','$nomorhp',
-    '$jeniskelamin','$alamat','$password')
-    ";
-    mysqli_query($conn,$querry);
-
-
-
+    mysqli_query($conn,"INSERT INTO modul
+   Values
+   ('','$judul','$deskripsi','$gambarsampul','$video',
+   '$narasumber','$modul')
+   ");
     // tambah user baru ke database
+    return mysqli_affected_rows($conn);
+
+
+
+
 }
-?>
+function upload(){
+
+    $namafile = $_FILES['gambarsampul']['name'];
+    $ukuranfile=$_FILES['gambarsampul']['size'];
+    $error=$_FILES['gambarsampul']['error'];
+    $tmpName=$_FILES['gambarsampul']['tmp_name'];
+
+    if ( $error === 4 ){
+        echo"<script/>
+        alert ('pilih gambar terlebih dahulu');
+        </script/>";
+        return false;
+    }
+
+    // cek apakah yang diupload adalah gambar
+    $typegambarvalid = ['jpg','jpeg','png'];
+    $ekstensigambar = explode('.',$namafile);
+    $ekstensigambar = strtolower(end($ekstensigambar));
+    if( !in_array($ekstensigambar,$typegambarvalid)){
+        echo"<script/>
+        alert ('yang anda upload bukan gambar');
+        </script/>";
+        return false;
+    }
+    // cek ukuran 
+    if ($ukuranfile > 100000000){
+        echo"<script/>
+        alert ('ukuran gambar terlalu besar');
+        </script/>";
+        return false;
+
+    }
+    // lolos pengecaekan gambar , siap diupload
+    //generate nama baru
+    $namafilebaru = uniqid();
+    $namafilebaru .= '.';
+    $namafilebaru .= $ekstensigambar;
+    var_dump($namafilebaru);
+    move_uploaded_file($tmpName,'modul/sampul/'.$namafilebaru);
+
+    return $namafilebaru;
+
+
+    
+}
+function uploadmodul(){
+
+    $namafile = $_FILES['modul']['name'];
+    $ukuranfile=$_FILES['modul']['size'];
+    $error=$_FILES['modul']['error'];
+    $tmpName=$_FILES['modul']['tmp_name'];
+
+    if ( $error === 4 ){
+        echo"<script/>
+        alert ('pilih modul terlebih dahulu');
+        </script/>";
+        return false;
+    }
+
+    // cek apakah yang diupload adalah gambar
+    $typemodulvalid = ['pdf'];
+    $ekstensimodul = explode('.',$namafile);
+    $ekstensimodul = strtolower(end($ekstensimodul));
+    if( !in_array($ekstensimodul,$typemodulvalid)){
+        echo"<script/>
+        alert ('yang anda upload bukan pdf');
+        </script/>";
+        return false;
+    }
+    // cek ukuran 
+    if ($ukuranfile > 100000000){
+        echo"<script/>
+        alert ('ukuran pdf terlalu besar');
+        </script/>";
+        return false;
+
+    }
+    // lolos pengecaekan gambar , siap diupload
+    //generate nama baru
+    $namafilebaru = uniqid();
+    $namafilebaru .= '.';
+    $namafilebaru .= $ekstensimodul;
+    var_dump($namafilebaru);
+    move_uploaded_file($tmpName,'modul/pdf/'.$namafilebaru);
+
+    return $namafilebaru;
+
+
+    
+}
+function ubahmodul($data){
+    // vambil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id = $data["id"];
+    $judul = htmlspecialchars($data["judul"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
+    $narasumber = htmlspecialchars($data["narasumber"]);
+    $video = htmlspecialchars($data["video"]);
+    // upload gambar/modul  
+    $modullama = htmlspecialchars($data["modullama"]);
+    $gambarsampullama = htmlspecialchars($data["gambarlama"]);
+
+// cek user memilih gambar baru apa nda
+    if($_FILES['gambarsampul']['error']===4){
+        $gambarsampul = $gambarsampullama;
+    }else{
+        $gambarsampul= upload();
+
+    }
+    if($_FILES['modul']['error']===4){
+        $modul = $modullama;
+    }else{
+        $modul= uploadmodul();
+
+    }
+
+    
+    $querry = "UPDATE modul SET 
+                    judul = '$judul',
+                    deskripsi ='$deskripsi',
+                    gambarsampul = '$gambarsampul',
+                    video = '$video',
+                    narasumber = '$narasumber',
+                    modul = '$modul'
+                    WHERE id = $id";
+     //tambah user baru ke database
+
+     mysqli_query($conn,$querry);
+     return mysqli_affected_rows($conn);
+
+}
+ ?>
