@@ -6,39 +6,44 @@ require'functions.php';
 if (isset($_COOKIE['login']) && isset($_COOKIE['key'])){
     $id = $_COOKIE['id'];
     $key = $_COOKIE['key'];
-    
+
     // ambil username berdasarkan id
     $result=mysqli_query($conn,"SELECT username FROM 
-    sales WHERE id=$id");
+    petani WHERE id=$id");
     $row= mysqli_fetch_assoc($result);
 
     // cek coockie dan username
     if($key === hash('sha256',$row['username'])){
         $_SESSION['login'] = true;
+
     }
 }
 
 
 // cek session
 if (isset($_SESSION["login"])){
-    header("Location: indexsales.php");
+    header("Location: indexpetani.php");
     exit;
 }
 
 if(isset($_POST["login"])){
     $username = $_POST["username"];
     $password = $_POST["password"]; //inputan password
+    $password = mysqli_real_escape_string($conn,$password);
     
-    $result = mysqli_query($conn,"SELECT *  FROM sales 
+    $result = mysqli_query($conn,"SELECT *  FROM petani 
     WHERE username = '$username'");
 
     // cek username
     if(mysqli_num_rows($result) == 1){
-
+      print_r($result);
         // cek password(bandingkan pass1 dan pass 2)
         $row = mysqli_fetch_assoc($result);
-       if( password_verify($password,$row["password"])){
+
+        
+       if(password_verify($password,$row["password"])){
             // set session
+                     
             $_SESSION["login"]=true;
             // cek remember me
             if(isset($_POST['remember'])){
@@ -50,9 +55,8 @@ if(isset($_POST["login"])){
 
                 
             }
-
-
-            header("Location: indexsales.php?username=$username");// masuk ke halaman index
+            
+            header("Location: indexpetani.php?username=$username");// masuk ke halaman index
             exit;
        } 
        
@@ -63,12 +67,10 @@ if(isset($_POST["login"])){
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Halaman Login sales</title>
+    <title>Halaman Login petani</title>
     <link rel="stylesheet" href="design/main.css">
 <style>
     
@@ -89,7 +91,7 @@ if(isset($_POST["login"])){
     
     <div class="login">
       <div class="container">
-        <h1>Halaman Login Sales</h1>
+        <h1>Halaman Login petani</h1>
     
         <div class="login-form">
         <?php	if (isset($error)):?>
@@ -113,7 +115,7 @@ if(isset($_POST["login"])){
             </div>
   
             <button type="submit" name="login">LOG-IN</button>
-            <a href="registrasi.php">registrasi Admin</a> 
+            <a href="registrasipetani.php">registrasi petani</a> 
               <br>
             <a href="login.php">Login sebagai Admin</a> 
           </form>

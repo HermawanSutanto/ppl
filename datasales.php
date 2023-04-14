@@ -53,32 +53,50 @@ if(isset( $_POST["cari"])){
 <br><br>
 <a href="registrasisales.php">Tambah data Sales</a>
 <br><br>
-<form action="" method="post">
+<div style="font-family: arial;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: blue;">
+    <form action="" method="post">
 
-    <input type="text" name="keyword" id="keyword" size="40" autofocus 
+    <input type="text" name="keyword" id="keyword" size="100" autofocus 
     placeholder="Masukkan keyword pencarian" autocomplete="off">
     <button type="submit" name="cari">Cari</button>
 
-</form>
+    </form>
+</div>
 <br>
 <!-- navigasi jumlah halaman -->
-<?php	if($halamanaktif>1):?>
-    <a href="?halaman=<?=$halamanaktif -1; ?> ">&laquo;</a>
-<?php	endif;?>
-<br>
+<div style="font-family: arial;
+  font-size: 20px;
 
-<?php for ( $i = 1 ; $i <= $jumlahhalaman; $i ++):?>
+  /* Center child horizontally*/
+  display: flex;
+  justify-content: center;background-color: blue;">
 
-    <?php	if($i == $halamanaktif):?>
-    <a href="?halaman=<?= $i ; ?>" style="font-weight:bold; color:black;"> <?php echo$i	?></a>
-    <?php	else:?>
-    <a href="?halaman=<?= $i ; ?>"> <?php echo$i	?></a>
+  <div style="width: auto;
+  height:40px;
+  background-color: red;">
+    <?php	if($halamanaktif>1):?>
+        <a href="?halaman=<?=$halamanaktif -1; ?> ">&laquo;</a>
     <?php	endif;?>
+    <br>
 
-<?php endfor; ?>
-<?php	if($halamanaktif < $jumlahhalaman):?>
-    <a href="?halaman=<?=$halamanaktif +1; ?> ">&raquo;</a>
-<?php	endif;?>
+    <?php for ( $i = 1 ; $i <= $jumlahhalaman; $i ++):?>
+
+        <?php	if($i == $halamanaktif):?>
+        <a href="?halaman=<?= $i ; ?>" style="font-weight:bold; color:black;"> <?php echo$i	?></a>
+        <?php	else:?>
+        <a href="?halaman=<?= $i ; ?>"> <?php echo$i	?></a>
+        <?php	endif;?>
+
+    <?php endfor; ?>
+    <?php	if($halamanaktif < $jumlahhalaman):?>
+        <a href="?halaman=<?=$halamanaktif +1; ?> ">&raquo;</a>
+    <?php	endif;?>
+  </div>
+</div>
 <br>
 <br>
 <table border="1" cellpadding="10" cellspacing="0">
@@ -99,7 +117,7 @@ if(isset( $_POST["cari"])){
     <?php foreach($sales as $row) :?>
     <tr>
         <td><?= $i?></td>
-        <td>
+        <td style="width:150px;">
             <a href="ubahsales.php?id=<?= $row["id"];	
             ?>">ubah</a> |
             <a href="hapussales.php?id=<?= $row["id"];	

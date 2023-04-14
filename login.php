@@ -21,7 +21,7 @@ if (isset($_COOKIE['login']) && isset($_COOKIE['key'])){
 
 // cek session
 if (isset($_SESSION["login"])){
-    header("Location: index.php");
+    header("Location: indexadmin1.php");
     exit;
 }
 
@@ -47,12 +47,9 @@ if(isset($_POST["login"])){
                 setcookie('id',$row["id"],time()+60);
                 setcookie('key',hash('sha256',  $row["username"],
                 time()+60));
-
-                
             }
-
-
-            header("Location: index.php");// masuk ke halaman index
+                       header("Location: indexadmin1.php?username=$username");// masuk ke halaman index
+// masuk ke halaman index
             exit;
        } 
        
@@ -64,12 +61,11 @@ if(isset($_POST["login"])){
 ?>
 
 
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Halaman Login Admin</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="design/main.css">
 <style>
     
 </style>
@@ -110,24 +106,14 @@ if(isset($_POST["login"])){
             </div>
             <button type="submit" name="login">LOG-IN</button>
             <a href="registrasi.php">registrasi Admin</a>
-         <a href="loginsales.php">loginsales</a>
+            <a href="loginsales.php">loginsales</a>
+            <a href="loginpetani.php">loginpetani</a>
           </form>
         </div>
     
       </div>
       </div>
   </div>
-
-
-
-    
-
-    
-    
-
-
-
-
 
 
     
