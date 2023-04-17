@@ -263,7 +263,32 @@ function akun($data){
 
 
 }
+function login($data){
+    global $conn; 
+    $username = $data;
 
+    $result = mysqli_query($conn,"SELECT username FROM 
+    admin1 WHERE username = '$username'");
+    if (mysqli_fetch_assoc($result)){
+        
+        return [$result,"admin1"];
+
+    }
+    $result = mysqli_query($conn,"SELECT username FROM 
+    sales WHERE username = '$username'");
+    if (mysqli_fetch_assoc($result)){
+        
+        return [$result,"sales"];
+    }
+    $result = mysqli_query($conn,"SELECT username FROM 
+    petani WHERE username = '$username'");
+    if (mysqli_fetch_assoc($result)){
+        
+        return [$result,"petani"];
+        
+    }
+
+}
 function registrasi($data){
     // vambil data dari tiap elemen form
     global $conn;

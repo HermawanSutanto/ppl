@@ -2,6 +2,7 @@
 session_start();	
 require'functions.php';
 
+
 // cek cookie
 if (isset($_COOKIE['login']) && isset($_COOKIE['key'])){
     $id = $_COOKIE['id'];
@@ -18,20 +19,25 @@ if (isset($_COOKIE['login']) && isset($_COOKIE['key'])){
     }
 }
 
-
+$tabel='';
 // cek session
 if (isset($_SESSION["login"])){
-    header("Location: indexadmin1.php");
+    header("Location:logout.php");
     exit;
 }
 
 if(isset($_POST["login"])){
     $username = $_POST["username"];
     $password = $_POST["password"]; //inputan password
-    
-    $result = mysqli_query($conn,"SELECT *  FROM admin1 
+    $periksa=login($username);
+    $tabel=$periksa[1];
+    $result=$periksa[0];
+    $result = mysqli_query($conn,"SELECT *  FROM $tabel 
     WHERE username = '$username'");
-
+    
+    // var_dump ($tabel);
+    // var_dump ($result);
+  
     // cek username
     if(mysqli_num_rows($result) == 1){
 
@@ -48,7 +54,7 @@ if(isset($_POST["login"])){
                 setcookie('key',hash('sha256',  $row["username"],
                 time()+60));
             }
-                       header("Location: indexadmin1.php?username=$username");// masuk ke halaman index
+                       header("Location: index$tabel.php?username=$username");// masuk ke halaman index
 // masuk ke halaman index
             exit;
        } 
@@ -82,10 +88,10 @@ if(isset($_POST["login"])){
       </div>
   
     </div>
-    
+      
     <div class="login">
       <div class="container">
-      <h1>Halaman Login Admin</h1>
+      <h1>Halaman Login</h1>
         <?php	if (isset($error)):?>
         <p style="color:red;font-style:italic;align-items:center;">username/password salah</p>
         <?= "<script>
@@ -105,9 +111,8 @@ if(isset($_POST["login"])){
               <a href="#">Forgot Password ?</a>
             </div>
             <button type="submit" name="login">LOG-IN</button>
-            <a href="registrasi.php">registrasi Admin</a>
-            <a href="loginsales.php">loginsales</a>
-            <a href="loginpetani.php">loginpetani</a>
+            <a href="Registrasipetani.php">Registrasi</a>
+            <a href="registrasi.php">A</a>
           </form>
         </div>
     

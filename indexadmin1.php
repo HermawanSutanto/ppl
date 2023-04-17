@@ -110,8 +110,8 @@ https://templatemo.com/tm-558-klassy-cafe
                                 </ul>
                             </li>
                         -->
-                            <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
+                            <li class="scroll-to-section"><a href="datasales.php?username=<?= $username;?>">Lihat data Sales</a></li>
+                            <li class="scroll-to-section"><a href="datapetani.php?username=<?= $username;?>">Lihat data petani</a></li> 
                             <li class="submenu">
                                 <a href="javascript:;">Features</a>
                                 <ul>
@@ -186,7 +186,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <div><!-- navigasi jumlah halaman -->
 
 <div>
-<a href="datasales.php">Lihat data Sales</a>
+<h1>Data Admin</h1>
 <br><br>
 <div style="margin:10px;">
 <div style="font-family: arial;

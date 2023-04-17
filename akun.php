@@ -80,7 +80,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>" class="">Halaman Petani</a></li>
+                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>" class="">Halaman <?= $tabel;?></a></li>
                             <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
                            	

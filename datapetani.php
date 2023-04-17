@@ -12,7 +12,7 @@ require'functions.php';
 
 //  PAGINATION
 $jumlahadataperhalaman = 2 ; //jumlah data/halaman
-$jumlahdata = count(query("SELECT * FROM sales"));//jumlah seluruh data
+$jumlahdata = count(query("SELECT * FROM petani"));//jumlah seluruh data
 $jumlahhalaman = ceil($jumlahdata/$jumlahadataperhalaman);//hasil diulatkan keatas
 $halamanaktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ; //ternari,
 
@@ -21,14 +21,14 @@ $halamanaktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ; //ternari,
 //menentukan data pertama di tiap halaman
 $awaldata = ($jumlahadataperhalaman*$halamanaktif)-$jumlahadataperhalaman;
 
-$sales = query("SELECT * FROM sales ORDER BY id DESC LIMIT $awaldata,$jumlahadataperhalaman");//ASC urut id membesar, DESC mengecil,
+$petani = query("SELECT * FROM petani ORDER BY id DESC LIMIT $awaldata,$jumlahadataperhalaman");//ASC urut id membesar, DESC mengecil,
 
 //limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
 //  ambil data dari database tabel admin1 / query
 
 // tombol cari di klik
 if(isset( $_POST["cari"])){
-    $sales = carisales($_POST["keyword"]);
+    $petani = caripetani($_POST["keyword"]);
     
 }
 
@@ -38,7 +38,7 @@ if(isset( $_POST["cari"])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Halaman Admin</title>
+    <title>Halaman petani</title>
     <link rel="stylesheet" href="styleindex.css">
 
 <style>
@@ -48,10 +48,9 @@ if(isset( $_POST["cari"])){
 
 <body>
     <a href="logout.php">Logout</a>
-<h1>Daftar Sales</h1>
+<h1>Daftar Petani</h1>
 <a href="indexadmin1.php?username=<?= $username;?>">Kembali</a>
 <br><br>
-<a href="registrasisales.php">Tambah data Sales</a>
 <br><br>
 <div style="font-family: arial;
   font-size: 20px;
@@ -108,26 +107,24 @@ if(isset( $_POST["cari"])){
         <th>Nama</th>
         <th>Email</th>
         <th>NomorHp</th>
-        <th>Perusahaan</th>
-        <th>TanggalLahir</th>
+        <th>status</th>
         <th>JenisKelamin</th>
         <th>Alamat</th>
     </tr>
     <?php $i=1?><!--  nomor urut -->
-    <?php foreach($sales as $row) :?>
+    <?php foreach($petani as $row) :?>
     <tr>
         <td><?= $i?></td>
         <td style="width:150px;">
-            <a href="ubahsales.php?id=<?= $row["id"];	
+            <a href="ubahpetani.php?id=<?= $row["id"];	
             ?>">ubah</a> |
-            <a href="hapussales.php?id=<?= $row["id"];	
+            <a href="hapuspetani.php?id=<?= $row["id"];	
             ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>
         </td>
         <td><?= $row["nama"];	?></td>
         <td><?= $row["email"];	?></td>
         <td><?= $row["nomorhp"];	?></td>
-        <td><?= $row["perusahaan"];	?></td>
-        <td><?= $row["tanggallahir"];	?></td>
+        <td><?= $row["status"];	?></td>
         <td><?= $row["jeniskelamin"];	?></td>
         <td><?= $row["alamat"];	?></td>
     </tr>
