@@ -97,22 +97,21 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="modul.php" class="active">Modul</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
+                            <li class="scroll-to-section"><a href="modul.php?username=<?= $username;?>&tabel=admin1" class="active">Modul</a></li>
+                            <li class="scroll-to-section"><a href="#about">Trend Harga Pasar</a></li>
                            	
-                        <!-- 
+                        
                             <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
+                                <a href="javascript:;">Data Akun</a>
                                 <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
+                                    <li class="scroll-to-section"><a href="dataadmin.php?username=<?= $username;?>">Admin</a></li>
+                                    <li class="scroll-to-section"><a href="datapetani.php?username=<?= $username;?>">Petani</a></li> 
+                                    <li class="scroll-to-section"><a href="datasales.php?username=<?= $username;?>">Sales</a></li> 
                                 </ul>
                             </li>
-                        -->
-                            <li class="scroll-to-section"><a href="datasales.php?username=<?= $username;?>">Lihat data Sales</a></li>
-                            <li class="scroll-to-section"><a href="datapetani.php?username=<?= $username;?>">Lihat data petani</a></li> 
-                            <li class="submenu">
+                       
+                            
+                            <!-- <li class="submenu">
                                 <a href="javascript:;">Features</a>
                                 <ul>
                                     <li><a href="#">Features Page 1</a></li>
@@ -120,10 +119,10 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <li><a href="#">Features Page 3</a></li>
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="logout.php">logout</a></li> 
+                            </li> -->
+                            <li class="scroll-to-section"><a href="">Komunitas</a></li> 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>">Akun</a></li> 
+                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>">Profil</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -143,7 +142,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4>Halaman Admin</h4>
+                            <h4>Selamat Datang <?= $username;?></h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#reservation">Make A Reservation</a>
@@ -157,21 +156,21 @@ https://templatemo.com/tm-558-klassy-cafe
                           <!-- Item -->
                           <div class="item">
                             <div class="img-fill">
-                                <img src="assets/images/slide-01.jpg" alt="">
+                                <img src="assets/images/slide1.jpg" alt="">
                             </div>
                           </div>
                           <!-- // Item -->
                           <!-- Item -->
                           <div class="item">
                             <div class="img-fill">
-                                <img src="assets/images/slide-02.jpg" alt="">
+                                <img src="assets/images/slide2.jpg" alt="">
                             </div>
                           </div>
                           <!-- // Item -->
                           <!-- Item -->
                           <div class="item">
                             <div class="img-fill">
-                                <img src="assets/images/slide-03.jpg" alt="">
+                                <img src="assets/images/slide3.jpg" alt="">
                             </div>
                           </div>
                           <!-- // Item -->
@@ -186,88 +185,6 @@ https://templatemo.com/tm-558-klassy-cafe
     <div><!-- navigasi jumlah halaman -->
 
 <div>
-<h1>Data Admin</h1>
-<br><br>
-<div style="margin:10px;">
-<div style="font-family: arial;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;
-  background-color: blue;">
-    <form action="" method="post">
-
-    <input type="text" name="keyword" id="keyword" size="100" autofocus 
-    placeholder="Masukkan keyword pencarian" autocomplete="off">
-    <button type="submit" name="cari">Cari</button>
-
-    </form>
-</div>
-</div>
-
-<div style="font-family: arial;
-  font-size: 20px;
-
-  /* Center child horizontally*/
-  display: flex;
-  justify-content: center;background-color: blue;">
-
-  <div style="width: auto;
-  height:40px;
-  background-color: red;">
-    <?php	if($halamanaktif>1):?>
-    <a href="?halaman=<?=$halamanaktif -1; ?> ">&laquo;</a>
-    <?php	endif;?>
-
-    <?php for ( $i = 1 ; $i <= $jumlahhalaman; $i ++):?>
-
-    <?php	if($i == $halamanaktif):?>
-    <a href="?halaman=<?= $i ; ?>" style="font-weight:bold; color:black;"> <?php echo$i	?></a>
-    <?php	else:?>
-    <a href="?halaman=<?= $i ; ?>"> <?php echo$i	?></a>
-    <?php	endif;?>
-
-    <?php endfor; ?>
-    <?php	if($halamanaktif < $jumlahhalaman):?>
-    <a href="?halaman=<?=$halamanaktif +1; ?> ">&raquo;</a>
-    <?php	endif;?></div>
-    
-
-</div></div>
- <div >
-<table border="1" cellpadding="10" cellspacing="0">
-
-<tr>
-<!-- kop tabel-->
-<th>No.</th>
-<th>Aksi</th>
-<th>Nama</th>
-<th>Email</th>
-<th>NomorHp</th>
-<th>JenisKelamin</th>
-<th>Alamat</th>
-</tr>
-<?php $i=1?><!--  nomor urut -->
-<?php foreach($admin1 as $row) :?>
-<tr>
-<td><?= $i?></td>
-<td style="width:150px;">
-    <a href="ubah.php?id=<?= $row["id"];	
-    ?>">ubah</a> |
-    <a href="hapus.php?id=<?= $row["id"];	
-    ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>
-</td>
-<td><?= $row["nama"];	?></td>
-<td><?= $row["email"];	?></td>
-<td><?= $row["nomorhp"];	?></td>
-<td><?= $row["jeniskelamin"];	?></td>
-<td><?= $row["alamat"];	?></td>
-</tr>
-<?php $i++?>
-<?php	endforeach; ?>
-</table></div>
- </div>
-
-
 
     <footer>
         <div class="container">
@@ -284,7 +201,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="index.html"><img src="assets/images/white-logo.png" alt=""></a>
+                    <a href="logout.php"><img src="assets/images/white-logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">

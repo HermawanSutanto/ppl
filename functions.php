@@ -176,7 +176,6 @@ function ubahpetani($data){
     $nomorhp = htmlspecialchars($data["nomorhp"]);
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
-    $status = '';
     $password = mysqli_real_escape_string($conn,$data["password"]);
 
     $querry = "UPDATE petani SET 
@@ -186,14 +185,30 @@ function ubahpetani($data){
                     nomorhp = '$nomorhp',
                     jeniskelamin = '$jeniskelamin',
                     alamat = '$alamat',
-                    status = '$status',
                     password ='$password'
                     WHERE id = $id
     ";
     mysqli_query($conn,$querry);
     return mysqli_affected_rows($conn);}
     
+function ubahstatuspetani($data){
+        // vambil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id = $data["id"];
 
+    $status = htmlspecialchars($data["status"]);
+
+    
+    $querry = "UPDATE petani SET               
+                    status = '$status'     
+                    WHERE id = $id
+    ";
+    mysqli_query($conn,$querry);
+    return mysqli_affected_rows($conn);}
+        
+    
 function cari($keyword){
 
     $query = "SELECT * FROM admin1
@@ -471,7 +486,7 @@ function registrasipetani($data){
    mysqli_query($conn,"INSERT INTO petani
    Values
    ('','$nama','$username','$email','$nomorhp',
-   '$jeniskelamin','$alamat','$password','')
+   '$jeniskelamin','$alamat','$password','Tidak Aktif')
    ");
     // tambah user baru ke database
     return mysqli_affected_rows($conn);

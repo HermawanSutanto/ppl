@@ -14,6 +14,7 @@ if(isset($_POST["register"])){
     }
 
 }
+$username=$_GET["username"]
 
 ?>
 
@@ -38,7 +39,7 @@ if(isset($_POST["register"])){
 
             </li>
             <li>
-                <label for="nama">NAMA : </label>
+                <label for="nama">Nama : </label>
                 <input type="text" name="nama" id="nama" required>
 
             </li>
@@ -80,7 +81,7 @@ if(isset($_POST["register"])){
             
         <button type="submit" name="register">Register</button>
 
-        <a href="loginsales.php">Kembali</a>
+        <a href="datasales.php?username=<?=$username?>">Kembali</a>
 
     </ul>
 

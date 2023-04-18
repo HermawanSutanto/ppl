@@ -2,6 +2,8 @@
 require'functions.php';
 
 
+$username=$_GET["username"];
+$tabel='admin1';
 if(isset($_POST["register"])){
 
     if (registrasi($_POST)>0){
@@ -14,7 +16,6 @@ if(isset($_POST["register"])){
     }
 
 }
-
 
 ?>
 
@@ -74,7 +75,7 @@ if(isset($_POST["register"])){
             </li>
         <button type="submit" name="register">Register</button>
 
-        <a href="login.php">Kembali</a>
+        <a href="dataadmin.php?username=<?=$username?>">Kembali</a>
 
     </ul>
 

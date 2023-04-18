@@ -66,61 +66,84 @@ if(isset($_POST["login"])){
 
 ?>
 
+<!doctype html>
+<html lang="en">
+  <head>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Halaman Login Admin</title>
-    <link rel="stylesheet" href="design/main.css">
-<style>
-    
-</style>
-</head>
-<body> 
-<div class="parent clearfix">
-    <div class="bg-illustration">
-      <img src="https://i.ibb.co/Pcg0Pk1/logo.png" alt="logo">
-  
-      <div class="burger-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-  
-    </div>
-      
-    <div class="login">
-      <div class="container">
-      <h1>Halaman Login</h1>
-        <?php	if (isset($error)):?>
-        <p style="color:red;font-style:italic;align-items:center;">username/password salah</p>
-        <?= "<script>
-        alert('username/password salah');
-        </script>";?>
-        <?php	endif;?> 
-        <div class="login-form">
-          <form action="" method="post">
-            <input type="text" name="username" id="username" placeholder="Username">
-            <input type="password" name="password" id="password" placeholder="Password">
-            
-            <div class="remember-form">
-              <input type="checkbox"name="remember" id="remember">
-              <span>Remember me</span>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+        <h3 class="mb-4"><a href="index.php">Kembali</a></h3>
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+       
+			      			<h3 class="mb-4">Halaman Login</h3>
+			      		</div>
+								
+			      	</div>
+                      <?php	if (isset($error)):?>
+                        <p style="color:red;font-style:italic;align-items:center;">username/password salah</p>
+                        <?= "<script>
+                        alert('username/password salah');
+                        </script>";?>
+                        <?php	endif;?> 
+							<form action="" class="signin-form" method="post">
+			      		<div class="form-group mb-3">
+			      			<label class="label" for="name">Username</label>
+			      			<input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+			      		</div>
+
+		            <div class="form-group mb-3">
+		            	<label class="label" for="password">Password</label>
+		              <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+		            </div>
+
+		            <div class="form-group">
+		            	<button type="submit" name="login" class="form-control btn btn-primary rounded submit px-3" >Login</button>
+                    
+		            </div>
+		            <div class="form-group d-md-flex">
+		            	<div class="w-50 text-left">
+                            
+			            	<label class="checkbox-wrap checkbox-primary mb-0" >Remember Me
+									  <input type="checkbox"name="remember" id="remember" >
+									  <span class="checkmark"></span>
+										</label>
+									</div>
+                                    <div class="remember-form">
             </div>
-            <div class="forget-pass">
-              <a href="#">Forgot Password ?</a>
-            </div>
-            <button type="submit" name="login">LOG-IN</button>
-            <a href="Registrasipetani.php">Registrasi</a>
-            <a href="registrasi.php">A</a>
-          </form>
-        </div>
-    
-      </div>
-      </div>
-  </div>
+		            </div>
+		          </form>
+		          <p class="text-center">Tidak Punya Akun? <a data-toggle="tab" href="Registrasipetani.php">Daftar</a></p>
 
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    
-</body>
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
 </html>
+

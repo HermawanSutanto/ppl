@@ -7,6 +7,8 @@ if (!isset($_SESSION["login"])){
 
 require'functions.php';
 $id=$_GET["id"];
+$username=$_GET["username"];
+$tabel=$_GET["tabel"];
 
 $result = mysqli_query($conn,"SELECT * FROM 
 modul WHERE id = '$id'");
@@ -14,6 +16,15 @@ modul WHERE id = '$id'");
 
 ?>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Halaman Data Sales</title>
+    <link rel="stylesheet" href="styleindex.css">
+
+<style>
+    
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,11 +52,8 @@ modul WHERE id = '$id'");
     
 </style>
 </head>
-
-
-
-
 <body>
+    
 <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
@@ -53,40 +61,18 @@ modul WHERE id = '$id'");
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="modul.php"class="logo">
+                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
                             <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="modul.php" class="">Halaman modul</a></li>
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
+                         
+                        
                            	
-                        <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
-                            <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="logout.php">logout</a></li> 
+                       
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="modul.php">list modul</a></li> 
+                            <li class="scroll-to-section"><a href="modul.php?username=<?= $username;?>&tabel=<?= $tabel;?>">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

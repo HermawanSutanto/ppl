@@ -7,7 +7,8 @@ if (!isset($_SESSION["login"])){
 
 // koneksi ke dbms
 require'functions.php';
-
+$username=$_GET["username"];
+$tabel=$_GET["tabel"];
 // ambil data di url
 $id=$_GET["id"];
 // querry data admin berdasar id
@@ -38,16 +39,79 @@ if(isset($_POST["submit"])){
 }
 
 ?>
-<!DOCTYPE html>
+
+<<!DOCTYPE html>
 <html>
 <head>
-    <title>Registrasi</title>
-    <link rel="stylesheet" href="stylelogin.css">
-<style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Klassy Cafe - Restaurant HTML Template</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+
+    </head>
+    
 </style>
 </head>
-<body> 
-    <div class="tabellogin">
+
+
+
+
+<body>
+<header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        
+                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                         
+                        
+                           	
+                       
+                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
+                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=sales">Kembali</a></li> 
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="left-text-content">
+                        <div class="section-heading">
+                            <h6>About Us</h6>
+                            <h2>Data Diri</h2>
+                            <div class="tabellogin">
     <h1>Ubah data Sales</h1>
     <form action="" method="post">
         <input type="hidden" name="id" value="<?= $adm["id"];?>">
@@ -119,7 +183,12 @@ if(isset($_POST["submit"])){
 
 
     </form>
-    <a href="datasales.php">kembali ke halaman data sales</a>
     </div>
+                        </div>
+                        
+            </div>
+        </div>
+</section>
+   
 </body>
 </html>

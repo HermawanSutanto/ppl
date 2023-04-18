@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
-
+$username=$_GET["username"];
 // koneksi ke dbms
 require'functions.php';
 
@@ -23,14 +23,14 @@ if(isset($_POST["submit"])){
     if (ubah($_POST)>0){
         echo" <script>
             alert('data berhasil diubah!');
-            document.location.href = 'index.php'
+            document.location.href = 'dataadmin.php?username=$username'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('data gagal diubah!');
-        document.location.href = 'index.php'
+        document.location.href = 'dataadmin.php?username=$username'
         </script>
         ";
     }
@@ -104,7 +104,7 @@ if(isset($_POST["submit"])){
 
 
     </form>
-    <a href="index.php">kembali ke beranda</a>
+    <a href="dataadmin.php?username=<?= $username;?>">kembali</a>
     </div>
 </body>
 </html>

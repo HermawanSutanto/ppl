@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"])){
 
 require'functions.php';
 $username=$_GET["username"];
-$tabel="";
+$tabel=$_GET["tabel"];
 $aktor=akun($username);
 
 $result = mysqli_query($conn,"SELECT username FROM 
@@ -80,34 +80,12 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>" class="">Halaman <?= $tabel;?></a></li>
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
+                         
+                        
                            	
-                        <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
-                            <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
-                            <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li>
-                            <li class="scroll-to-section"><a href="logout.php">logout</a></li> 
+                       
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>">Akun</a></li> 
+                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -131,7 +109,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                             <h2>Data Diri</h2>
 
                         </div>
-                        <div><ul>
+                        <div><ul>   
                             <?php foreach($tabel1 as $row) :?>
                             <?php foreach($row as $satuan) :?>
                                 <!-- memeriksa apakah key berupa id/password -->
@@ -143,9 +121,13 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                             <?php	endforeach;?>
                             </ul>
                             <a href="ubah<?=$tabel;?>.php?id=<?= $row["id"];	
-                                ?>">ubah</a></div>
+                                ?>&username=<?= $username?>&tabel=<?= $tabel?>"></a></div>
                             <!-- <a href="hapus<?=$tabel;?>.php?id=<?= $row["id"];	
                                 ?>">hapus</a></div> -->
+                            <div class="main-white-button scroll-to-section" >
+                            <a href="ubah<?=$tabel;?>.php?id=<?= $row["id"];	
+                                ?>&username=<?= $username?>&tabel=<?= $tabel?>">ubah</a>
+                            </div>
                         <div class="row">
                             <div class="col-4">
                                 <img src="assets/images/about-thumb-01.jpg" alt="">
@@ -156,6 +138,10 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                             <div class="col-4">
                                 <img src="assets/images/about-thumb-03.jpg" alt="">
                             </div>
+                            <div class="main-white-button scroll-to-section" >
+                                <a href="logout.php">logout</a>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -169,7 +155,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                 </div>
             </div>
         </div>
-    </section>
+</section>
 
 <div>
 
