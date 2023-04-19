@@ -56,7 +56,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="index.html" class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                            <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -198,7 +198,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
     
  <!-- ***** Menu Area Starts ***** -->
- <section class="section" id="menu">
+ <!-- <section class="section" id="menu">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -287,11 +287,11 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ***** Menu Area Ends ***** -->
 
     <!-- ***** Reservation Us Area Starts ***** -->
-    <section class="section" id="reservation">
+    <!-- <section class="section" id="reservation">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
@@ -396,9 +396,10 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ***** Reservation Area Ends ***** -->
-    <section class="section" id="offers">
+    
+    <!-- <section class="section" id="offers">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 offset-lg-4 text-center">
@@ -660,7 +661,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ***** Chefs Area Ends ***** --> 
     <!-- ***** Menu Area Starts ***** -->
   

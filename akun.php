@@ -75,7 +75,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                         <!-- ***** Logo Start ***** -->
                         
                         <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                            <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
