@@ -74,9 +74,9 @@ https://templatemo.com/tm-558-klassy-cafe
                                 </ul>
                             </li>
                         -->
-                            <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li> 
-                            <li class="submenu">
+                            <!-- <li class="scroll-to-section"><a href="#menu">Menu</a></li> -->
+                            <li class="scroll-to-section"><a href="#chefs">Aktor</a></li> 
+                            <!-- <li class="submenu">
                                 <a href="javascript:;">Features</a>
                                 <ul>
                                     <li><a href="#">Features Page 1</a></li>
@@ -84,7 +84,7 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <li><a href="#">Features Page 3</a></li>
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
-                            </li>
+                            </li> -->
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="login.php">Login</a></li> 
                         </ul>        
@@ -117,15 +117,15 @@ https://templatemo.com/tm-558-klassy-cafe
                         pertanian dan petani untuk bertemu dan 
                             mempermudah para petani untuk melihat trend harga pasar secara realtime. 
                         <br><br>temukan solusi permasalahan anda pada Website Kami!</p>
-                        <div class="row">
+                        <div class="row" >
                             <div class="col-4">
-                                <img src="assets/images/about-thumb-01.jpg" alt="">
+                                <img src="assets/images/petani1.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="assets/images/about-thumb-02.jpg" alt="">
+                                <img src="assets/images/petani2.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="assets/images/about-thumb-03.jpg" alt="">
+                                <img src="assets/images/petani3.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -133,8 +133,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="right-content">
                         <div class="thumb">
-                            <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
-                            <img src="assets/images/about-video-bg.jpg" alt="">
+                            <img src="assets/images/gambar petani muda.png" alt="">
                         </div>
                     </div>
                 </div>

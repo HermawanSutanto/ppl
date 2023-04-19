@@ -96,50 +96,50 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
 
 </section>
 
-<div style="margin:80px;margin-top:0px; padding-right:30px;overflow-x:auto;">
+<div style="margin:80px;margin-top:0px; overflow-x:auto;">
 
-<table border="1" cellpadding="10" cellspacing="0" style="width:500px;">
-<tr>
-<!-- kop tabel-->
-<th>No.</th>
-<th>Aksi</th>
-<th>judul</th>
-<th>deskripsi</th>
-<th>gambarsampul</th>
-<th>video</th>
-<th>narasumber</th>
+        <table border="1" cellpadding="10" cellspacing="0" style="width:500px;">
+        <tr>
+        <!-- kop tabel-->
+        <th>No.</th>
+        <th>Aksi</th>
+        <th>judul</th>
+        <th>deskripsi</th>
+        <th>gambarsampul</th>
+        <th>video</th>
+        <th>narasumber</th>
 
-</tr>
-<?php $i=1?><!--  nomor urut -->
-<?php foreach($modul as $row) :?>
-<tr>
-<td><?= $i?></td>
-<td >
-    <?php	if ($tabel==='admin1'):?>
-        <a href="ubahmodul.php?id=<?= $row["id"];	
-    ?>&username=<?= $username;?>&tabel=<?= $tabel;?>">ubah</a> |
-    <a href="hapusmodul.php?id=<?= $row["id"];	
-    ?>&username=<?= $username;?>&tabel=<?= $tabel;?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>                     
-    <?php	endif;?>
-   
-     <a href="modulsatuan.php?id=<?= $row["id"];	
-    ?>&username=<?= $username;?>&tabel=<?= $tabel;?>">lihat</a> 
-</td>
-<td><?= $row["judul"];	?></td>
-<td><?= $row["deskripsi"];	?></td>
-<td><img style="width: 100%;float: left;padding: 20px;
-border: 2px solid red;" src="modul/sampul/<?= $row["gambarsampul"];?>" alt=""></td>
+        </tr>
+        <?php $i=1?><!--  nomor urut -->
+        <?php foreach($modul as $row) :?>
+        <tr>
+        <td><?= $i?></td>
+        <td >
+            <?php	if ($tabel==='admin1'):?>
+                <a href="ubahmodul.php?id=<?= $row["id"];	
+            ?>&username=<?= $username;?>&tabel=<?= $tabel;?>">ubah</a> |
+            <a href="hapusmodul.php?id=<?= $row["id"];	
+            ?>&username=<?= $username;?>&tabel=<?= $tabel;?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>                     
+            <?php	endif;?>
+        
+            <a href="modulsatuan.php?id=<?= $row["id"];	
+            ?>&username=<?= $username;?>&tabel=<?= $tabel;?>">lihat</a> 
+        </td>
+        <td><?= $row["judul"];	?></td>
+        <td><?= $row["deskripsi"];	?></td>
+        <td><img style="width: 100%;float: left;padding: 20px;
+        border: 2px solid red;" src="modul/sampul/<?= $row["gambarsampul"];?>" alt=""></td>
 
-<td ><iframe class="fa fa-play" src="<?= $row["video"];?>" style=" float: left;padding: 20px;border: 2px solid red;" 
-frameborder="0" width="400px" height="225px"
-></iframe></td>
-<td><?= $row["narasumber"];	?></td>
+        <td ><iframe class="fa fa-play" src="<?= $row["video"];?>" style=" float: left;padding: 20px;border: 2px solid red;" 
+        frameborder="0" width="400px" height="225px"
+        ></iframe></td>
+        <td><?= $row["narasumber"];	?></td>
 
-</tr>
-<?php $i++?>
-<?php	endforeach; ?>
-</table>
-</div>
+        </tr>
+        <?php $i++?>
+        <?php	endforeach; ?>
+        </table>
+</div>  
 
 
 
