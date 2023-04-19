@@ -43,14 +43,77 @@ if(isset($_POST["submit"])){
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registrasi</title>
-    <link rel="stylesheet" href="stylelogin.css">
+    <title>Halaman Ubah Status</title>
+    <link rel="stylesheet" href="design/styleindex.css">
+
 <style>
+    
+</style>
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Klassy Cafe - Restaurant HTML Template</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="assets/css/index.css">
+
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+
+    </head>
+    
 </style>
 </head>
+<body>
+<header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        
+                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                            <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                         
+                        
+                           	
+                       
+                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
+                            <li class="scroll-to-section"> <a href="datapetani.php?username=<?= $usernameadm;?>">Kembali</a></li> 
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 <body> 
-    <div class="tabellogin">
-    <h1>Ubah data Petani</h1>
+
+<section class="section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="tabelmodul">
+    <h1>Ubah Status <?=$adm["nama"]?></h1>
     <form action="" method="post">
         <input type="hidden" name="id" value="<?= $adm["id"];?>">
         <ul>
@@ -75,7 +138,13 @@ if(isset($_POST["submit"])){
 
 
     </form>
-    <a href="datapetani.php?username=<?= $usernameadm;?>">kembali</a>
     </div>
+    
+                       
+            </div>
+        </div>
+
+</section>
+ 
 </body>
 </html>

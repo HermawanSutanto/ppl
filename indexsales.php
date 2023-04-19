@@ -62,8 +62,8 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="" class="logo">
-                            <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
+                        <a href="#" class="logo">
+                            <img src="assets/images/simtanilogo.png" >
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -153,7 +153,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="logout.php"><img src="assets/images/white-logo.png" alt=""></a>
+                        <a href="logout.php"><img src="assets/images/simtanilogo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">
