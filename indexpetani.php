@@ -99,7 +99,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h4>Selamat Datang <br> <?= $adm["nama"];?></h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
-                                <a href="#reservation">Make A Reservation</a>
+                                <a href="#reservation">Mulai Sekarang!</a>
                             </div>
                         </div>
                     </div>
