@@ -130,7 +130,7 @@ if(isset($_POST["login"])){
             </div>
 		            </div>
 		          </form>
-		          <p class="text-center">Tidak Punya Akun? <a data-toggle="tab" href="Registrasipetani.php">Daftar</a></p>
+		          <p class="text-center">Tidak Punya Akun? <a href="registrasipetani.php">Daftar</a></p>
 
 		        </div>
 		      </div>

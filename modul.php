@@ -33,7 +33,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
@@ -83,7 +83,6 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h6>About Us</h6>
                             <h2>Daftar Modul</h2>
                             <?php	if ($tabel==='admin1'):?>
                                 <div style="margin-top:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" 
@@ -97,7 +96,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
 
 </section>
 
-<div style="margin:80px;margin-top:0px; padding-right:30px;">
+<div style="margin:80px;margin-top:0px; padding-right:30px;overflow-x:auto;">
 
 <table border="1" cellpadding="10" cellspacing="0" style="width:500px;">
 <tr>

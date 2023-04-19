@@ -10,7 +10,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
 <html>
 <head>
     <title>Halaman Data Sales</title>
-    <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="design/styleindex.css">
 
 <style>
     
@@ -32,7 +32,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
@@ -82,8 +82,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h6>About Us</h6>
-                            <h2>Daftar Modul</h2>
+                            <h2>Tambah Modul</h2>
 
                         </div>
                        
@@ -108,7 +107,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
 
             </li>
             <li>
-                <label for="gambarsampul">gambarsampul : </label>
+                <label for="gambarsampul">Gambar Sampul : </label>
                 <input type="file" name="gambarsampul" id="gambarsampul">
             </li>
             <li>
@@ -116,7 +115,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
                 <input type="text" name="video" id="video"required>
             </li>
             <li>
-                <label for="narasumber">narasumber : </label>
+                <label for="narasumber">Narasumber: </label>
                 <input type="text" name="narasumber" id="narasumber"required>
             </li>
             <li>

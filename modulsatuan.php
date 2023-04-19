@@ -20,7 +20,8 @@ modul WHERE id = '$id'");
 <html>
 <head>
     <title>Halaman Data Sales</title>
-    <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="design/styleindex.css">
+    
 
 <style>
     
@@ -42,11 +43,12 @@ modul WHERE id = '$id'");
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="design/section.css">
 
     </head>
     
@@ -86,90 +88,51 @@ modul WHERE id = '$id'");
     <!-- ***** Header Area End ***** -->
 
 <!-- navigasi jumlah halaman -->
+<?php foreach($result as $row) :?>
+<?php	endforeach;?>
+</div>
 <section class="section" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h6>About Us</h6>
-                            <h2>Data modul</h2>
-                            
-
+                            <h2><?= $row["judul"];?></h2>
                         </div>
-                        <div style="font-family: arial;
-                        display:grid;
-                                font-size: 24px;
-                                margin: 25px;
-                                width: 350px;
-                                height: 200px;
-                               ">
-                            
-                            <?php foreach($result as $row) :?>
-                            <div style=" border: 3px solid #fff;padding: 20px;">
-                            <div class="col-4" style="width: 50%;
-                                float: left;
-                                padding: 20px;
-                                border: 2px solid red;">
-                                <img src="modul/sampul/<?= $row["gambarsampul"];?>" alt=""></div>
-                            
-                            <div style="width: 50%;
-                                float: left;
-                                padding: 20px;
-                                border: 2px solid red;">
-                            <iframe class="fa fa-play" src="<?= $row["video"];?>" frameborder="0" width="400px" height="225px"></iframe>
+                        <p>Deskripsi:<?= $row["deskripsi"];?></p>
+                        <!-- <div class="row">
+                            <div class="col-4">
+                                <img src="assets/images/about-thumb-01.jpg" alt="">
                             </div>
+                            <div class="col-4">
+                                <img src="assets/images/about-thumb-02.jpg" alt="">
                             </div>
-                            
-                            <div>
-                            <ul>
-                                <?php foreach($row as $satuan) :?>
-                                <!-- memeriksa apakah key berupa id/password -->
-                                <?php	if(array_search($satuan, $row)=="video"| array_search($satuan, $row)=="id"| array_search($satuan, $row)=="modul"| array_search($satuan, $row)=="gambarsampul"):?>
-                                    <?php	else:?>
-                                        <li><?php echo array_search($satuan, $row);?> :  <?= $satuan;?></li>
-                                    <?php	endif;?>
-                                <?php	endforeach;?>
-                                <a href="ubah<?=$tabel;?>.php?id=<?= $row["id"];	
-                                ?>">ubah</a>
-                            <!-- <a href="hapus<?=$tabel;?>.php?id=<?= $row["id"];	
-                                ?>">hapus</a></div> -->
-                            <?php	endforeach;?>
+                            <div class="col-4">
+                                <img src="assets/images/about-thumb-03.jpg" alt="">
                             </div>
-
-                            <div style="width:40rem;height:40rem;
-                            background-color: red;
-                            /* Center horizontally*/
-                            margin: 0 auto;">
-                            
-                            <embed src="modul\pdf\<?= $row["modul"];?>#toolbar=0" type="" style="width:40rem;height:40rem;">
-                            </div>
-                            
-                            </ul>
-                            
-                        </div>
-                            
-                            
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="right-content">
-                        <div class="thumb">
-                            
-                           
-                        </div>
+                    <div style="width: 50%;
+                                float: left;
+                                padding: 20px;">
+                            <iframe class="fa fa-play" src="<?= $row["video"];?>" frameborder="0" width="540px" height="307px"></iframe>
+                            </div>
                         
                     </div>
                 </div>
             </div>
+            <div style="width:40rem;height:40rem;
+
+                            text-align:center;
+                            margin: 0 auto;">
+                            <h6>Modul</h6>
+                            <embed src="modul\pdf\<?= $row["modul"];?>#toolbar=0" type="" style="width:40rem;height:40rem;">
+                            </div>
         </div>
     </section>
-
-<div>
-
-</div>
-     
    
 
 

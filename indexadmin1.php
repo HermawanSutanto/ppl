@@ -1,37 +1,17 @@
 <?php
-
+require'functions.php';
 session_start();	
 // cek session
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 $username=$_GET["username"];
+$adm =query("SELECT * FROM admin1 WHERE username = $username")[0];
 
 // koneksi ke database
 // seolah olah file function ada di sini
-require'functions.php';
 
-//  PAGINATION
-$jumlahadataperhalaman = 2 ; //jumlah data/halaman
-$jumlahdata = count(query("SELECT * FROM admin1"));//jumlah seluruh data
-$jumlahhalaman = ceil($jumlahdata/$jumlahadataperhalaman);//hasil diulatkan keatas
-$halamanaktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ; //ternari,
 
-//halaman =2,awaldata =2
-//halaman =3, awawldata=4
-//menentukan data pertama di tiap halaman
-$awaldata = ($jumlahadataperhalaman*$halamanaktif)-$jumlahadataperhalaman;
-
-$admin1 = query("SELECT * FROM admin1 ORDER BY id DESC LIMIT $awaldata,$jumlahadataperhalaman");//ASC urut id membesar, DESC mengecil,
-
-//limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
-//  ambil data dari database tabel admin1 / query
-
-// tombol cari di klik
-if(isset( $_POST["cari"])){
-    $admin1 = cari($_POST["keyword"]);
-    
-}
 
 
 ?>
@@ -63,7 +43,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
@@ -142,7 +122,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4>Selamat Datang <?= $username;?></h4>
+                            <h4>Selamat Datang<br><?= $adm["nama"];?></h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#reservation">Make A Reservation</a>

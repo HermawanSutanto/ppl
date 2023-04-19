@@ -18,75 +18,107 @@ $username=$_GET["username"]
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="stylelogin.css">
+<!doctype html>
+<html lang="en">
+  <head>
 
-    <style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+        <h3 class="mb-4"><a href="datasales.php?username=<?=$username?>">Kembali</a></h3>
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
        
-    </style>
-</head>
-<body> 
-<h1>Halaman Registrasi sales</h1>
-<div class="tabellogin">
-<form action="" method="post">
-    <ul>
-    <li>
-                <label for="username">Username : </label>
-                <input type="text" name="username" id="username"required>
+			      			<h3 class="mb-4">Pendaftaran Sales</h3>
+			      		</div>
+								
+			      	</div>
 
-            </li>
-            <li>
-                <label for="nama">Nama : </label>
-                <input type="text" name="nama" id="nama" required>
+							<form action="" class="signin-form" method="post">
+			      		<div class="form-group mb-3">
+			      			<label class="label" for="name">Username</label>
+			      			<input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
+			      		</div>
+                <div class="form-group mb-3">
+			      			<label class="label" for="name">Nama</label>
+			      			<input type="text" class="form-control" name="nama" id="nama" placeholder="nama" required>
+			      		</div>
+                <div class="form-group mb-3">
+			      			<label class="label" for="email">Email</label>
+			      			<input type="text" class="form-control" name="email" id="email" placeholder="email" required>
+			      		</div>
+				<div class="form-group mb-3">
+						<label class="label" for="perusahaan">Perusahaan</label>
+						<input type="text" class="form-control" name="perusahaan" id="perusahaan" placeholder="perusahaan" required>
+					</div>
+				<div class="form-group mb-3">
+						<label class="label" for="tanggallahir">Tanggal Lahir</label>
+						<input type="text" class="form-control" name="tanggallahir" id="tanggallahir" placeholder="tanggallahir" required>
+					</div>
 
-            </li>
-            <li>
-                <label for="email">Email : </label>
-                <input type="text" name="email" id="email"required>
-            </li>
-            <li>
-                <label for="perusahaan">Perusahaan : </label>
-                <input type="text" name="perusahaan" id="perusahaan"required>
-            </li>
-            <li>
-                <label for="tanggallahir">Tanggal lahir : </label>
-                <input type="text" name="tanggallahir" id="tanggallahir"required>
-            </li>
-            <li>
-                <label for="nomorhp">Nomor Handphone : </label>
-                <input type="text" name="nomorhp" id="nomorhp"required>
-            </li>
-            <li>
-                <label for="password">Password : </label>
-                <input type="password" name="password" id="password"required>
-            </li>
-            <li>
-                <label for="password2">Konfirmasi Password : </label>
-                <input type="password2" name="password2" id="password"required>
-            </li>
-            <li>
-                <label for="alamat">Alamat : </label>
-                <input type="text" name="alamat" id="alamat">
-            </li>
-            <li>
-                <label for="jeniskelamin">Jenis Kelamin :</label>
-                <select name="jeniskelamin" id="jeniskelamin"required>
-                        <option value="">pilih Jenis Kelamin</option><option value="Laki laki">Laki laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                </select>
-            </li>
-            
-        <button type="submit" name="register">Register</button>
+                <div class="form-group mb-3">
+			      			<label class="label" for="nomorhp">Nomor Handphone</label>
+			      			<input type="text" class="form-control" name="nomorhp" id="nomorhp" placeholder="nomorhp" required>
+			      		</div>
 
-        <a href="datasales.php?username=<?=$username?>">Kembali</a>
+                
+		            <div class="form-group mb-3">
+		            	<label class="label" for="password">Password</label>
+		              <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+		            </div>
+                <div class="form-group mb-3">
+		            	<label class="label" for="password2">Konfirmasi Password</label>
+		              <input type="password" class="form-control" name="password2" id="password2" placeholder="Konfirmasi Password" required>
+		            </div>
+                <div class="form-group mb-3" >
+			      			<label class="label" for="alamat">Alamat</label>
+			      			<input type="text" class="form-control" name="alamat" id="alamat" placeholder="alamat" required>
+			      		</div>
+                <div class="form-group mb-3">
+                  <label for="jeniskelamin">Jenis Kelamin :</label>
+                  <select name="jeniskelamin" id="jeniskelamin"required>
+                          <option value="">pilih Jenis Kelamin</option><option value="Laki laki">Laki laki</option>
+                          <option value="Perempuan">Perempuan</option>
+                  </select>
+                </div>
+                
 
-    </ul>
 
-</form>
-</div>
+		            <div class="form-group">
+		            	<button type="submit" name="register" class="form-control btn btn-primary rounded submit px-3" >Daftar</button>
+                    
+		            </div>
+                
+		          </form>
 
-</body>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
 </html>
+

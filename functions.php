@@ -107,16 +107,7 @@ function ubah($data){
     $alamat = htmlspecialchars($data["alamat"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
-    $querry = "UPDATE admin1 SET 
-                    nama = '$nama',
-                    username ='$username',
-                    email = '$email',
-                    nomorhp = '$nomorhp',
-                    jeniskelamin = '$jeniskelamin',
-                    alamat = '$alamat',
-                    password ='$password'
-                    WHERE id = $id
-    ";
+    
     if($password!==$password2){
         echo "<script>
         alert('Konfirmasi password tidak sesuai');
@@ -126,7 +117,16 @@ function ubah($data){
     }
     // enkripsi password
     $password = password_hash($password,PASSWORD_DEFAULT);
-
+    $querry = "UPDATE admin1 SET 
+    nama = '$nama',
+    username ='$username',
+    email = '$email',
+    nomorhp = '$nomorhp',
+    jeniskelamin = '$jeniskelamin',
+    alamat = '$alamat',
+    password ='$password'
+    WHERE id = $id
+";
 mysqli_query($conn,$querry);
 return mysqli_affected_rows($conn);
 }
@@ -145,8 +145,18 @@ function ubahsales($data){
     $nomorhp = htmlspecialchars($data["nomorhp"]);
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
-    $password = htmlspecialchars($data["password"]);
+    $password = mysqli_real_escape_string($conn,$data["password"]);
+    $password2 = mysqli_real_escape_string($conn,$data["password2"]);
 
+    if($password!==$password2){
+        echo "<script>
+        alert('Konfirmasi password tidak sesuai');
+        </script>";
+        return false;
+
+    }
+    // enkripsi password
+    $password = password_hash($password,PASSWORD_DEFAULT);
     $querry = "UPDATE sales SET 
                     nama = '$nama',
                     username ='$username',
@@ -177,6 +187,16 @@ function ubahpetani($data){
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
+    $password2 = mysqli_real_escape_string($conn,$data["password2"]);
+    if($password!==$password2){
+        echo "<script>
+        alert('Konfirmasi password tidak sesuai');
+        </script>";
+        return false;
+
+    }
+    // enkripsi password
+    $password = password_hash($password,PASSWORD_DEFAULT);
 
     $querry = "UPDATE petani SET 
                     nama = '$nama',

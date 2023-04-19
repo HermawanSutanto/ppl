@@ -5,6 +5,7 @@ if (!isset($_SESSION["login"])){
     header("Location: loginsales.php");
 }
 $username=$_GET["username"];
+$adm =query("SELECT * FROM sales WHERE username = $username")[0];
 
 ?>
 
@@ -33,7 +34,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
@@ -91,7 +92,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-4">
                     <div class="left-content">
                         <div class="inner-content">
-                            <h4>Selamat Datang <?= $username;?></h4>
+                            <h4>Selamat Datang<br><?= $adm["nama"];?></h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#reservation">Make A Reservation</a>

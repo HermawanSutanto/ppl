@@ -1,0 +1,102 @@
+.section {
+    background-color: #f8f8f8;
+    padding: 100px 0;
+  }
+  
+  .section-heading h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .section-heading h6 {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #ff0000;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  
+  .left-text-content {
+    margin-bottom: 50px;
+  }
+  
+  .left-text-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .left-text-content ul li {
+    margin-bottom: 10px;
+  }
+  
+  .left-text-content ul li label {
+    display: inline-block;
+    width: 150px;
+    font-weight: bold;
+  }
+  
+  .left-text-content ul li input[type="text"],
+  .left-text-content ul li input[type="file"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  .left-text-content ul li input[type="text"]:focus,
+  .left-text-content ul li input[type="file"]:focus {
+    outline: none;
+    border-color: #ff0000;
+  }
+  
+  .left-text-content ul li button[type="submit"] {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .left-text-content ul li button[type="submit"]:hover {
+    background-color: #d60000;
+  }
+  
+  .left-text-content ul li a {
+    color: #ff0000;
+    text-decoration: none;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .left-text-content ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .right-content .thumb img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  @media (max-width: 767px) {
+    .left-text-content,
+    .right-content {
+      text-align: center;
+    }
+  
+    .left-text-content ul li label {
+      width: 100%;
+      display: block;
+      text-align: left;
+    }
+  
+    .left-text-content ul li input[type="text"],
+    .left-text-content ul li input[type="file"] {
+      width: 100%;
+      max-width: none;
+    }
+  }
+  

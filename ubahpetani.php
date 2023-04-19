@@ -39,142 +39,100 @@ if(isset($_POST["submit"])){
 }
 
 ?>
-<<!DOCTYPE html>
-<html>
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <title>Klassy Cafe - Restaurant HTML Template</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+	</head>
+	<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+        <h3 class="mb-4"><a href="akun.php?username=<?=$username?>&tabel=petani">Kembali</a></h3>
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
+			      </div>
+						<div class="login-wrap p-4 p-md-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+       
+			      			<h3 class="mb-4">Ubah data</h3>
+			      		</div>
+								
+			      	</div>
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+							<form action="" class="signin-form" method="post">
+							<input type="hidden" name="id" value="<?= $adm["id"];?>">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+			      		<div class="form-group mb-3">
+			      			<label class="label" for="name">Username</label>
+			      			<input type="text" class="form-control" name="username" id="username" placeholder="Username" required value="<?=$adm["username"]?>">
+			      		</div>
+                <div class="form-group mb-3">
+			      			<label class="label" for="name">Nama</label>
+			      			<input type="text" class="form-control" name="nama" id="nama" placeholder="nama" required value="<?=$adm["nama"]?>">
+			      		</div>
+                <div class="form-group mb-3">
+			      			<label class="label" for="email">Email</label>
+			      			<input type="text" class="form-control" name="email" id="email" placeholder="email" required value="<?=$adm["email"]?>">
+			      		</div>
+                <div class="form-group mb-3">
+			      			<label class="label" for="nomorhp">Nomor Handphone</label>
+			      			<input type="text" class="form-control" name="nomorhp" id="nomorhp" placeholder="nomorhp" required value="<?=$adm["nomorhp"]?>">
+			      		</div>
 
-    <link rel="stylesheet" href="assets/css/lightbox.css">
-
-    </head>
-    
-</style>
-</head>
-
-
-
-
-<body>
-<header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
-                        </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                         
-                        
-                           	
-                       
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=petani">Kembali</a></li> 
-                        </ul>        
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                
+		            <div class="form-group mb-3">
+		            	<label class="label" for="password">Password</label>
+		              <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+		            </div>
+                <div class="form-group mb-3">
+		            	<label class="label" for="password2">Konfirmasi Password</label>
+		              <input type="password" class="form-control" name="password2" id="password2" placeholder="Konfirmasi Password" required>
+		            </div>
+                <div class="form-group mb-3" >
+			      			<label class="label" for="alamat">Alamat</label>
+			      			<input type="text" class="form-control" name="alamat" id="alamat" placeholder="alamat" required value="<?=$adm["alamat"]?>">
+			      		</div>
+                <div class="form-group mb-3">
+                  <label for="jeniskelamin">Jenis Kelamin :</label>
+                  <select name="jeniskelamin" id="jeniskelamin"required>
+                          <option value="<?=$adm["jeniskelamin"]?>"><?=$adm["jeniskelamin"]?></option><option value="Laki laki">Laki laki</option>
+                          <option value="Perempuan">Perempuan</option>
+                  </select>
                 </div>
-            </div>
-        </div>
-    </header>
-    <!-- ***** Header Area End ***** -->
-
-    <section class="section" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="left-text-content">
-                        <div class="section-heading">
-                            <h6>About Us</h6>
-                            <h2>Data Diri</h2>
-                            <div class="tabellogin">
-    <h1>Ubah data Sales</h1>
-    <div class="tabellogin">
-    <h1>Ubah data Petani</h1>
-    <form action="" method="post">
-        <input type="hidden" name="id" value="<?= $adm["id"];?>">
-        <ul>
-            <li>
-                <label for="username">Username : </label>
-                <input type="text" name="username" id="username"required 
-                value="<?=$adm["username"]?>">
-
-            </li>
-            <li>
-                <label for="nama">NAMA : </label>
-                <input type="text" name="nama" id="nama" required
-                value="<?=$adm["nama"]?>">
-
-            </li>
-            <li>
-                <label for="email">Email : </label>
-                <input type="text" name="email" id="email"required
-                value="<?=$adm["email"]?>">
-            </li>
-
-            <li>
-                <label for="nomorhp">Nomor Handphone : </label>
-                <input type="text" name="nomorhp" id="nomorhp"required
-                value="<?=$adm["nomorhp"]?>">
-            </li>
-            <li>
-                <label for="password">Password : </label>
-                <input type="password" name="password" id="password"required
-               >
-            </li>
-            <li>
-                <label for="password2">konfirmasi Password : </label>
-                <input type="password2" name="password2" id="password2"required
-               >
-            </li>
-            <li>
-                <label for="alamat">Alamat : </label>
-                <input type="text" name="alamat" id="alamat"
-                value="<?=$adm["alamat"]?>">
-            </li>
-            <!-- <li>
-                <label for="jeniskelamin">Jenis Kelamin : </label>
-                <input type="text" name="jeniskelamin" id="jeniskelamin">
-            </li> -->
-            <li>
-                <label for="jeniskelamin">Jenis Kelamin :</label>
-                <select name="jeniskelamin" id="jeniskelamin"required autocomplete="on">
-                        <option value="<?=$adm["jeniskelamin"]?>"><?=$adm["jeniskelamin"]?></option>
-                        <option value="Laki laki">Laki laki</option>
-                        <option value="Perempuan">Perempuan</option>
-                </select>
-            </li>
-            <li>
-                <button type="submit" name="submit">Ubah Data!</button>
-            </li>
-        </ul>
+                
 
 
-    </form>
-    <a href="datapetani.php">kembali ke halaman data petani</a>
-    </div>
-</body>
+		            <div class="form-group">
+		            	<button type="submit" name="submit" class="form-control btn btn-primary rounded submit px-3" >Ubah Data</button>
+                    
+		            </div>
+                
+		          </form>
+
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
+
+	</body>
 </html>
+

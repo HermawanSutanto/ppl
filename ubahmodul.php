@@ -44,7 +44,7 @@ if(isset($_POST["ubah"])){
 <html>
 <head>
     <title>Halaman Data Sales</title>
-    <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="design/styleindex.css">
 
 <style>
     
@@ -66,7 +66,7 @@ if(isset($_POST["ubah"])){
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
@@ -96,7 +96,7 @@ if(isset($_POST["ubah"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="modul.php?username=<?= $username;?>&tabel=<?= $tabel;?>">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -124,7 +124,7 @@ if(isset($_POST["ubah"])){
 
             </li>
             <li>
-                <label for="gambarsampul">gambarsampul : </label><br>
+                <label for="gambarsampul">Gambar Sampul : </label><br>
                 <img src="modul/sampul/<?=$adm["gambarsampul"];?>" alt="" width="90"><br>
                 <input type="file" name="gambarsampul" id="gambarsampul" >
             </li>
@@ -133,7 +133,7 @@ if(isset($_POST["ubah"])){
                 <input type="text" name="video" id="video"required value="<?=$adm["video"];?>">
             </li>
             <li>
-                <label for="narasumber">narasumber : </label>
+                <label for="narasumber">Narasumber: </label>
                 <input type="text" name="narasumber" id="narasumber"required value="<?=$adm["narasumber"];?>">
             </li>
             <li>

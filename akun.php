@@ -52,7 +52,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
@@ -105,7 +105,6 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h6>About Us</h6>
                             <h2>Data Diri</h2>
 
                         </div>

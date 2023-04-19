@@ -62,7 +62,7 @@ if(isset( $_POST["cari"])){
 
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="assets/css/index.css">
 
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
@@ -114,30 +114,28 @@ if(isset( $_POST["cari"])){
                         <div class="section-heading">
                             <h6>About Us</h6>
                             <h2>Data Sales</h2>
+                            <div style="margin-top:30px;margin-bottom:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" href="registrasisales.php?username=<?= $username;?>">Tambahkan Sales</a></h4></div>
+
+                            <div style="font-family: arial;
+                            font-size: 20px;
+                            display: flex;
+                            justify-content: left;">
+                                <form action="" method="post">
+
+                                <input type="text" name="keyword" id="keyword" size="40px" autofocus 
+                                placeholder="Masukkan keyword pencarian" autocomplete="off">
+                                <button type="submit" name="cari">cari</button></form></div>
 
                         </div>
-                       
             </div>
         </div>
 
 </section>
 
-<div style="margin-left:60px;margin-top:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" href="registrasisales.php?username=<?= $username;?>">Tambahkan Sales</a></h4></div>
 
 
 
-<div style="font-family: arial;
-  font-size: 20px;
-  display: flex;
-  justify-content: center;">
-    <form action="" method="post">
 
-    <input type="text" name="keyword" id="keyword" size="100" autofocus 
-    placeholder="Masukkan keyword pencarian" autocomplete="off">
-    <button type="submit" name="cari">cari</button>
-
-    </form>
-</div>
 <div style="font-family: arial;
   font-size: 20px;
 
@@ -170,7 +168,7 @@ if(isset( $_POST["cari"])){
 <br>
 <br>
 
-<div style="margin:80px;margin-top:0px;">
+<div style="margin:30px;margin-top:0px;overflow-x:auto;">
 
 <table border="1" cellpadding="10" cellspacing="0">
 <tr>
