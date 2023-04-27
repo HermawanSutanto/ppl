@@ -13,16 +13,16 @@ require 'functions.php';
 $id = $_GET["id"];
 
     if ( hapusmodul($id)>0){
-        echo" <script>
+        echo" <script>  
          alert('data berhasil dihapus!');
-        document.location.href = 'modul.php?username= $username;&tabel= $tabel;'
+        document.location.href = 'modul.php?username=$username&tabel=$tabel'
         </script>
          ";
 
         }else{
         echo" <script>
         alert('data gagal dihapus!');
-        document.location.href = 'modul.php?username= $username;&tabel= $tabel;'
+        document.location.href = 'modul.php?username=$username&tabel=$tabel'
         </script>
         ";
 }

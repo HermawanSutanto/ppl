@@ -115,6 +115,15 @@ function ubah($data){
         return false;
 
     }
+    $gambarsampullama = htmlspecialchars($data["gambarlama"]);
+
+// cek user memilih gambar baru apa nda
+    if($_FILES['fotoprofil']['error']===4){
+        $fotoprofil = $gambarsampullama;
+    }else{
+        $fotoprofil= uploadfoto();
+
+    }
     // enkripsi password
     $password = password_hash($password,PASSWORD_DEFAULT);
     $querry = "UPDATE admin1 SET 
@@ -124,7 +133,8 @@ function ubah($data){
     nomorhp = '$nomorhp',
     jeniskelamin = '$jeniskelamin',
     alamat = '$alamat',
-    password ='$password'
+    password ='$password',
+    fotoprofil ='$fotoprofil'
     WHERE id = $id
 ";
 mysqli_query($conn,$querry);
@@ -155,6 +165,16 @@ function ubahsales($data){
         return false;
 
     }
+
+    $gambarsampullama = htmlspecialchars($data["gambarlama"]);
+
+// cek user memilih gambar baru apa nda
+    if($_FILES['fotoprofil']['error']===4){
+        $fotoprofil = $gambarsampullama;
+    }else{
+        $fotoprofil= uploadfoto();
+
+    }
     // enkripsi password
     $password = password_hash($password,PASSWORD_DEFAULT);
     $querry = "UPDATE sales SET 
@@ -166,7 +186,8 @@ function ubahsales($data){
                     nomorhp = '$nomorhp',
                     jeniskelamin = '$jeniskelamin',
                     alamat = '$alamat',
-                    password ='$password'
+                    password ='$password',
+                    fotoprofil = '$fotoprofil'
                     WHERE id = $id
     ";
 
@@ -195,6 +216,15 @@ function ubahpetani($data){
         return false;
 
     }
+    $gambarsampullama = htmlspecialchars($data["gambarlama"]);
+
+// cek user memilih gambar baru apa nda
+    if($_FILES['fotoprofil']['error']===4){
+        $fotoprofil = $gambarsampullama;
+    }else{
+        $fotoprofil= uploadfoto();
+
+    }
     // enkripsi password
     $password = password_hash($password,PASSWORD_DEFAULT);
 
@@ -205,7 +235,8 @@ function ubahpetani($data){
                     nomorhp = '$nomorhp',
                     jeniskelamin = '$jeniskelamin',
                     alamat = '$alamat',
-                    password ='$password'
+                    password ='$password',
+                    fotoprofil='$fotoprofil'
                     WHERE id = $id
     ";
     mysqli_query($conn,$querry);
@@ -300,26 +331,48 @@ function akun($data){
 }
 function login($data){
     global $conn; 
+    // mysqli_query($conn,"CREATE VIEW admin2 as SELECT * FROM 
+    // admin1");
+    // mysqli_query($conn,"CREATE VIEW sales2 as SELECT * FROM 
+    // sales");
+    // mysqli_query($conn,"CREATE VIEW petani2 as SELECT * FROM 
+    // petani");
+    
     $username = $data;
-
-    $result = mysqli_query($conn,"SELECT username FROM 
-    admin1 WHERE username = '$username'");
+    
+    $result = mysqli_query($conn,"SELECT * FROM 
+    admin2 WHERE username = '$username'");
+    // var_dump($result);
+    
     if (mysqli_fetch_assoc($result)){
-        
+
         return [$result,"admin1"];
 
     }
-    $result = mysqli_query($conn,"SELECT username FROM 
-    sales WHERE username = '$username'");
+    $result = mysqli_query($conn,"SELECT * FROM 
+    sales2 WHERE username = '$username'");
+    // var_dump($result);
     if (mysqli_fetch_assoc($result)){
-        
+
         return [$result,"sales"];
     }
-    $result = mysqli_query($conn,"SELECT username FROM 
-    petani WHERE username = '$username'");
+    $result = mysqli_query($conn,"SELECT * FROM 
+    petani2 WHERE username = '$username'");
+    // var_dump($result);
     if (mysqli_fetch_assoc($result)){
-        
+
         return [$result,"petani"];
+        
+        
+    }
+    else{
+        echo"<script>
+        alert('username tidak terdaftar');
+        </script>";
+        var_dump('benar');
+
+        // header("Location: login.php");
+        return false;
         
     }
 
@@ -380,7 +433,7 @@ function registrasi($data){
     mysqli_query($conn,"INSERT INTO admin1
     Values
     ('','$nama','$username','$email','$nomorhp',
-    '$jeniskelamin','$alamat','$password')");
+    '$jeniskelamin','$alamat','$password','profil.png')");
 
     return mysqli_affected_rows($conn);
 
@@ -443,7 +496,7 @@ function registrasisales($data){
    mysqli_query($conn,"INSERT INTO sales
    Values
    ('','$nama','$username','$perusahaan','$email','$tanggallahir','$nomorhp',
-   '$jeniskelamin','$alamat','$password')
+   '$jeniskelamin','$alamat','$password','profil.png')
    ");
     // tambah user baru ke database
     return mysqli_affected_rows($conn);
@@ -506,7 +559,7 @@ function registrasipetani($data){
    mysqli_query($conn,"INSERT INTO petani
    Values
    ('','$nama','$username','$email','$nomorhp',
-   '$jeniskelamin','$alamat','$password','Tidak Aktif')
+   '$jeniskelamin','$alamat','$password','Tidak Aktif','profil.png')
    ");
     // tambah user baru ke database
     return mysqli_affected_rows($conn);
@@ -681,5 +734,49 @@ function ubahmodul($data){
      mysqli_query($conn,$querry);
      return mysqli_affected_rows($conn);
 
+}
+function uploadfoto(){
+
+    $namafile = $_FILES['fotoprofil']['name'];
+    $ukuranfile=$_FILES['fotoprofil']['size'];
+    $error=$_FILES['fotoprofil']['error'];
+    $tmpName=$_FILES['fotoprofil']['tmp_name'];
+
+    if ( $error === 4 ){
+        
+        return 'profil.png';
+        
+    }
+
+    // cek apakah yang diupload adalah gambar
+    $typegambarvalid = ['jpg','jpeg','png'];
+    $ekstensigambar = explode('.',$namafile);
+    $ekstensigambar = strtolower(end($ekstensigambar));
+    if( !in_array($ekstensigambar,$typegambarvalid)){
+        echo"<script/>
+        alert ('yang anda upload bukan gambar');
+        </script/>";
+        return false;
+    }
+    // cek ukuran 
+    if ($ukuranfile > 100000000){
+        echo"<script/>
+        alert ('ukuran gambar terlalu besar');
+        </script/>";
+        return false;
+
+    }
+    // lolos pengecaekan gambar , siap diupload
+    //generate nama baru
+    $namafilebaru = uniqid();
+    $namafilebaru .= '.';
+    $namafilebaru .= $ekstensigambar;
+    var_dump($namafilebaru);
+    move_uploaded_file($tmpName,'fotoprofil/'.$namafilebaru);
+
+    return $namafilebaru;
+
+
+    
 }
  ?>

@@ -5,8 +5,9 @@ if (!isset($_SESSION["login"])){
     header("Location: loginpetani.php");
 }
 $username=$_GET["username"];
-$adm =query("SELECT * FROM petani WHERE username = $username")[0];
-
+$result = mysqli_query($conn,"SELECT * FROM 
+    petani WHERE username = '$username'");
+$adm = mysqli_fetch_assoc($result);
 
 ?>
 

@@ -10,7 +10,7 @@ if (isset($_COOKIE['login']) && isset($_COOKIE['key'])){
     
     // ambil username berdasarkan id
     $result=mysqli_query($conn,"SELECT username FROM 
-    admin1 WHERE id=$id");
+    admin1 WHERE id = '$id'");
     $row= mysqli_fetch_assoc($result);
 
     // cek coockie dan username
@@ -27,22 +27,23 @@ if (isset($_SESSION["login"])){
 }
 
 if(isset($_POST["login"])){
-    $username = $_POST["username"];
+    $username = strval($_POST["username"]);
     $password = $_POST["password"]; //inputan password
     $periksa=login($username);
     $tabel=$periksa[1];
     $result=$periksa[0];
-    $result = mysqli_query($conn,"SELECT *  FROM $tabel 
-    WHERE username = '$username'");
+    $result = mysqli_query($conn,"SELECT * FROM 
+    $tabel WHERE username = '$username'");
     
     // var_dump ($tabel);
-    // var_dump ($result);
+    var_dump ($result);
   
     // cek username
     if(mysqli_num_rows($result) == 1){
 
         // cek password(bandingkan pass1 dan pass 2)
         $row = mysqli_fetch_assoc($result);
+        var_dump($row);
        if( password_verify($password,$row["password"])){
             // set session
             $_SESSION["login"]=true;
@@ -54,7 +55,8 @@ if(isset($_POST["login"])){
                 setcookie('key',hash('sha256',  $row["username"],
                 time()+60));
             }
-                       header("Location: index$tabel.php?username=$username");// masuk ke halaman index
+                       header("Location: index$tabel.php?username=$username");
+                       // masuk ke halaman index
 // masuk ke halaman index
             exit;
        } 

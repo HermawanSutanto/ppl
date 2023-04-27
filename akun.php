@@ -112,7 +112,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                             <?php foreach($tabel1 as $row) :?>
                             <?php foreach($row as $satuan) :?>
                                 <!-- memeriksa apakah key berupa id/password -->
-                                <?php	if(array_search($satuan, $row)=="password"| array_search($satuan, $row)=="id"):?>
+                                <?php	if(array_search($satuan, $row)=="password"| array_search($satuan, $row)=="id"| array_search($satuan, $row)=="fotoprofil"):?>
                                     <?php	else:?>
                                         <li><?php echo array_search($satuan, $row);?> :  <?= $satuan;?></li>
                                     <?php	endif;?>
@@ -139,9 +139,9 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="right-content">
-                        <div class="thumb">
+                        <div class="thumb" style="margin-left:70px;margin-right:70px;" >
                             
-                            <img src="assets/images/profil.png" alt="">
+                            <img src="fotoprofil/<?= $row['fotoprofil']?>" alt="" style="width:300px;height:300px; object-fit:cover;">
                         </div>
                     </div>
                 </div>

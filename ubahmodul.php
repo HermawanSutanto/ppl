@@ -25,14 +25,14 @@ if(isset($_POST["ubah"])){
     if (ubahmodul($_POST)>0){
         echo" <script>
             alert('modul berhasil diubah!');
-            document.location.href = 'modul.php?username= $username;&tabel=$tabel;'
+            document.location.href = 'modul.php?username= $username&tabel=$tabel'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('modul gagal diubah!');
-        document.location.href = 'modul.php?username= $username;&tabel=$tabel;'
+        document.location.href = 'modul.php?username= $username&tabel=$tabel'
         </script>
         ";
     }

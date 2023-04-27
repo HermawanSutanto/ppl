@@ -3,13 +3,25 @@ require'functions.php';
 
 $username=$_GET["username"];
 $tabel=$_GET["tabel"];
+if(isset($_POST["tambah"])){
 
+    if (tambahmodul($_POST)>0){
+        echo "<script>
+        alert('modul baru berhasil ditambahkan!');
+        </script>";
+    }else{
+        echo mysqli_error($conn);
+
+    }
+
+}
 $modul = query("SELECT * FROM modul ORDER BY id ")
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Halaman Data Sales</title>
+    <title>Halaman Data modul</title>
     <link rel="stylesheet" href="design/styleindex.css">
 
 <style>

@@ -5,7 +5,9 @@ if (!isset($_SESSION["login"])){
     header("Location: loginsales.php");
 }
 $username=$_GET["username"];
-$adm =query("SELECT * FROM sales WHERE username = $username")[0];
+$result = mysqli_query($conn,"SELECT * FROM 
+    sales WHERE username = '$username'");
+$adm = mysqli_fetch_assoc($result);
 
 ?>
 

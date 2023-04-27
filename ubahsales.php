@@ -21,20 +21,42 @@ if(isset($_POST["submit"])){
 
 // cek apakah data berhasil ditambahkan atau tidak
     // var_dump(mysqli_affected_rows($conn));
-    if (ubahsales($_POST)>0){
-        echo" <script>
-            alert('data berhasil diubah!');
-            document.location.href = 'datasales.php'
-        </script>
-        ";
+	// if ($tabel='sales'){
+		if (ubahsales($_POST)>0){
+		
+			echo" <script>
+				alert('data berhasil diubah!');
+				document.location.href = 'akun.php?username=$username&tabel=sales'
+			</script>
+			";
+	
+		}else{
+			echo" <script>
+			alert('data gagal diubah!');
+			document.location.href = 'akun.php?username=$username&tabel=sales'
+			</script>
+			";
+		}
+	// }
+	// elseif ($tabel='admin1'){
 
-    }else{
-        echo" <script>
-        alert('data gagal diubah!');
-        document.location.href = 'datasales.php'
-        </script>
-        ";
-    }
+	// 	if (ubahsales($_POST)>0){
+			
+	// 		echo" <script>
+	// 			alert('data berhasil diubah!');
+	// 			document.location.href = 'datasales.php?username=$username&tabel=$tabel'
+	// 		</script>
+	// 		";
+
+	// 	}else{
+	// 		echo" <script>
+	// 		alert('data gagal diubah!');
+	// 		document.location.href = 'datasales.php?username=$username&tabel=$tabel'
+	// 		</script>
+	// 		";
+	// 	}
+		
+	// }
 
 }
 
@@ -60,7 +82,10 @@ if(isset($_POST["submit"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="datasales.php?username=<?=$username?>">Kembali</a></h3>
+        <h3 class="mb-4"><?php if($tabel==='admin1'):?> <a href="datasales.php?username=<?=$username?>"><?php endif;?>
+						<?php if($tabel==='sales'):?> <a href="indexsales.php?username=<?=$username?>"><?php endif;?>
+			
+						Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>
@@ -73,8 +98,18 @@ if(isset($_POST["submit"])){
 								
 			      	</div>
 
-							<form action="" class="signin-form" method="post">
+							<form action="" class="signin-form" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="id" value="<?= $adm["id"];?>">
+							<input type="hidden" name="gambarlama" value="<?=$adm["fotoprofil"];?>">
+
+							<div class="form-group mb-3">
+							<label for="fotoprofil">Foto Profil : </label><br>
+							<img src="fotoprofil/<?=$adm["fotoprofil"];?>" alt="" width="90"><br>
+							<input type="file" name="fotoprofil" id="fotoprofil" >
+							</div>
+
+
+
 			      		<div class="form-group mb-3">
 			      			<label class="label" for="name">Username</label>
 			      			<input type="text" class="form-control" name="username" id="username" placeholder="Username" required value="<?=$adm["username"]?>">

@@ -6,12 +6,11 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 $username=$_GET["username"];
-$adm =query("SELECT * FROM admin1 WHERE username = $username")[0];
-
+$result = mysqli_query($conn,"SELECT * FROM 
+    admin1 WHERE username = '$username'");
+$adm = mysqli_fetch_assoc($result);
 // koneksi ke database
 // seolah olah file function ada di sini
-
-
 
 
 ?>
@@ -102,7 +101,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             </li> -->
                             <li class="scroll-to-section"><a href="">Komunitas</a></li> 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>">Profil</a></li> 
+                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=admin1">Profil</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

@@ -70,25 +70,32 @@ if(isset($_POST["submit"])){
 								
 			      	</div>
 
-							<form action="" class="signin-form" method="post">
+							<form action="" class="signin-form" method="post"enctype="multipart/form-data">
 							<input type="hidden" name="id" value="<?= $adm["id"];?>">
+							<input type="hidden" name="gambarlama" value="<?=$adm["fotoprofil"];?>">
 
-			      		<div class="form-group mb-3">
+							<div class="form-group mb-3">
+							<label for="fotoprofil">Foto Profil : </label><br>
+                			<img src="fotoprofil/<?=$adm["fotoprofil"];?>" alt="" width="90"><br>
+                			<input type="file" name="fotoprofil" id="fotoprofil" >
+							</div>
+
+			      			<div class="form-group mb-3">
 			      			<label class="label" for="name">Username</label>
 			      			<input type="text" class="form-control" name="username" id="username" placeholder="Username" required value="<?=$adm["username"]?>">
-			      		</div>
-                <div class="form-group mb-3">
+			      			</div>
+               				<div class="form-group mb-3">
 			      			<label class="label" for="name">Nama</label>
 			      			<input type="text" class="form-control" name="nama" id="nama" placeholder="nama" required value="<?=$adm["nama"]?>">
-			      		</div>
-                <div class="form-group mb-3">
+			      			</div>
+                			<div class="form-group mb-3">
 			      			<label class="label" for="email">Email</label>
 			      			<input type="text" class="form-control" name="email" id="email" placeholder="email" required value="<?=$adm["email"]?>">
-			      		</div>
-                <div class="form-group mb-3">
+			      			</div>
+                			<div class="form-group mb-3">
 			      			<label class="label" for="nomorhp">Nomor Handphone</label>
 			      			<input type="text" class="form-control" name="nomorhp" id="nomorhp" placeholder="nomorhp" required value="<?=$adm["nomorhp"]?>">
-			      		</div>
+			      			</div>
 
                 
 		            <div class="form-group mb-3">

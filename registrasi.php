@@ -50,7 +50,7 @@ if(isset($_POST["register"])){
 								
 			      	</div>
 
-							<form action="" class="signin-form" method="post">
+							<form action="" class="signin-form" method="post" enctype="multipart/form-data">
 			      		<div class="form-group mb-3">
 			      			<label class="label" for="name">Username</label>
 			      			<input type="text" class="form-control" name="username" id="username" placeholder="Username" required>
