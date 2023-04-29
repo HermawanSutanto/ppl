@@ -160,11 +160,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <div class="chef-item">
                         <div class="thumb">
                             <div class="overlay"></div>
-                            <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                            </ul>
+                            
                             <img src="assets/images/gambar petani.png" alt="Chef #2">
                         </div>
                         <div class="down-content">
@@ -178,9 +174,8 @@ https://templatemo.com/tm-558-klassy-cafe
                         <div class="thumb">
                             <div class="overlay"></div>
                             <ul class="social-icons">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google"></i></a></li>
+                              
+                                <li class="scroll-to-section"><a href="#reservation" style="font-size:12px;">Daftar</a></li>
                             </ul>
                             <img src="assets/images/gambar sales.png" alt="Chef #3">
                         </div>
@@ -290,42 +285,44 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- ***** Menu Area Ends ***** -->
 
     <!-- ***** Reservation Us Area Starts ***** -->
-    <!-- <section class="section" id="reservation">
+    <section class="section" id="reservation">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 align-self-center">
                     <div class="left-text-content">
                         <div class="section-heading">
                             <h6>Contact Us</h6>
-                            <h2>Here You Can Make A Reservation Or Just walkin to our cafe</h2>
+                            <h2>Anda Ingin Mendaftar Sebagai Sales?</h2>
                         </div>
-                        <p>Donec pretium est orci, non vulputate arcu hendrerit a. Fusce a eleifend riqsie, namei sollicitudin urna diam, sed commodo purus porta ut.</p>
+                        <p>Segera Hubungi Kami Melalui CP dibawah Ini.</p>
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="phone">
                                     <i class="fa fa-phone"></i>
                                     <h4>Phone Numbers</h4>
-                                    <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>
+                                    <span><a href="#">0895-3672-35621</a><br><a href="#">0881-989-1602</a></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="message">
                                     <i class="fa fa-envelope"></i>
                                     <h4>Emails</h4>
-                                    <span><a href="#">hello@company.com</a><br><a href="#">info@company.com</a></span>
+                                    <span><a href="#">Simtani@company.com</a><br><a href="#">infoSimtani@company.com</a></span>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="contact-form">
+                     <div class="contact-form">
                         <form id="contact" action="" method="post">
-                          <div class="row">
+                        <div class="row" style="height:130px;">
                             <div class="col-lg-12">
-                                <h4>Table Reservation</h4>
+                                <h4>Link Pendaftaran</h4>
                             </div>
-                            <div class="col-lg-6 col-sm-12">
+                              <!--<div class="col-lg-6 col-sm-12">
                               <fieldset>
                                 <input name="name" type="text" id="name" placeholder="Your Name*" required="">
                               </fieldset>
@@ -383,19 +380,18 @@ https://templatemo.com/tm-558-klassy-cafe
                               <fieldset>
                                 <textarea name="message" rows="6" id="message" placeholder="Message" required=""></textarea>
                               </fieldset>
-                            </div>
+                            </div>-->
                             <div class="col-lg-12">
                               <fieldset>
-                                <button type="submit" id="form-submit" class="main-button-icon">Make A Reservation</button>
-                              </fieldset>
+                                <input type="button"  class="main-button-icon" onclick="window.location.href='https://forms.gle/XHjmKejx77oG63Hw7';" value="Daftar Sekarang!" style="background-color:#e3b04b;font-size:20px;font-weight:bold;">
                             </div>
                           </div>
                         </form>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
-    </section> -->
+    </section> 
     <!-- ***** Reservation Area Ends ***** -->
     
     <!-- <section class="section" id="offers">
