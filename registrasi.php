@@ -95,10 +95,10 @@ if(isset($_POST["register"])){
 		            	<button type="submit" name="register" class="form-control btn btn-primary rounded submit px-3" >Daftar</button>
                     
 		            </div>
-                
-		          </form>
+				</div>
+		        </form>
 
-		        </div>
+		        
 		      </div>
 				</div>
 			</div>

@@ -79,7 +79,7 @@ if(isset($_POST["submit"])){
                 			<img src="fotoprofil/<?=$adm["fotoprofil"];?>" alt="" width="90"><br>
                 			<input type="file" name="fotoprofil" id="fotoprofil" >
 							</div>
-
+							<p>Format Foto Profil 300pxx300px</p>
 			      			<div class="form-group mb-3">
 			      			<label class="label" for="name">Username</label>
 			      			<input type="text" class="form-control" name="username" id="username" placeholder="Username" required value="<?=$adm["username"]?>">

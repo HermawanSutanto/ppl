@@ -91,6 +91,18 @@ function hapusmodul($id){
     return mysqli_affected_rows($conn);
 
 }
+function hapuspostingan($id){
+    global $conn;
+    mysqli_query($conn,"DELETE FROM postingan WHERE id = $id ");
+    return mysqli_affected_rows($conn);
+
+}
+function hapuskomentar($id){
+    global $conn;
+    mysqli_query($conn,"DELETE FROM komentar WHERE id_komentar = $id ");
+    return mysqli_affected_rows($conn);
+
+}
 
 
 function ubah($data){
@@ -778,5 +790,219 @@ function uploadfoto(){
 
 
     
+}
+function uploadgambarpostingan(){
+
+    $namafile = $_FILES['gambar']['name'];
+    $ukuranfile=$_FILES['gambar']['size'];
+    $error=$_FILES['gambar']['error'];
+    $tmpName=$_FILES['gambar']['tmp_name'];
+
+    if ( $error === 4 ){
+        return $namafilebaru='null';
+
+    }
+
+    // cek apakah yang diupload adalah gambar
+    $typegambarvalid = ['jpg','jpeg','png'];
+    $ekstensigambar = explode('.',$namafile);
+    $ekstensigambar = strtolower(end($ekstensigambar));
+    if( !in_array($ekstensigambar,$typegambarvalid)){
+        echo"<script/>
+        alert ('yang anda upload bukan gambar');
+        </script/>";
+        return false;
+    }
+    // cek ukuran 
+    if ($ukuranfile > 100000000){
+        echo"<script/>
+        alert ('ukuran gambar terlalu besar');
+        </script/>";
+        return false;
+
+    }
+    // lolos pengecaekan gambar , siap diupload
+    //generate nama baru
+    $namafilebaru = uniqid();
+    $namafilebaru .= '.';
+    $namafilebaru .= $ekstensigambar;
+    var_dump($namafilebaru);
+    move_uploaded_file($tmpName,'gambarpostingan/'.$namafilebaru);
+
+    return $namafilebaru;
+
+
+    
+}
+
+function tambahpostingan($data){
+    // vmbil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $username = htmlspecialchars($data["username"]);
+    $konten = htmlspecialchars($data["konten"]);
+    $tanggaldibuat = date("l, d - m - y ");
+    // upload gambar/modul  
+    $gambar= uploadgambarpostingan();
+    if (!$gambar) {
+        return false;
+    }
+    mysqli_query($conn,"INSERT INTO postingan
+   Values
+   ('','$username','$konten','$gambar','$tanggaldibuat','tampil'
+   )");
+    // tambah user baru ke database
+    return mysqli_affected_rows($conn);
+
+}
+function ubahpostingan($data){
+    // vmbil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id = $data["id"];
+    $username = htmlspecialchars($data["username"]);
+    $konten = htmlspecialchars($data["konten"]);
+    $gambarlama = htmlspecialchars($data["gambarlama"]);
+    $tanggaldibuat = date("l, d - m - y ");
+    // upload gambar/modul  
+    // cek user memilih gambar baru apa nda
+    if($_FILES['gambar']['error']===4){
+        $gambar = $gambarlama;
+    }else{
+        $gambar= uploadgambarpostingan();
+
+    }
+    if (!$gambar) {
+        return false;
+    }
+    
+    // tambah user baru ke database
+    $querry = "UPDATE postingan SET 
+                    username = '$username',
+                    konten ='$konten',
+                    gambar = '$gambar',
+                    tanggaldibuat = '$tanggaldibuat'
+                    WHERE id = $id";
+     //tambah user baru ke database
+     mysqli_query($conn,$querry);
+     return mysqli_affected_rows($conn);
+
+}
+function ubahkomentar($data,$username2){
+    // vmbil data dari tiap elemen form
+    global $conn;
+
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id = $data["id_komentar"];
+    var_dump($id);
+    $username = htmlspecialchars($username2);
+    $konten = htmlspecialchars($data["konten"]);
+    $tanggaldibuat = date("l, d - m - y ");
+    // upload gambar/modul  
+    // cek user memilih gambar baru apa nda
+    
+    // tambah user baru ke database
+    $querry = "UPDATE komentar SET 
+                    username = '$username',
+                    konten ='$konten',
+                    tanggal = '$tanggaldibuat'
+                    WHERE id_komentar = $id";
+     //tambah user baru ke database
+     mysqli_query($conn,$querry);
+     return mysqli_affected_rows($conn);
+
+}
+function hidekomentar($data){
+    // vmbil data dari tiap elemen form
+    global $conn;
+
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+   
+    var_dump($data);
+    $id = $data;
+    // upload gambar/modul  
+    // cek user memilih gambar baru apa nda
+    
+    // tambah user baru ke database
+    $querry = "UPDATE komentar SET 
+                    status = 'tersembunyi'
+                    WHERE id_komentar = $id";
+     //tambah user baru ke database
+     mysqli_query($conn,$querry);
+     return mysqli_affected_rows($conn);
+
+}
+function hidepostingan($data){
+    // vmbil data dari tiap elemen form
+    global $conn;
+
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id = $data;
+    // upload gambar/modul  
+    // cek user memilih gambar baru apa nda
+    
+    // tambah user baru ke database
+    $querry = "UPDATE postingan SET 
+                    status = 'tersembunyi'
+                    WHERE id = $id";
+     //tambah user baru ke database
+     mysqli_query($conn,$querry);
+     return mysqli_affected_rows($conn);
+
+}
+
+function tambahkomentar($data,$username2){
+    // vmbil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $idpostingan = $data["id"];
+    
+    $username = htmlspecialchars($username2);
+    $konten = htmlspecialchars($data["konten"]);
+    $tanggaldibuat = date("l, d - m - y ");
+    // upload gambar/modul  
+
+    mysqli_query($conn,"INSERT INTO komentar
+   Values
+   ('','$idpostingan','$username','$konten','$tanggaldibuat','tampil'
+   )");
+    // tambah user baru ke database
+    return mysqli_affected_rows($conn);
+
+}
+// tampilan gambar profil komunitas
+function gambarprofilkomunitas($data){
+    global $conn; 
+    $username = $data;
+    $result = mysqli_query($conn,"SELECT * FROM 
+    admin2 WHERE username = '$username'");
+    // var_dump($result);
+    if (mysqli_fetch_assoc($result)){
+
+        return [$result,"admin1"];
+
+    }
+    $result = mysqli_query($conn,"SELECT * FROM 
+    sales2 WHERE username = '$username'");
+    // var_dump($result);
+    if (mysqli_fetch_assoc($result)){
+
+        return [$result,"sales"];
+    }
+    $result = mysqli_query($conn,"SELECT * FROM 
+    petani2 WHERE username = '$username'");
+    // var_dump($result);
+    if (mysqli_fetch_assoc($result)){
+
+        return [$result,"petani"];
+        
+        
+    }
 }
  ?>

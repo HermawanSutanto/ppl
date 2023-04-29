@@ -99,9 +99,16 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
                             </li> -->
-                            <li class="scroll-to-section"><a href="">Komunitas</a></li> 
+                            <li class="scroll-to-section"><a href="komunitas.php?username=<?= $username;?>&tabel=admin1">Komunitas</a></li> 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=admin1">Profil</a></li> 
+                            <li class="submenu">
+                                <a href="javascript:;">Profil</a>
+                                <ul>
+                                    <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=admin1">Profil Saya</a>
+                                    <li class="scroll-to-section"><a href="logout.php">Logout</a></li> 
+                                </ul>
+                            </li>
+                            </li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -119,9 +126,9 @@ https://templatemo.com/tm-558-klassy-cafe
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="left-content">
+                    <div class="left-content" >
                         <div class="inner-content">
-                            <h4>Selamat Datang<br><?= $adm["nama"];?></h4>
+                            <h4>Selamat Datang Admin<br><?= $adm["nama"];?></h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#reservation">Mulai Sekarang!</a>

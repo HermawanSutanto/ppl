@@ -70,11 +70,17 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Komunitas</a></li>
+                            <li class="scroll-to-section"><a href="komunitas.php?username=<?= $username;?>&tabel=sales" class="active">Komunitas</a></li>
                             <li class="scroll-to-section"><a href="#about">Katalog Produk</a></li>
 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=sales">Profil</a></li> 
+                        <li class="submenu">
+                        <a href="javascript:;">Profil</a>
+                        <ul>
+                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=sales">Profil Saya</a>
+                            <li class="scroll-to-section"><a href="logout.php">Logout</a></li> 
+                        </ul>
+                        </li>
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

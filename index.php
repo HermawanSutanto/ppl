@@ -197,7 +197,7 @@ https://templatemo.com/tm-558-klassy-cafe
             <div class="row">
                 <div class="col-lg-4">
                     <div class="section-heading">
-                        <h6>Our Menu</h6>
+                        <h6></h6>
                         <h2>Our selection of cakes with quality taste</h2>
                     </div>
                 </div>
@@ -281,7 +281,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>  -->
     <!-- ***** Menu Area Ends ***** -->
 
     <!-- ***** Reservation Us Area Starts ***** -->

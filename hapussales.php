@@ -9,6 +9,7 @@ require 'functions.php';
 $username=$_GET["username"];
 
 
+
 $id = $_GET["id"];
 
     if ( hapussales($id)>0){

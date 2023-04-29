@@ -57,9 +57,37 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    
 
     </head>
     
+<style>
+    .button {
+  background-color: #e3b04b; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 50px;
+  
+}
+
+.button1 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #e3b04b;
+}
+
+.button1:hover {
+  background-color: #e3b04b;
+  color: white;
+}
 </style>
 </head>
 
@@ -108,28 +136,34 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                             <h2>Data Diri</h2>
 
                         </div>
-                        <div><ul>   
+                        <div><ul style="margin-bottom:60px;">   
                             <?php foreach($tabel1 as $row) :?>
                             <?php foreach($row as $satuan) :?>
                                 <!-- memeriksa apakah key berupa id/password -->
+                                <table style="margin-top:-10px;">
                                 <?php	if(array_search($satuan, $row)=="password"| array_search($satuan, $row)=="id"| array_search($satuan, $row)=="fotoprofil"):?>
                                     <?php	else:?>
-                                        <li><?php echo array_search($satuan, $row);?> :  <?= $satuan;?></li>
+                                        <tr >
+                                            <td style="width:200px;"><?php echo array_search($satuan, $row);?></td>
+                                            <td style="width:20px;">:</td>
+                                            <td><?= $satuan;?></td>
+                                        </tr>
+                                        <br>
                                     <?php	endif;?>
                                 <?php	endforeach;?>
+                                </table>
+
                             <?php	endforeach;?>
                             </ul>
                             <a href="ubah<?=$tabel;?>.php?id=<?= $row["id"];	
                                 ?>&username=<?= $username?>&tabel=<?= $tabel?>"></a></div>
                             <!-- <a href="hapus<?=$tabel;?>.php?id=<?= $row["id"];	
                                 ?>">hapus</a></div> -->
-                            <div class="main-white-button scroll-to-section" >
-                            <a href="ubah<?=$tabel;?>.php?id=<?= $row["id"];	
-                                ?>&username=<?= $username?>&tabel=<?= $tabel?>">ubah</a>
+                            <div class="tombol"></div>
+                            <div class="button button1" onclick="window.location.href='ubah<?=$tabel;?>.php?id=<?= $row["id"];	
+                                ?>&username=<?= $username?>&tabel=<?= $tabel?>'" >Ubah
                             </div>
-                            <div class="main-white-button scroll-to-section" >
-                                <a href="logout.php">logout</a>
-                            </div>
+
                         <div class="row">
                            
                             
