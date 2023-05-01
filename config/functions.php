@@ -354,7 +354,7 @@ function login($data){
     $username = $data;
     
     $result = mysqli_query($conn,"SELECT * FROM 
-    admin2 WHERE username = '$username'");
+    admin1 WHERE username = '$username'");
     // var_dump($result);
     
     if (mysqli_fetch_assoc($result)){
