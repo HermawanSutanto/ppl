@@ -9,7 +9,7 @@ $tabel='petani';
 
 // koneksi ke database
 // seolah olah file function ada di sini
-require'functions.php';
+require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
 
 //  PAGINATION
 

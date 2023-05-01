@@ -1,4 +1,6 @@
 <?php
+require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+
 session_start();	
 // cek session
 if (!isset($_SESSION["login"])){
@@ -8,7 +10,6 @@ if (!isset($_SESSION["login"])){
 
 $username=$_SESSION["username"];
 $tabel=$_SESSION["tabel"];
-require'functions.php';
 $aktor=akun($username);
 
 $result = mysqli_query($conn,"SELECT username FROM 

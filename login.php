@@ -1,6 +1,6 @@
 <?php	
 session_start();	
-require'functions.php';
+require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
 
 
 // cek cookie

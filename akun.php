@@ -5,7 +5,7 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 
-require'functions.php';
+require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
 $username=$_SESSION["username"];
 $tabel=$_SESSION["tabel"];
 $aktor=akun($username);

@@ -8,7 +8,7 @@ $username=$_GET["username"];
 
 // koneksi ke database
 // seolah olah file function ada di sini
-require'functions.php';
+require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
 
 //  PAGINATION
 $jumlahadataperhalaman = 2 ; //jumlah data/halaman

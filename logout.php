@@ -1,4 +1,6 @@
 <?php	
+require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+
 session_start();
 $_SESSION=[];
 session_destroy();
