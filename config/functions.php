@@ -983,7 +983,6 @@ function gambarprofilkomunitas($data){
     $username = $data;
     $result = mysqli_query($conn,"SELECT * FROM 
     admin1 WHERE username = '$username'");
-    var_dump(mysqli_fetch_assoc($result));
     // var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
