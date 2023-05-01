@@ -12,7 +12,7 @@ if (isset($_COOKIE['login']) && isset($_COOKIE['key'])){
     $result=mysqli_query($conn,"SELECT username FROM 
     admin1 WHERE id = '$id'");
     $row= mysqli_fetch_assoc($result);
-
+    
     // cek coockie dan username
     if($key === hash('sha256',$row['username'])){
         $_SESSION['login'] = true;

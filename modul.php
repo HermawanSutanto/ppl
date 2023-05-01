@@ -92,7 +92,7 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
-                        <div class="section-heading">
+                        <div class="section-heading" style="margin-bottom: 40px;">
                             <h2>Daftar Modul</h2>
                             <?php	if ($tabel==='admin1'):?>
                                 <div style="margin-top:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" 
@@ -105,7 +105,7 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
         </div>
 
 </section>
-    <div style="margin:80px;margin-top:0px; overflow-x:auto;">
+    <div style="margin:80px;margin-top:0px; overflow-x:auto;justify-content:center;display:flex;">
 
 
 

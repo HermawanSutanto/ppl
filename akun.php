@@ -130,23 +130,22 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
 <section class="section" id="about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-xs-12" >
                     <div class="left-text-content">
                         <div class="section-heading">
                             <h2>Data Diri</h2>
-
                         </div>
                         <div><ul style="margin-bottom:60px;">   
                             <?php foreach($tabel1 as $row) :?>
                             <?php foreach($row as $satuan) :?>
                                 <!-- memeriksa apakah key berupa id/password -->
-                                <table style="margin-top:-10px;">
+                                <table style="margin-top:-10px;width:600px;">
                                 <?php	if(array_search($satuan, $row)=="password"| array_search($satuan, $row)=="id"| array_search($satuan, $row)=="fotoprofil"):?>
                                     <?php	else:?>
                                         <tr >
                                             <td style="width:200px;"><?php echo array_search($satuan, $row);?></td>
                                             <td style="width:20px;">:</td>
-                                            <td><?= $satuan;?></td>
+                                            <td <?php	if($satuan==='Aktif'):?> style="background-color:red;"<?php endif;?>><?= $satuan;?></td>
                                         </tr>
                                         <br>
                                     <?php	endif;?>
@@ -173,7 +172,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="right-content">
-                        <div class="thumb" style="margin-left:70px;margin-right:70px;" >
+                        <div class="thumb" style="margin-left:70px;margin-right:70px;margin-top:90px" >
                             
                             <img src="fotoprofil/<?= $row['fotoprofil']?>" alt="" style="width:300px;height:300px; object-fit:cover;">
                         </div>

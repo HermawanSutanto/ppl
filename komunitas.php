@@ -160,10 +160,14 @@ if(isset($_POST["komentar"])){
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>
-						<div class="login-wrap p-4 p-md-5" style="justify-content:center; display:flex;align-items:center; ">
-              <div style="text-align:center;display:flex;"><h1 >KOMUNITAS</h1></div>
-              
-              <?php if($tabel!='admin1'):?>
+						<div class="login-wrap p-4 p-md-5" style="justify-content:center; display:table-cell;align-items:center; ">
+              <div style="text-align:center;justify-content:center;display:flex;"><h1 >KOMUNITAS</h1></div>
+              <br>
+              <br>
+
+              <br>
+
+
 
 			      	<div class="d-flex">
 			      		<div class="w-100">
@@ -194,7 +198,6 @@ if(isset($_POST["komentar"])){
 		            	<button type="submit" name="posting" class="form-control btn btn-primary rounded submit px-3" >Kirimkan</button>
                     
 		            </div>
-                <?php endif;?>
 
 				</div>
 		        </form>

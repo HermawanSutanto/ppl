@@ -70,7 +70,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="komunitas.php?username=<?= $username;?>&tabel=sales" class="active">Komunitas</a></li>
+                            <li class="scroll-to-section"><a href="komunitas.php?username=<?= $username;?>&tabel=sales" >Komunitas</a></li>
                             <li class="scroll-to-section"><a href="#about">Katalog Produk</a></li>
 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
@@ -166,9 +166,9 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
-                        <p>© Copyright Klassy Cafe Co.
+                        <p>By A1 PPL A
                         
-                        <br>Design: TemplateMo</p>
+                        <br></p>
                     </div>
                 </div>
             </div>

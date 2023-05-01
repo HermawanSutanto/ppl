@@ -12,17 +12,13 @@ $tabel='petani';
 require'functions.php';
 
 //  PAGINATION
-$jumlahadataperhalaman = 2 ; //jumlah data/halaman
-$jumlahdata = count(query("SELECT * FROM petani"));//jumlah seluruh data
-$jumlahhalaman = ceil($jumlahdata/$jumlahadataperhalaman);//hasil diulatkan keatas
-$halamanaktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ; //ternari,
+
 
 //halaman =2,awaldata =2
 //halaman =3, awawldata=4
 //menentukan data pertama di tiap halaman
-$awaldata = ($jumlahadataperhalaman*$halamanaktif)-$jumlahadataperhalaman;
 
-$petani = query("SELECT * FROM petani ORDER BY id DESC LIMIT $awaldata,$jumlahadataperhalaman");//ASC urut id membesar, DESC mengecil,
+$petani = query("SELECT * FROM petani ORDER BY id DESC");//ASC urut id membesar, DESC mengecil,
 
 //limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
 //  ambil data dari database tabel admin1 / query
@@ -142,23 +138,7 @@ if(isset( $_POST["cari"])){
   <div style="width: auto;
   height:20px;     
   ">
-    <?php	if($halamanaktif>1):?>
-        <a href="?halaman=<?=$halamanaktif -1; ?> ">&laquo;</a>
-    <?php	endif;?>
-    <br>
-
-    <?php for ( $i = 1 ; $i <= $jumlahhalaman; $i ++):?>
-
-        <?php	if($i == $halamanaktif):?>
-        <a href="?halaman=<?= $i ; ?>" style="font-weight:bold; color:black;"> <?php echo$i	?></a>
-        <?php	else:?>
-        <a href="?halaman=<?= $i ; ?>"> <?php echo$i	?></a>
-        <?php	endif;?>
-
-    <?php endfor; ?>
-    <?php	if($halamanaktif < $jumlahhalaman):?>
-        <a href="?halaman=<?=$halamanaktif +1; ?> ">&raquo;</a>
-    <?php	endif;?>
+   
   </div>
 </div>
 <br>
