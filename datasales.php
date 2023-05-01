@@ -8,7 +8,7 @@ $username=$_GET["username"];
 
 // koneksi ke database
 // seolah olah file function ada di sini
-require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+require'..\ppl\config\functions.php';
 
 //  PAGINATION
 $jumlahadataperhalaman = 2 ; //jumlah data/halaman
@@ -187,7 +187,7 @@ if(isset( $_POST["cari"])){
 <?php foreach($sales as $row) :?>
 <tr>
     <td><?= $i?></td>
-    <td style="width:150px;">
+    <td style="width:150px; opacity:0;">
         <a href="hapussales.php?id=<?= $row["id"];	
     ?>&username=<?= $username?> onclick="return confirm('yakin akan menghapus?')">hapus</a>
     </td>

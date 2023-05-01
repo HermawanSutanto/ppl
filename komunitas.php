@@ -1,5 +1,5 @@
 <?php
-require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+require'..\ppl\config\functions.php';
 
 session_start();	
 // cek session
@@ -33,6 +33,7 @@ if (mysqli_fetch_assoc($result)){
     
 }
 $tabel1 = mysqli_query($conn,"SELECT * FROM $tabel WHERE username='$username'");
+
 $postingan = mysqli_query($conn,"SELECT * FROM postingan ORDER BY id DESC; ");
 $komentar = mysqli_query($conn,"SELECT * FROM komentar ");
 
@@ -220,7 +221,10 @@ if(isset($_POST["komentar"])){
             <?php	$periksa=gambarprofilkomunitas($row['username']);
                 $usernamelist=$row['username'];
                 $tabelumum=$periksa[1];
-                $adm =query("SELECT * FROM $tabelumum WHERE username = $usernamelist")[0];
+                $tabel2 = mysqli_query($conn,"SELECT * FROM $tabelumum WHERE username='$usernamelist'");
+                $adm = mysqli_fetch_assoc($tabel2);
+
+
                 // var_dump($adm);
                 $id=$row['id'];
 
@@ -257,9 +261,9 @@ if(isset($_POST["komentar"])){
 
       <p class="article-text" style="color:red;">Postingan ini tersembunyi</p>
       <?php	endif;?>
-      <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
+      <!-- <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
         it felt slightly bare and uninviting. I’ve got some simple tips
-        to help you make any room feel complete.</p>
+        to help you make any room feel complete.</p> -->
 
       <div class="acticle-content-footer">
 
@@ -269,7 +273,7 @@ if(isset($_POST["komentar"])){
         <div class="share">
         <?php if( $username===$row['username']):	?>
           <button class="share-button">
-                <a href="hapuspostingan.php?id=<?=$row["id"];?>>" style="color:gray;">hapus</a>         
+                <a href="hapuspostingan.php?id=<?=$row["id"];?>" style="color:gray;">hapus</a>         
             </button>
             <button class="share-button">
                 <a href="ubahpostingan.php?id=<?=$row["id"];?>" style="color:gray;">ubah</a>    
@@ -348,9 +352,9 @@ if(isset($_POST["komentar"])){
 
       <p class="article-text" style="color:red;">Postingan ini tersembunyi</p>
       <?php	endif;?>
-      <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
+      <!-- <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
         it felt slightly bare and uninviting. I’ve got some simple tips
-        to help you make any room feel complete.</p>
+        to help you make any room feel complete.</p> -->
 
       <div class="acticle-content-footer">
 
@@ -422,7 +426,9 @@ $komentar = query("SELECT * FROM komentar WHERE id_postingan='$id'");//jumlah se
     <?php	$periksa=gambarprofilkomunitas($row4['username']);
                 $usernamelist=$row4['username'];
                 $tabelumum=$periksa[1];
-                $adm2 =query("SELECT * FROM $tabelumum WHERE username = $usernamelist")[0];
+                $tabel2 = mysqli_query($conn,"SELECT * FROM $tabelumum WHERE username='$usernamelist'");
+
+                $adm2 = mysqli_fetch_assoc($tabel2);
                 // var_dump($adm);
                 $id=$row['id'];
                 ?>
@@ -450,9 +456,9 @@ $komentar = query("SELECT * FROM komentar WHERE id_postingan='$id'");//jumlah se
         <p class="article-text" style="color:red;">Komentar ini tersembunyi</p>
         <?php	endif;?>
 
-      <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
+      <!-- <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
         it felt slightly bare and uninviting. I’ve got some simple tips
-        to help you make any room feel complete.</p>
+        to help you make any room feel complete.</p> -->
 
       <div class="acticle-content-footer">
 

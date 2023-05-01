@@ -5,7 +5,7 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 
-require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+require'..\ppl\config\functions.php';
 $username=$_SESSION["username"];
 $tabel=$_SESSION["tabel"];
 $aktor=akun($username);
@@ -127,10 +127,13 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
     <!-- ***** Header Area End ***** -->
 
 <!-- navigasi jumlah halaman -->
+
 <section class="section" id="about">
         <div class="container">
+        <div></div>
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12" >
+                
+                <div class="col-lg-6 col-md-6 col-xs-12"  >
                     <div class="left-text-content">
                         <div class="section-heading">
                             <h2>Data Diri</h2>
@@ -143,9 +146,10 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                                 <?php	if(array_search($satuan, $row)=="password"| array_search($satuan, $row)=="id"| array_search($satuan, $row)=="fotoprofil"):?>
                                     <?php	else:?>
                                         <tr >
-                                            <td style="width:200px;"><?php echo array_search($satuan, $row);?></td>
+                                            <td style="width:200px;"><?php echo array_search($satuan, $row);?> <?php	if($satuan==='Aktif'):?> Membership<?php endif;?>
+                                            </td>
                                             <td style="width:20px;">:</td>
-                                            <td <?php	if($satuan==='Aktif'):?> style="background-color:red;"<?php endif;?>><?= $satuan;?></td>
+                                            <td <?php	if($satuan==='Aktif'):?> style="background-color:#e3b04b;"<?php endif;?>><?= $satuan;?></td>
                                         </tr>
                                         <br>
                                     <?php	endif;?>
@@ -180,7 +184,49 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
             </div>
         </div>
 </section>
+<?php	if($tabel==='petani'):?> 
+<section class="section" id="reservation">
+        <div class="container">
+            <div class="row" style="display:flex; justify-content:center;">
+                <div class="col-lg-6 align-self-center" >
+                    <div class="left-text-content" >
+                        <div class="section-heading" >
+                            <h6>Membership</h6>
+                            <h2>Dapatkan Membership Sekarang !</h2>
+                            <h2>Rp 30.000/Bulan</h2>
+                            <ul>
+                                <li><h4 style="color:white;"> -Dapat mengakses modul</h4></li>
+                                <li><h4 style="color:white;"> -Informasi lengkap modul terbaru dan lengkap</h4></li>
+                                <li><h4 style="color:white;"> -Menerapkan hasil penelitian dan dapatkan keberhasilan</h4></li>
+                            </ul>
+                            
+                        </div>
+                        <p>*Pembaruan status manual secara berkala</p>
 
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="phone">
+                                    <i class="fa fa-phone"></i>
+                                    <h4>Contact Person</h4>
+                                    <span><a href="#">0895-3672-35621</a><br><a href="#">0881-989-1602</a></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="message">
+                                    <i class="fa fa-envelope"></i>
+                                    <h4>Email</h4>
+                                    <span><a href="#">Simtani@company.com</a><br><a href="#">infoSimtani@company.com</a></span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+        </div>
+    </section> 
+    <?php endif;?>
 <div>
 
 </div>

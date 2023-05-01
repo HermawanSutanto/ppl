@@ -93,6 +93,7 @@ function hapusmodul($id){
 }
 function hapuspostingan($id){
     global $conn;
+    var_dump($id);
     mysqli_query($conn,"DELETE FROM postingan WHERE id = $id ");
     return mysqli_affected_rows($conn);
 

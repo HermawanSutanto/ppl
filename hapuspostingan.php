@@ -1,5 +1,5 @@
 <?php		
-require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+require'..\ppl\config\functions.php';
 
 session_start();	
 // cek session
@@ -13,6 +13,7 @@ $tabel=$_SESSION["tabel"];
 
 
 $id = $_GET["id"];
+
 
 if (hapuspostingan($id)>0){
 

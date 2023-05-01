@@ -1,6 +1,6 @@
 <?php	
 session_start();	
-require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+require'..\ppl\config\functions.php';
 
 
 // cek cookie
@@ -36,14 +36,12 @@ if(isset($_POST["login"])){
     $tabel WHERE username = '$username'");
     
     // var_dump ($tabel);
-    var_dump ($result);
   
     // cek username
     if(mysqli_num_rows($result) == 1){
 
         // cek password(bandingkan pass1 dan pass 2)
         $row = mysqli_fetch_assoc($result);
-        var_dump($row);
        if( password_verify($password,$row["password"])){
             // set session
             $_SESSION["login"]=true;

@@ -6,7 +6,7 @@ if (!isset($_SESSION["login"])){
 }
 $username=$_SESSION["username"];
 
-require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+require'..\ppl\config\functions.php';
 
 
 $id = $_GET["id"];

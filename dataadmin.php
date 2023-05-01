@@ -10,7 +10,7 @@ $tabel='admin1';
 
 // koneksi ke database
 // seolah olah file function ada di sini
-require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+require'..\ppl\config\functions.php';
 
 
 
@@ -151,8 +151,8 @@ if(isset( $_POST["cari"])){
 <td><?= $i?></td>
 <td style="width:150px;">
     <a href="ubahadmin1.php?id=<?= $row["id"];	
-    ?>">ubah</a> |
-    <a href="hapus.php?id=<?= $row["id"];	
+    ?>">ubah</a> 
+    <a style="opacity:0;" href="hapus.php?id=<?= $row["id"];	
     ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>
 </td>
 <td><?= $row["nama"];	?></td>

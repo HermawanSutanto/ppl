@@ -9,7 +9,7 @@ $tabel='petani';
 
 // koneksi ke database
 // seolah olah file function ada di sini
-require'D:\XAMPP\htdocs\phpdasar\ppl\config\functions.php';
+require'..\ppl\config\functions.php';
 
 //  PAGINATION
 
@@ -165,9 +165,9 @@ if(isset( $_POST["cari"])){
         <td><?= $i?></td>
         <td style="width:150px;">
             <a href="ubahstatuspetani.php?id=<?= $row["id"];	
-            ?>">ubah status</a> |
+            ?>">ubah status</a> 
             <a href="hapuspetani.php?id=<?= $row["id"];	
-    ?>&username=<?= $username?> onclick="return confirm('yakin akan menghapus?')">hapus</a>
+    ?>&username=<?= $username?> onclick="return confirm('yakin akan menghapus?')" style="width:150px;opacity:0;">hapus</a>
         </td>
         <td><?= $row["nama"];	?></td>
         <td><?= $row["email"];	?></td>
