@@ -5,6 +5,10 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 
+
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
+
 // koneksi ke dbms
 require'functions.php';
 
@@ -12,7 +16,6 @@ require'functions.php';
 $id=$_GET["id"];
 // querry data admin berdasar id
 $adm =query("SELECT * FROM petani WHERE id = $id")[0];
-$username = $adm['username'];
 // var_dump($adm["nomorhp"]);
 
 
@@ -24,14 +27,14 @@ if(isset($_POST["submit"])){
     if (ubahpetani($_POST)>0){
         echo" <script>
             alert('data berhasil diubah!');
-            document.location.href = 'akun.php?username=$username&tabel=petani'
+            document.location.href = 'akun.php'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('data gagal diubah!');
-        document.location.href = 'akun.php?username=$username&tabel=petani'
+        document.location.href = 'akun.php'
         </script>
         ";
     }
@@ -58,7 +61,7 @@ if(isset($_POST["submit"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="akun.php?username=<?=$username?>&tabel=petani">Kembali</a></h3>
+        <h3 class="mb-4"><a href="akun.php">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>

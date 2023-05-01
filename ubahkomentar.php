@@ -5,10 +5,13 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 
+
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
+
 // koneksi ke dbms
 require'functions.php';
-$username=$_GET["username"];
-$tabel=$_GET["tabel"];
+
 
 // ambil data di url
 $id=$_GET["id"];
@@ -25,14 +28,14 @@ if(isset($_POST["komentar"])){
     if (ubahkomentar($_POST,$username)>0){
         echo" <script>
             alert('komentar berhasil diubah!');
-            document.location.href = 'komunitas.php?username=$username&tabel=$tabel'
+            document.location.href = 'komunitas.php'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('komentar gagal diubah!');
-        document.location.href = 'komunitas.php?username=$username&tabel=$tabel'
+        document.location.href = 'komunitas.php'
         </script>
         ";
     }
@@ -97,7 +100,7 @@ if(isset($_POST["komentar"])){
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -108,7 +111,7 @@ if(isset($_POST["komentar"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="komunitas.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -130,7 +133,6 @@ if(isset($_POST["komentar"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="komunitas.php?username=<?=$username?>&tabel=<?=$tabel?>">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>

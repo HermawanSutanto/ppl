@@ -6,8 +6,8 @@ if (!isset($_SESSION["login"])){
 }
 
 require'functions.php';
-$username=$_GET["username"];
-$tabel=$_GET["tabel"];
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 $aktor=akun($username);
 
 $result = mysqli_query($conn,"SELECT username FROM 
@@ -102,7 +102,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -113,7 +113,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -159,8 +159,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                             <!-- <a href="hapus<?=$tabel;?>.php?id=<?= $row["id"];	
                                 ?>">hapus</a></div> -->
                             <div class="tombol"></div>
-                            <div class="button button1" onclick="window.location.href='ubah<?=$tabel;?>.php?id=<?= $row["id"];	
-                                ?>&username=<?= $username?>&tabel=<?= $tabel?>'" >Ubah
+                            <div class="button button1" onclick="window.location.href='ubah<?=$tabel;?>.php?id=<?= $row['id'];?>'" >Ubah
                             </div>
 
                         <div class="row">

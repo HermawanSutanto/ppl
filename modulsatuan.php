@@ -4,11 +4,12 @@ session_start();
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 
 require'functions.php';
 $id=$_GET["id"];
-$username=$_GET["username"];
-$tabel=$_GET["tabel"];
+;
 
 $result = mysqli_query($conn,"SELECT * FROM 
 modul WHERE id = '$id'");
@@ -63,7 +64,7 @@ modul WHERE id = '$id'");
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -74,7 +75,7 @@ modul WHERE id = '$id'");
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="modul.php?username=<?= $username;?>&tabel=<?= $tabel;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="modul.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

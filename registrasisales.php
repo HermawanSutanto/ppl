@@ -1,5 +1,13 @@
 <?php	
-require'functions.php';
+session_start();	
+// cek session
+if (!isset($_SESSION["login"])){
+    header("Location: login.php");
+}
+
+
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 
 
 if(isset($_POST["register"])){
@@ -14,7 +22,6 @@ if(isset($_POST["register"])){
     }
 
 }
-$username=$_GET["username"]
 
 ?>
 
@@ -37,7 +44,7 @@ $username=$_GET["username"]
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="datasales.php?username=<?=$username?>">Kembali</a></h3>
+        <h3 class="mb-4"><a href="datasales.php">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>

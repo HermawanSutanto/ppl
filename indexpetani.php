@@ -1,10 +1,13 @@
 <?php	
 session_start();	
-require 'functions.php';
+// cek session
 if (!isset($_SESSION["login"])){
-    header("Location: loginpetani.php");
+    header("Location: login.php");
 }
-$username=$_GET["username"];
+
+
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 $result = mysqli_query($conn,"SELECT * FROM 
     petani WHERE username = '$username'");
 $adm = mysqli_fetch_assoc($result);
@@ -71,16 +74,16 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="#top" >Trend Pasar</a></li>
-                            <li class="scroll-to-section"><a href="komunitas.php?username=<?= $username;?>&tabel=petani">Komunitas</a></li> 
+                            <li class="scroll-to-section"><a href="komunitas.php">Komunitas</a></li> 
                            	
                     
-                        <li class="scroll-to-section"><a href="modul.php?username=<?= $username?>&tabel=petani">Modul</a></li>
+                        <li class="scroll-to-section"><a href="modul.php">Modul</a></li>
                             
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                         <li class="submenu">
                             <a href="javascript:;">Profil</a>
                             <ul>
-                                <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=petani">Profil Saya</a>
+                                <li class="scroll-to-section"><a href="akun.php">Profil Saya</a>
                                 <li class="scroll-to-section"><a href="logout.php">Logout</a></li> 
                             </ul>
                         </li>

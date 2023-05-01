@@ -1,8 +1,13 @@
 <?php	
 require'functions.php';
 
-$username=$_GET["username"];
-$tabel=$_GET["tabel"];
+session_start();	
+// cek session
+if (!isset($_SESSION["login"])){
+    header("Location: login.php");
+}
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 if(isset($_POST["tambah"])){
 
     if (tambahmodul($_POST)>0){
@@ -63,7 +68,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -74,7 +79,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="modul.php?username=<?= $username;?>&tabel=<?= $tabel;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="modul.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -137,7 +142,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
             
         <button type="submit" name="tambah">Tambah Modul</button>
 
-        <a href="indexadmin1.php?username=<?= $username;?>">Kembali</a>
+        <a href="indexadmin1.php">Kembali</a>
 
     </ul>
 

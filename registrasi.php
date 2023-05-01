@@ -37,7 +37,7 @@ if(isset($_POST["register"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="dataadmin.php?username=<?=$username?>">Kembali</a></h3>
+        <h3 class="mb-4"><a href="dataadmin.php">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>

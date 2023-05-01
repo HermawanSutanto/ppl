@@ -12,7 +12,7 @@ if (isset($_COOKIE['login']) && isset($_COOKIE['key'])){
     $result=mysqli_query($conn,"SELECT username FROM 
     admin1 WHERE id = '$id'");
     $row= mysqli_fetch_assoc($result);
-    
+
     // cek coockie dan username
     if($key === hash('sha256',$row['username'])){
         $_SESSION['login'] = true;
@@ -47,6 +47,9 @@ if(isset($_POST["login"])){
        if( password_verify($password,$row["password"])){
             // set session
             $_SESSION["login"]=true;
+            $_SESSION["username"] = $row["username"];
+            $_SESSION["tabel"] = $tabel;
+
             // cek remember me
             if(isset($_POST['remember'])){
                 // buat cookie beserta enkripsi
@@ -55,7 +58,7 @@ if(isset($_POST["login"])){
                 setcookie('key',hash('sha256',  $row["username"],
                 time()+60));
             }
-                       header("Location: index$tabel.php?username=$username");
+                       header("Location: index$tabel.php");
                        // masuk ke halaman index
 // masuk ke halaman index
             exit;

@@ -10,7 +10,7 @@ require'functions.php';
 
 // ambil data di url
 $id=$_GET["id"];
-$usernameadm=$_GET["username"];
+$usernameadm=$_SESSION["username"];
 // querry data admin berdasar id
 $adm =query("SELECT * FROM petani WHERE id = $id")[0];
 $username = $adm['username'];
@@ -25,14 +25,14 @@ if(isset($_POST["submit"])){
     if (ubahstatuspetani($_POST)>0){
         echo" <script>
             alert('data berhasil diubah!');
-            document.location.href = 'datapetani.php?username=$usernameadm'
+            document.location.href = 'datapetani.php'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('data gagal diubah!');
-        document.location.href = 'datapetani.php?username=$usernameadm'
+        document.location.href = 'datapetani.php'
         </script>
         ";
     }
@@ -95,7 +95,7 @@ if(isset($_POST["submit"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"> <a href="datapetani.php?username=<?= $usernameadm;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"> <a href="datapetani.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

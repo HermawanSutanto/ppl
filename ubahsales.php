@@ -4,11 +4,11 @@ session_start();
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
-
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 // koneksi ke dbms
 require'functions.php';
-$username=$_GET["username"];
-$tabel=$_GET["tabel"];
+
 // ambil data di url
 $id=$_GET["id"];
 // querry data admin berdasar id
@@ -26,14 +26,14 @@ if(isset($_POST["submit"])){
 		
 			echo" <script>
 				alert('data berhasil diubah!');
-				document.location.href = 'akun.php?username=$username&tabel=sales'
+				document.location.href = 'akun.php'
 			</script>
 			";
 	
 		}else{
 			echo" <script>
 			alert('data gagal diubah!');
-			document.location.href = 'akun.php?username=$username&tabel=sales'
+			document.location.href = 'akun.php'
 			</script>
 			";
 		}
@@ -82,10 +82,7 @@ if(isset($_POST["submit"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><?php if($tabel==='admin1'):?> <a href="datasales.php?username=<?=$username?>"><?php endif;?>
-						<?php if($tabel==='sales'):?> <a href="indexsales.php?username=<?=$username?>"><?php endif;?>
-			
-						Kembali</a></h3>
+        <h3 class="mb-4"><a href="akun.php">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>

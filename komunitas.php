@@ -5,9 +5,10 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 
+
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 require'functions.php';
-$username=$_GET["username"];
-$tabel=$_GET["tabel"];
 $aktor=akun($username);
 
 $result = mysqli_query($conn,"SELECT username FROM 
@@ -41,7 +42,7 @@ if(isset($_POST["posting"])){
     if (tambahpostingan($_POST)>0){
         echo "<script>
         alert('postingan baru berhasil ditambahkan!');
-        document.location.href = 'komunitas.php?username=$username&tabel=$tabel'
+        document.location.href = 'komunitas.php'
         </script>";
     }else{
         echo mysqli_error($conn);
@@ -89,7 +90,6 @@ if(isset($_POST["komentar"])){
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
 
-    meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
 
@@ -122,25 +122,21 @@ if(isset($_POST["komentar"])){
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo" style=" padding-top:1%;">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
+
                         <ul class="nav">
                          
                         
-                           	
+
                        
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
-                        <!-- ***** Menu End ***** -->
                     </nav>
                 </div>
             </div>
@@ -272,17 +268,19 @@ if(isset($_POST["komentar"])){
         <div class="share">
         <?php if( $username===$row['username']):	?>
           <button class="share-button">
-                <a href="hapuspostingan.php?id=<?=$row["id"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">hapus</a>         
+                <a href="hapuspostingan.php?id=<?=$row["id"];?>>" style="color:gray;">hapus</a>         
             </button>
             <button class="share-button">
-                <a href="ubahpostingan.php?id=<?=$row["id"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">ubah</a>    
+                <a href="ubahpostingan.php?id=<?=$row["id"];?>" style="color:gray;">ubah</a>    
                      
             </button>
             <?php	endif;?>
 
             <button class="share-button">
             <?php	if( $tabel==="admin1"):?>
-            <a href="hidepostingan.php?id=<?=$row["id"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">Sembunyikan</a>         
+              <?php	if( $row["status"]!="tersembunyi"):?>
+            <a href="hidepostingan.php?id=<?=$row["id"];?>" style="color:gray;">Sembunyikan</a>         
+             <?php	endif;?>
             <?php	endif;?>
             </button>
 
@@ -359,15 +357,17 @@ if(isset($_POST["komentar"])){
 
       <?php if( $username===$row['username']):	?>
           <button class="share-button">
-                <a href="hapuspostingan.php?id=<?=$row["id"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">hapus</a>         
+                <a href="hapuspostingan.php?id=<?=$row["id"];?>" style="color:gray;">hapus</a>         
             </button>
             <button class="share-button">
-            <a href="ubahpostingan.php?id=<?=$row["id"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">ubah</a>         
+            <a href="ubahpostingan.php?id=<?=$row["id"];?>" style="color:gray;">ubah</a>         
             </button>
             <?php	endif;?>
             <button class="share-button">
             <?php	if( $tabel==="admin1"):?>
-            <a href="hidepostingan.php?id=<?=$row["id"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">Sembunyikan</a>         
+              <?php	if( $row["status"]!="tersembunyi"):?>
+            <a href="hidepostingan.php?id=<?=$row["id"];?>" style="color:gray;">Sembunyikan</a>         
+             <?php	endif;?>        
             <?php	endif;?>
             </button>
         
@@ -460,15 +460,20 @@ $komentar = query("SELECT * FROM komentar WHERE id_postingan='$id'");//jumlah se
 
       <?php if( $username===$row4['username']):	?>
           <button class="share-button">
-                <a href="hapuskomentar.php?id=<?=$row4["id_komentar"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">Hapus</a>         
+                <a href="hapuskomentar.php?id=<?=$row4["id_komentar"];?>" style="color:gray;">Hapus</a>         
             </button>
             <button class="share-button">
-            <a href="ubahkomentar.php?id=<?=$row4["id_komentar"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">Ubah</a> 
+            <a href="ubahkomentar.php?id=<?=$row4["id_komentar"];?>" style="color:gray;">Ubah</a> 
             </button>
       <?php	endif;?>
             <button class="share-button">
             <?php	if( $tabel==="admin1"):?>
-            <a href="hidekomentar.php?id=<?=$row4["id_komentar"];?>&username=<?=$username;?>&tabel=<?=$tabel;?>" style="color:gray;">Sembunyikan</a>         
+              <?php	if( $row["status"]!="tersembunyi"):?>
+                <?php	if( $row4["status"]!="tersembunyi"):?>
+                <a href="hidekomentar.php?id=<?=$row4["id_komentar"];?>" style="color:gray;">Sembunyikan</a>             
+                <?php	endif;?>
+              <?php	endif;?>
+                
             <?php	endif;?>
             </button>
        

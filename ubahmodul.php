@@ -4,11 +4,11 @@ session_start();
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
-
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 // koneksi ke dbms
 require'functions.php';
-$username=$_GET["username"];
-$tabel=$_GET["tabel"];
+
 
 // ambil data di url
 $id=$_GET["id"];
@@ -25,14 +25,14 @@ if(isset($_POST["ubah"])){
     if (ubahmodul($_POST)>0){
         echo" <script>
             alert('modul berhasil diubah!');
-            document.location.href = 'modul.php?username= $username&tabel=$tabel'
+            document.location.href = 'modul.php'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('modul gagal diubah!');
-        document.location.href = 'modul.php?username= $username&tabel=$tabel'
+        document.location.href = 'modul.php'
         </script>
         ";
     }
@@ -85,7 +85,7 @@ if(isset($_POST["ubah"])){
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -96,7 +96,7 @@ if(isset($_POST["ubah"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="modul.php?username=<?= $username;?>&tabel=<?= $tabel;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="modul.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

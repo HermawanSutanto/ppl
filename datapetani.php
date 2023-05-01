@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
-$username=$_GET["username"];
+$username=$_SESSION["username"];
 $tabel='petani';
 
 // koneksi ke database
@@ -77,7 +77,7 @@ if(isset( $_POST["cari"])){
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -88,7 +88,7 @@ if(isset( $_POST["cari"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="indexadmin1.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="indexadmin1.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -165,7 +165,7 @@ if(isset( $_POST["cari"])){
         <td><?= $i?></td>
         <td style="width:150px;">
             <a href="ubahstatuspetani.php?id=<?= $row["id"];	
-            ?>&username=<?=$username?>">ubah status</a> |
+            ?>">ubah status</a> |
             <a href="hapuspetani.php?id=<?= $row["id"];	
     ?>&username=<?= $username?> onclick="return confirm('yakin akan menghapus?')">hapus</a>
         </td>

@@ -4,25 +4,17 @@ session_start();
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
-$username=$_GET["username"];
+$username=$_SESSION["username"];
 $tabel='admin1';
+
 
 // koneksi ke database
 // seolah olah file function ada di sini
 require'functions.php';
 
-//  PAGINATION
-$jumlahadataperhalaman = 2 ; //jumlah data/halaman
-$jumlahdata = count(query("SELECT * FROM admin1"));//jumlah seluruh data
-$jumlahhalaman = ceil($jumlahdata/$jumlahadataperhalaman);//hasil diulatkan keatas
-$halamanaktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ; //ternari,
 
-//halaman =2,awaldata =2
-//halaman =3, awawldata=4
-//menentukan data pertama di tiap halaman
-$awaldata = ($jumlahadataperhalaman*$halamanaktif)-$jumlahadataperhalaman;
 
-$adm = query("SELECT * FROM admin1 ORDER BY id DESC LIMIT $awaldata,$jumlahadataperhalaman");//ASC urut id membesar, DESC mengecil,
+$adm = query("SELECT * FROM admin1 ORDER BY id DESC ");//ASC urut id membesar, DESC mengecil,
 
 //limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
 //  ambil data dari database tabel admin1 / query
@@ -81,7 +73,7 @@ if(isset( $_POST["cari"])){
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -92,7 +84,7 @@ if(isset( $_POST["cari"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="indexadmin1.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="indexadmin1.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -137,35 +129,7 @@ if(isset( $_POST["cari"])){
 
 
 
-<div style="font-family: arial;
-  font-size: 20px;
-  /* Center child horizontally*/
-  display: flex;
-  justify-content: center;">
-  <div style="width: auto;
-  height:20px;     
-  ">
-    <?php	if($halamanaktif>1):?>
-        <a href="?halaman=<?=$halamanaktif -1; ?> ">&laquo;</a>
-    <?php	endif;?>
-    <br>
 
-    <?php for ( $i = 1 ; $i <= $jumlahhalaman; $i ++):?>
-
-        <?php	if($i == $halamanaktif):?>
-        <a href="?halaman=<?= $i ; ?>" style="font-weight:bold; color:black;"> <?php echo$i	?></a>
-        <?php	else:?>
-        <a href="?halaman=<?= $i ; ?>"> <?php echo$i	?></a>
-        <?php	endif;?>
-
-    <?php endfor; ?>
-    <?php	if($halamanaktif < $jumlahhalaman):?>
-        <a href="?halaman=<?=$halamanaktif +1; ?> ">&raquo;</a>
-    <?php	endif;?>
-  </div>
-</div>
-<br>
-<br>
 
 <div style="margin:30px;margin-top:0px;overflow-x:auto;">
 <div >
@@ -187,9 +151,9 @@ if(isset( $_POST["cari"])){
 <td><?= $i?></td>
 <td style="width:150px;">
     <a href="ubahadmin1.php?id=<?= $row["id"];	
-    ?>&username=<?= $username?>">ubah</a> |
+    ?>">ubah</a> |
     <a href="hapus.php?id=<?= $row["id"];	
-    ?>&username=<?= $username?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>
+    ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>
 </td>
 <td><?= $row["nama"];	?></td>
 <td><?= $row["email"];	?></td>

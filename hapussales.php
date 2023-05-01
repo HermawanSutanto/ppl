@@ -6,7 +6,8 @@ if (!isset($_SESSION["login"])){
 }
 require 'functions.php';
 
-$username=$_GET["username"];
+$username=$_SESSION["username"];
+
 
 
 
@@ -15,13 +16,13 @@ $id = $_GET["id"];
     if ( hapussales($id)>0){
         echo" <script>
          alert('data berhasil dihapus!');
-        document.location.href = 'datasales.php?username=$username'
+        document.location.href = 'datasales.php'
          ";
 
         }else{
         echo" <script>
         alert('data gagal dihapus!');
-        document.location.href = 'dataadmin.php?username=$username'
+        document.location.href = 'dataadmin.php'
         </script>
         ";
 }

@@ -5,10 +5,13 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 
+
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
+
 // koneksi ke dbms
 require'functions.php';
-$username=$_GET["username"];
-$tabel=$_GET["tabel"];
+
 
 // ambil data di url
 $id=$_GET["id"];
@@ -25,14 +28,14 @@ if(isset($_POST["posting"])){
     if (ubahpostingan($_POST)>0){
         echo" <script>
             alert('postingan berhasil diubah!');
-            document.location.href = 'komunitas.php?username=$username&tabel=$tabel'
+            document.location.href = 'komunitas.php'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('postingan gagal diubah!');
-        document.location.href = 'komunitas.php?username=$username&tabel=$tabel'
+        document.location.href = 'komunitas.php'
         </script>
         ";
     }
@@ -97,7 +100,7 @@ if(isset($_POST["posting"])){
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -108,7 +111,7 @@ if(isset($_POST["posting"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="komunitas.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -130,7 +133,6 @@ if(isset($_POST["posting"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="dataadmin.php?username=<?=$username?>">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>

@@ -1,8 +1,13 @@
 <?php	
 require'functions.php';
+session_start();	
+// cek session
+if (!isset($_SESSION["login"])){
+    header("Location: login.php");
+}
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
 
-$tabel=$_GET["tabel"];
-$username = $_GET["username"];
 
 $modul = query("SELECT * FROM modul ORDER BY id ");
 $petani = query("SELECT * FROM petani WHERE username='$username'");
@@ -63,14 +68,14 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="index<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -96,7 +101,7 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
                             <h2>Daftar Modul</h2>
                             <?php	if ($tabel==='admin1'):?>
                                 <div style="margin-top:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" 
-                                href="tambahmodul.php?username=<?= $username;?>&tabel=<?= $tabel;?>">Tambahkan Modul</a></h4></div>
+                                href="tambahmodul.php">Tambahkan Modul</a></h4></div>
                                 <?php	endif;?>
 
                         </div>
@@ -132,13 +137,13 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
 <td >
     <?php	if ($tabel==='admin1'):?>
         <a href="ubahmodul.php?id=<?= $row["id"];	
-    ?>&username=<?= $username;?>&tabel=<?= $tabel;?>">ubah</a> |
+    ?>">ubah</a> |
     <a href="hapusmodul.php?id=<?= $row["id"];	
-    ?>&username=<?= $username;?>&tabel=<?= $tabel;?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>                     
+    ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>                     
     <?php	endif;?>
 
     <a href="modulsatuan.php?id=<?= $row["id"];	
-    ?>&username=<?= $username;?>&tabel=<?= $tabel;?>">lihat</a> 
+    ?>">lihat</a> 
 </td>
 <td><?= $row["judul"];	?></td>
 <td><?= $row["deskripsi"];	?></td>
@@ -172,7 +177,7 @@ frameborder="0" width="400px" height="225px"
                     <span class="discount-tag">Modul <?php echo$b;?></span>
                     <img src="modul/sampul/<?= $row["gambarsampul"];?>" class="product-thumb" alt="">
                     <?php	if ($row2['status']==='aktif'):?>
-                    <button class="card-btn" onclick="window.location.href='modulsatuan.php?id=<?= $row["id"];?>&username=<?= $username;?>&tabel=<?= $tabel;?>'">lihat</button>
+                    <button class="card-btn" onclick="window.location.href='modulsatuan.php?id=<?= $row['id'];?>'">lihat</button>
                     <?php else:?>
                     <button type="lihat" name="lihat" class="card-btn" onclick="alert('Maaf anda belum berlangganan')" >lihat</button>
                     <?php endif;?>

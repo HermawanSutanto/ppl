@@ -1,14 +1,16 @@
 <?php	
 session_start();	
-require 'functions.php';
+// cek session
 if (!isset($_SESSION["login"])){
-    header("Location: loginsales.php");
+    header("Location: login.php");
 }
-$username=$_GET["username"];
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
+require'functions.php';
+
 $result = mysqli_query($conn,"SELECT * FROM 
     sales WHERE username = '$username'");
 $adm = mysqli_fetch_assoc($result);
-
 ?>
 
 <!DOCTYPE html>
@@ -70,14 +72,14 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="komunitas.php?username=<?= $username;?>&tabel=sales" >Komunitas</a></li>
+                            <li class="scroll-to-section"><a href="komunitas.php" >Komunitas</a></li>
                             <li class="scroll-to-section"><a href="#about">Katalog Produk</a></li>
 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                         <li class="submenu">
                         <a href="javascript:;">Profil</a>
                         <ul>
-                            <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=sales">Profil Saya</a>
+                            <li class="scroll-to-section"><a href="akun.php">Profil Saya</a>
                             <li class="scroll-to-section"><a href="logout.php">Logout</a></li> 
                         </ul>
                         </li>

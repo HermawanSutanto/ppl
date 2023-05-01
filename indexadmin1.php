@@ -5,7 +5,8 @@ session_start();
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
-$username=$_GET["username"];
+$username=$_SESSION["username"];
+$table=$_SESSION["tabel"];
 $result = mysqli_query($conn,"SELECT * FROM 
     admin1 WHERE username = '$username'");
 $adm = mysqli_fetch_assoc($result);
@@ -76,16 +77,16 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="modul.php?username=<?= $username;?>&tabel=admin1" >Modul</a></li>
+                            <li class="scroll-to-section"><a href="modul.php" >Modul</a></li>
                             <li class="scroll-to-section"><a href="#about">Trend Harga Pasar</a></li>
                            	
                         
                             <li class="submenu">
                                 <a href="javascript:;">Data Akun</a>
                                 <ul>
-                                    <li class="scroll-to-section"><a href="dataadmin.php?username=<?= $username;?>">Admin</a></li>
-                                    <li class="scroll-to-section"><a href="datapetani.php?username=<?= $username;?>">Petani</a></li> 
-                                    <li class="scroll-to-section"><a href="datasales.php?username=<?= $username;?>">Sales</a></li> 
+                                    <li class="scroll-to-section"><a href="dataadmin.php">Admin</a></li>
+                                    <li class="scroll-to-section"><a href="datapetani.php">Petani</a></li> 
+                                    <li class="scroll-to-section"><a href="datasales.php">Sales</a></li> 
                                 </ul>
                             </li>
                        
@@ -99,12 +100,12 @@ https://templatemo.com/tm-558-klassy-cafe
                                     <li><a href="#">Features Page 4</a></li>
                                 </ul>
                             </li> -->
-                            <li class="scroll-to-section"><a href="komunitas.php?username=<?= $username;?>&tabel=admin1">Komunitas</a></li> 
+                            <li class="scroll-to-section"><a href="komunitas.php">Komunitas</a></li> 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="submenu">
                                 <a href="javascript:;">Profil</a>
                                 <ul>
-                                    <li class="scroll-to-section"><a href="akun.php?username=<?= $username;?>&tabel=admin1">Profil Saya</a>
+                                    <li class="scroll-to-section"><a href="akun.php">Profil Saya</a>
                                     <li class="scroll-to-section"><a href="logout.php">Logout</a></li> 
                                 </ul>
                             </li>
