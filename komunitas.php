@@ -220,6 +220,7 @@ if(isset($_POST["komentar"])){
             <?php foreach($postingan as $row) :?>
             <?php	$periksa=gambarprofilkomunitas($row['username']);
                 $usernamelist=$row['username'];
+                var_dump($periksa);
                 $tabelumum=$periksa[1];
                 $tabel2 = mysqli_query($conn,"SELECT * FROM $tabelumum WHERE username='$usernamelist'");
                 $adm = mysqli_fetch_assoc($tabel2);

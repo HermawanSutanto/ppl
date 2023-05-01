@@ -982,7 +982,8 @@ function gambarprofilkomunitas($data){
     global $conn; 
     $username = $data;
     $result = mysqli_query($conn,"SELECT * FROM 
-    admin2 WHERE username = '$username'");
+    admin1 WHERE username = '$username'");
+    var_dump(mysqli_fetch_assoc($result));
     // var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
@@ -990,14 +991,14 @@ function gambarprofilkomunitas($data){
 
     }
     $result = mysqli_query($conn,"SELECT * FROM 
-    sales2 WHERE username = '$username'");
+    sales WHERE username = '$username'");
     // var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
         return [$result,"sales"];
     }
     $result = mysqli_query($conn,"SELECT * FROM 
-    petani2 WHERE username = '$username'");
+    petani WHERE username = '$username'");
     // var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
