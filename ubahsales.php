@@ -14,14 +14,14 @@ $tabel=$_SESSION["tabel"];
 $id=$_GET["id"];
 // querry data admin berdasar id
 $adm =query("SELECT * FROM sales WHERE id = $id")[0];
-// var_dump($adm["nomorhp"]);
+// //var_dump($adm["nomorhp"]);
 
 
 // cek apakah submit telah ditekan
 if(isset($_POST["submit"])){
 
 // cek apakah data berhasil ditambahkan atau tidak
-    // var_dump(mysqli_affected_rows($conn));
+    // //var_dump(mysqli_affected_rows($conn));
 	// if ($tabel='sales'){
 		if (ubahsales($_POST)>0){
 		

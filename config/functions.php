@@ -93,7 +93,7 @@ function hapusmodul($id){
 }
 function hapuspostingan($id){
     global $conn;
-    var_dump($id);
+    //var_dump($id);
     mysqli_query($conn,"DELETE FROM postingan WHERE id = $id ");
     return mysqli_affected_rows($conn);
 
@@ -120,38 +120,48 @@ function ubah($data){
     $alamat = htmlspecialchars($data["alamat"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      
+        if($password!==$password2){
+            echo "<script>
+            alert('Konfirmasi password tidak sesuai');
+            </script>";
+            return false;
     
-    if($password!==$password2){
-        echo "<script>
-        alert('Konfirmasi password tidak sesuai');
-        </script>";
-        return false;
+        }
+        $gambarsampullama = htmlspecialchars($data["gambarlama"]);
+    
+    // cek user memilih gambar baru apa nda
+        if($_FILES['fotoprofil']['error']===4){
+            $fotoprofil = $gambarsampullama;
+        }else{
+            $fotoprofil= uploadfoto();
+    
+        }
+        // enkripsi password
+        $password = password_hash($password,PASSWORD_DEFAULT);
+        $querry = "UPDATE admin1 SET 
+        nama = '$nama',
+        username ='$username',
+        email = '$email',
+        nomorhp = '$nomorhp',
+        jeniskelamin = '$jeniskelamin',
+        alamat = '$alamat',
+        password ='$password',
+        fotoprofil ='$fotoprofil'
+        WHERE id = $id
+    ";
+    mysqli_query($conn,$querry);
+    return mysqli_affected_rows($conn);
 
+    } else {
+      echo"<script>
+      alert('email yang anda masukkan tidak valid');
+      document.location.href = 'registrasipetani.php'
+      </script>";
     }
-    $gambarsampullama = htmlspecialchars($data["gambarlama"]);
-
-// cek user memilih gambar baru apa nda
-    if($_FILES['fotoprofil']['error']===4){
-        $fotoprofil = $gambarsampullama;
-    }else{
-        $fotoprofil= uploadfoto();
-
-    }
-    // enkripsi password
-    $password = password_hash($password,PASSWORD_DEFAULT);
-    $querry = "UPDATE admin1 SET 
-    nama = '$nama',
-    username ='$username',
-    email = '$email',
-    nomorhp = '$nomorhp',
-    jeniskelamin = '$jeniskelamin',
-    alamat = '$alamat',
-    password ='$password',
-    fotoprofil ='$fotoprofil'
-    WHERE id = $id
-";
-mysqli_query($conn,$querry);
-return mysqli_affected_rows($conn);
+   
 }
 
 function ubahsales($data){
@@ -171,41 +181,51 @@ function ubahsales($data){
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
 
-    if($password!==$password2){
-        echo "<script>
-        alert('Konfirmasi password tidak sesuai');
-        </script>";
-        return false;
-
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if($password!==$password2){
+            echo "<script>
+            alert('Konfirmasi password tidak sesuai');
+            </script>";
+            return false;
+    
+        }
+    
+        $gambarsampullama = htmlspecialchars($data["gambarlama"]);
+    
+    // cek user memilih gambar baru apa nda
+        if($_FILES['fotoprofil']['error']===4){
+            $fotoprofil = $gambarsampullama;
+        }else{
+            $fotoprofil= uploadfoto();
+    
+        }
+        // enkripsi password
+        $password = password_hash($password,PASSWORD_DEFAULT);
+        $querry = "UPDATE sales SET 
+                        nama = '$nama',
+                        username ='$username',
+                        perusahaan ='$perusahaan',
+                        email = '$email',
+                        tanggallahir ='$tanggallahir',
+                        nomorhp = '$nomorhp',
+                        jeniskelamin = '$jeniskelamin',
+                        alamat = '$alamat',
+                        password ='$password',
+                        fotoprofil = '$fotoprofil'
+                        WHERE id = $id
+        ";
+    
+    mysqli_query($conn,$querry);
+    return mysqli_affected_rows($conn);
+    } else {
+      echo"<script>
+      alert('email yang anda masukkan tidak valid');
+      document.location.href = 'registrasipetani.php'
+      </script>";
     }
 
-    $gambarsampullama = htmlspecialchars($data["gambarlama"]);
-
-// cek user memilih gambar baru apa nda
-    if($_FILES['fotoprofil']['error']===4){
-        $fotoprofil = $gambarsampullama;
-    }else{
-        $fotoprofil= uploadfoto();
-
-    }
-    // enkripsi password
-    $password = password_hash($password,PASSWORD_DEFAULT);
-    $querry = "UPDATE sales SET 
-                    nama = '$nama',
-                    username ='$username',
-                    perusahaan ='$perusahaan',
-                    email = '$email',
-                    tanggallahir ='$tanggallahir',
-                    nomorhp = '$nomorhp',
-                    jeniskelamin = '$jeniskelamin',
-                    alamat = '$alamat',
-                    password ='$password',
-                    fotoprofil = '$fotoprofil'
-                    WHERE id = $id
-    ";
-
-mysqli_query($conn,$querry);
-return mysqli_affected_rows($conn);
+    
+    
 
 }
 function ubahpetani($data){
@@ -222,38 +242,51 @@ function ubahpetani($data){
     $alamat = htmlspecialchars($data["alamat"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
-    if($password!==$password2){
-        echo "<script>
-        alert('Konfirmasi password tidak sesuai');
-        </script>";
-        return false;
 
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if($password!==$password2){
+            echo "<script>
+            alert('Konfirmasi password tidak sesuai');
+            </script>";
+            return false;
+    
+        }
+        $gambarsampullama = htmlspecialchars($data["gambarlama"]);
+    
+    // cek user memilih gambar baru apa nda
+        if($_FILES['fotoprofil']['error']===4){
+            $fotoprofil = $gambarsampullama;
+        }else{
+            $fotoprofil= uploadfoto();
+    
+        }
+        // enkripsi password
+        $password = password_hash($password,PASSWORD_DEFAULT);
+    
+        $querry = "UPDATE petani SET 
+                        nama = '$nama',
+                        username ='$username',
+                        email = '$email',
+                        nomorhp = '$nomorhp',
+                        jeniskelamin = '$jeniskelamin',
+                        alamat = '$alamat',
+                        password ='$password',
+                        fotoprofil='$fotoprofil'
+                        WHERE id = $id
+        ";
+        mysqli_query($conn,$querry);
+        return mysqli_affected_rows($conn);
+
+    } else {
+      echo"<script>
+      alert('email yang anda masukkan tidak valid');
+      document.location.href = 'registrasipetani.php'
+      </script>";
     }
-    $gambarsampullama = htmlspecialchars($data["gambarlama"]);
 
-// cek user memilih gambar baru apa nda
-    if($_FILES['fotoprofil']['error']===4){
-        $fotoprofil = $gambarsampullama;
-    }else{
-        $fotoprofil= uploadfoto();
+   
 
-    }
-    // enkripsi password
-    $password = password_hash($password,PASSWORD_DEFAULT);
-
-    $querry = "UPDATE petani SET 
-                    nama = '$nama',
-                    username ='$username',
-                    email = '$email',
-                    nomorhp = '$nomorhp',
-                    jeniskelamin = '$jeniskelamin',
-                    alamat = '$alamat',
-                    password ='$password',
-                    fotoprofil='$fotoprofil'
-                    WHERE id = $id
-    ";
-    mysqli_query($conn,$querry);
-    return mysqli_affected_rows($conn);}
+}
     
 function ubahstatuspetani($data){
         // vambil data dari tiap elemen form
@@ -355,7 +388,7 @@ function login($data){
     
     $result = mysqli_query($conn,"SELECT * FROM 
     admin1 WHERE username = '$username'");
-    // var_dump($result);
+    // //var_dump($result);
     
     if (mysqli_fetch_assoc($result)){
 
@@ -364,14 +397,14 @@ function login($data){
     }
     $result = mysqli_query($conn,"SELECT * FROM 
     sales2 WHERE username = '$username'");
-    // var_dump($result);
+    // //var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
         return [$result,"sales"];
     }
     $result = mysqli_query($conn,"SELECT * FROM 
     petani2 WHERE username = '$username'");
-    // var_dump($result);
+    // //var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
         return [$result,"petani"];
@@ -404,7 +437,9 @@ function registrasi($data){
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
 
-    // cek username sudah ada apa lom
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      // cek username sudah ada apa lom
     $result = mysqli_query($conn,"SELECT username FROM 
     admin1 WHERE username = '$username'");
 
@@ -450,6 +485,16 @@ function registrasi($data){
 
     return mysqli_affected_rows($conn);
 
+    } else {
+      echo"<script>
+      alert('email yang anda masukkan tidak valid');
+      document.location.href = 'registrasipetani.php'
+      </script>";
+    }
+
+    
+    
+
 }
 function registrasisales($data){
     // vambil data dari tiap elemen form
@@ -469,50 +514,63 @@ function registrasisales($data){
 
     
     // cek username sudah ada apa lom
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $result = mysqli_query($conn,"SELECT username FROM 
+        petani WHERE username = '$username'");
+        if (mysqli_fetch_assoc($result)){
+            echo"<script>
+            alert('username sudah terdaftar');
+            </script>";
+            return false;
+        }
+        $result = mysqli_query($conn,"SELECT username FROM 
+        sales WHERE username = '$username'");
+        if (mysqli_fetch_assoc($result)){
+            echo"<script>
+            alert('username sudah terdaftar');
+            </script>";
+            return false;
+        }
+        $result = mysqli_query($conn,"SELECT username FROM 
+        admin1 WHERE username = '$username'");
+        if (mysqli_fetch_assoc($result)){
+            echo"<script>
+            alert('username sudah terdaftar');
+            </script>";
+            return false;
+        }
     
-    $result = mysqli_query($conn,"SELECT username FROM 
-    petani WHERE username = '$username'");
-    if (mysqli_fetch_assoc($result)){
-        echo"<script>
-        alert('username sudah terdaftar');
-        </script>";
-        return false;
-    }
-    $result = mysqli_query($conn,"SELECT username FROM 
-    sales WHERE username = '$username'");
-    if (mysqli_fetch_assoc($result)){
-        echo"<script>
-        alert('username sudah terdaftar');
-        </script>";
-        return false;
-    }
-    $result = mysqli_query($conn,"SELECT username FROM 
-    admin1 WHERE username = '$username'");
-    if (mysqli_fetch_assoc($result)){
-        echo"<script>
-        alert('username sudah terdaftar');
-        </script>";
-        return false;
+        // cek konfirmasi password
+        if($password!==$password2){
+            echo "<script>
+            alert('Konfirmasi password tidak sesuai');
+            </script>";
+            return false;
+    
+        }
+        // enkripsi password
+        $password = password_hash($password,PASSWORD_DEFAULT);
+       
+       mysqli_query($conn,"INSERT INTO sales
+       Values
+       ('','$nama','$username','$perusahaan','$email','$tanggallahir','$nomorhp',
+       '$jeniskelamin','$alamat','$password','profil.png')
+       ");
+        // tambah user baru ke database
+        return mysqli_affected_rows($conn);
+
+
+
+    } else {
+      echo"<script>
+      alert('email yang anda masukkan tidak valid');
+      document.location.href = 'registrasipetani.php'
+      </script>";
     }
 
-    // cek konfirmasi password
-    if($password!==$password2){
-        echo "<script>
-        alert('Konfirmasi password tidak sesuai');
-        </script>";
-        return false;
 
-    }
-    // enkripsi password
-    $password = password_hash($password,PASSWORD_DEFAULT);
-   
-   mysqli_query($conn,"INSERT INTO sales
-   Values
-   ('','$nama','$username','$perusahaan','$email','$tanggallahir','$nomorhp',
-   '$jeniskelamin','$alamat','$password','profil.png')
-   ");
-    // tambah user baru ke database
-    return mysqli_affected_rows($conn);
+
+    
 
 }
 function registrasipetani($data){
@@ -531,51 +589,61 @@ function registrasipetani($data){
 
     
     // cek username sudah ada apa lom
-    
-    $result = mysqli_query($conn,"SELECT username FROM 
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       $result = mysqli_query($conn,"SELECT username FROM 
     petani WHERE username = '$username'");
-    if (mysqli_fetch_assoc($result)){
-        echo"<script>
-        alert('username sudah terdaftar');
-        </script>";
-        return false;
-    }
-    $result = mysqli_query($conn,"SELECT username FROM 
-    sales WHERE username = '$username'");
-    if (mysqli_fetch_assoc($result)){
-        echo"<script>
-        alert('username sudah terdaftar');
-        </script>";
-        return false;
-    }
-    $result = mysqli_query($conn,"SELECT username FROM 
-    admin1 WHERE username = '$username'");
-    if (mysqli_fetch_assoc($result)){
-        echo"<script>
-        alert('username sudah terdaftar');
-        </script>";
-        return false;
-    }
+        if (mysqli_fetch_assoc($result)){
+            echo"<script>
+            alert('username sudah terdaftar');
+            </script>";
+            return false;
+        }
+        $result = mysqli_query($conn,"SELECT username FROM 
+        sales WHERE username = '$username'");
+        if (mysqli_fetch_assoc($result)){
+            echo"<script>
+            alert('username sudah terdaftar');
+            </script>";
+            return false;
+        }
+        $result = mysqli_query($conn,"SELECT username FROM 
+        admin1 WHERE username = '$username'");
+        if (mysqli_fetch_assoc($result)){
+            echo"<script>
+            alert('username sudah terdaftar');
+            </script>";
+            return false;
+        }
 
-    // cek konfirmasi password
-    if($password!==$password2){
-        echo "<script>
-        alert('Konfirmasi password tidak sesuai');
+        // cek konfirmasi password
+        if($password!==$password2){
+            echo "<script>
+            alert('Konfirmasi password tidak sesuai');
+            </script>";
+            return false;
+        }
+        // enkripsi password
+        $passbaru=$password;
+        $password = password_hash($password,PASSWORD_DEFAULT);
+        // //var_dump(password_verify($passbaru,$password));
+        
+        mysqli_query($conn,"INSERT INTO petani
+        Values
+        ('','$nama','$username','$email','$nomorhp',
+        '$jeniskelamin','$alamat','$password','Tidak Aktif','profil.png')
+        ");
+        // tambah user baru ke database
+        return mysqli_affected_rows($conn);
+            
+
+      } else {
+        echo"<script>
+        alert('email yang anda masukkan tidak valid');
+        document.location.href = 'registrasipetani.php'
         </script>";
-        return false;
-    }
-    // enkripsi password
-    $passbaru=$password;
-    $password = password_hash($password,PASSWORD_DEFAULT);
-    var_dump(password_verify($passbaru,$password));
+      }
+
     
-   mysqli_query($conn,"INSERT INTO petani
-   Values
-   ('','$nama','$username','$email','$nomorhp',
-   '$jeniskelamin','$alamat','$password','Tidak Aktif','profil.png')
-   ");
-    // tambah user baru ke database
-    return mysqli_affected_rows($conn);
     
 
     
@@ -652,7 +720,7 @@ function upload(){
     $namafilebaru = uniqid();
     $namafilebaru .= '.';
     $namafilebaru .= $ekstensigambar;
-    var_dump($namafilebaru);
+    //var_dump($namafilebaru);
     move_uploaded_file($tmpName,'modul/sampul/'.$namafilebaru);
 
     return $namafilebaru;
@@ -697,7 +765,7 @@ function uploadmodul(){
     $namafilebaru = uniqid();
     $namafilebaru .= '.';
     $namafilebaru .= $ekstensimodul;
-    var_dump($namafilebaru);
+    //var_dump($namafilebaru);
     move_uploaded_file($tmpName,'modul/pdf/'.$namafilebaru);
 
     return $namafilebaru;
@@ -784,7 +852,7 @@ function uploadfoto(){
     $namafilebaru = uniqid();
     $namafilebaru .= '.';
     $namafilebaru .= $ekstensigambar;
-    var_dump($namafilebaru);
+    //var_dump($namafilebaru);
     move_uploaded_file($tmpName,'fotoprofil/'.$namafilebaru);
 
     return $namafilebaru;
@@ -827,7 +895,7 @@ function uploadgambarpostingan(){
     $namafilebaru = uniqid();
     $namafilebaru .= '.';
     $namafilebaru .= $ekstensigambar;
-    var_dump($namafilebaru);
+    //var_dump($namafilebaru);
     move_uploaded_file($tmpName,'gambarpostingan/'.$namafilebaru);
 
     return $namafilebaru;
@@ -898,7 +966,7 @@ function ubahkomentar($data,$username2){
     // html special char agar kode html yang diinputkan tidak berjalan
     // ndak wajib se, cuman buat keamanan
     $id = $data["id_komentar"];
-    var_dump($id);
+    //var_dump($id);
     $username = htmlspecialchars($username2);
     $konten = htmlspecialchars($data["konten"]);
     $tanggaldibuat = date("l, d - m - y ");
@@ -923,7 +991,7 @@ function hidekomentar($data){
     // html special char agar kode html yang diinputkan tidak berjalan
     // ndak wajib se, cuman buat keamanan
    
-    var_dump($data);
+    //var_dump($data);
     $id = $data;
     // upload gambar/modul  
     // cek user memilih gambar baru apa nda
@@ -990,14 +1058,14 @@ function gambarprofilkomunitas($data){
     }
     $result = mysqli_query($conn,"SELECT * FROM 
     sales WHERE username = '$username'");
-    // var_dump($result);
+    // //var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
         return [$result,"sales"];
     }
     $result = mysqli_query($conn,"SELECT * FROM 
     petani WHERE username = '$username'");
-    // var_dump($result);
+    // //var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
         return [$result,"petani"];

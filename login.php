@@ -36,7 +36,7 @@ if(isset($_POST["login"])){
     $result = mysqli_query($conn,"SELECT * FROM 
     $tabel WHERE username = '$username'");
    
-    // var_dump ($tabel);
+    // //var_dump ($tabel);
   
     // cek username
     if(mysqli_num_rows($result) == 1){

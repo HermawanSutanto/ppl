@@ -15,14 +15,14 @@ $usernameadm=$_SESSION["username"];
 // querry data admin berdasar id
 $adm =query("SELECT * FROM petani WHERE id = $id")[0];
 $username = $adm['username'];
-// var_dump($adm["nomorhp"]);
+// //var_dump($adm["nomorhp"]);
 
 
 // cek apakah submit telah ditekan
 if(isset($_POST["submit"])){
 
 // cek apakah data berhasil ditambahkan atau tidak llalu kembali ke halaman akun
-    // var_dump(mysqli_affected_rows($conn));
+    // //var_dump(mysqli_affected_rows($conn));
     if (ubahstatuspetani($_POST)>0){
         echo" <script>
             alert('data berhasil diubah!');

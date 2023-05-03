@@ -227,7 +227,7 @@ if(isset($_POST["komentar"])){
                 $adm = mysqli_fetch_assoc($tabel2);
 
 
-                // var_dump($adm);
+                // //var_dump($adm);
                 $id=$row['id'];
 
                 ?>
@@ -431,7 +431,7 @@ $komentar = query("SELECT * FROM komentar WHERE id_postingan='$id'");//jumlah se
                 $tabel2 = mysqli_query($conn,"SELECT * FROM $tabelumum WHERE username='$usernamelist'");
 
                 $adm2 = mysqli_fetch_assoc($tabel2);
-                // var_dump($adm);
+                // //var_dump($adm);
                 $id=$row['id'];
                 ?>
 <?php	if( $row4["status"]==="tampil"|$row4["status"]==="tersembunyi"&$tabel==="admin1"):?>
