@@ -32,14 +32,15 @@ if(isset($_POST["login"])){
     $periksa=login($username);
     $tabel=$periksa[1];
     $result=$periksa[0];
+    
     $result = mysqli_query($conn,"SELECT * FROM 
     $tabel WHERE username = '$username'");
-    
+   
     // var_dump ($tabel);
   
     // cek username
     if(mysqli_num_rows($result) == 1){
-
+      
         // cek password(bandingkan pass1 dan pass 2)
         $row = mysqli_fetch_assoc($result);
        if( password_verify($password,$row["password"])){

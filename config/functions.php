@@ -381,8 +381,8 @@ function login($data){
     else{
         echo"<script>
         alert('username tidak terdaftar');
+        document.location.href = 'login.php'
         </script>";
-        var_dump('benar');
 
         // header("Location: login.php");
         return false;
