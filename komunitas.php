@@ -221,7 +221,9 @@ if(isset($_POST["komentar"])){
             <?php	$periksa=gambarprofilkomunitas($row['username']);
                 $usernamelist=$row['username'];
                 $tabelumum=$periksa[1];
+
                 $tabel2 = mysqli_query($conn,"SELECT * FROM $tabelumum WHERE username='$usernamelist'");
+
                 $adm = mysqli_fetch_assoc($tabel2);
 
 
