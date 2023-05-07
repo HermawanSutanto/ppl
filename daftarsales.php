@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
-$username=$_GET["username"];
+$username=$_SESSION["username"];
 
 // koneksi ke database
 // seolah olah file function ada di sini
@@ -73,7 +73,7 @@ if(isset( $_POST["cari"])){
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         
-                        <a href="index<?= $tabel;?>.php?username=<?= $username;?>"class="logo">
+                        <a href="halamanutama<?= $tabel;?>.php"class="logo">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
                         <!-- ***** Logo End ***** -->
@@ -84,7 +84,7 @@ if(isset( $_POST["cari"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="indexadmin.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="halamanutamaadmin.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -106,7 +106,7 @@ if(isset( $_POST["cari"])){
                         <div class="section-heading">
                             <h6>About Us</h6>
                             <h2>Data Sales</h2>
-                            <div style="margin-top:30px;margin-bottom:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" href="registrasisales.php?username=<?= $username;?>">Tambahkan Sales</a></h4></div>
+                            <div style="margin-top:30px;margin-bottom:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" href="tambahsales.php">Tambah Sales</a></h4></div>
 
                             <div style="font-family: arial;
                             font-size: 20px;
@@ -141,6 +141,7 @@ if(isset( $_POST["cari"])){
     <th>TanggalLahir</th>
     <th>JenisKelamin</th>
     <th>Alamat</th>
+    <th>Kabupaten</th>
 </tr>
 <?php $i=1?><!--  nomor urut -->
 <?php foreach($sales as $row) :?>
@@ -157,6 +158,7 @@ if(isset( $_POST["cari"])){
     <td><?= $row["tanggallahir"];	?></td>
     <td><?= $row["jeniskelamin"];	?></td>
     <td><?= $row["alamat"];	?></td>
+    <td><?= $row["kabupaten"];	?></td>
 </tr>
 <?php $i++?>
 <?php	endforeach; ?>

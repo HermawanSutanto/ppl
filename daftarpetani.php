@@ -5,23 +5,27 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 $username=$_SESSION["username"];
-$tabel='admin';
-
+$tabel='petani';
 
 // koneksi ke database
 // seolah olah file function ada di sini
 require'..\ppl\config\functions.php';
 
+//  PAGINATION
 
 
-$adm = query("SELECT * FROM admin ORDER BY id DESC ");//ASC urut id membesar, DESC mengecil,
+//halaman =2,awaldata =2
+//halaman =3, awawldata=4
+//menentukan data pertama di tiap halaman
+
+$petani = query("SELECT * FROM petani ORDER BY id DESC");//ASC urut id membesar, DESC mengecil,
 
 //limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
 //  ambil data dari database tabel admin / query
 
 // tombol cari di klik
 if(isset( $_POST["cari"])){
-    $adm = cari($_POST["keyword"]);
+    $petani = caripetani($_POST["keyword"]);
     
 }
 
@@ -84,7 +88,7 @@ if(isset( $_POST["cari"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="indexadmin.php">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="halamanutamaadmin.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -97,18 +101,15 @@ if(isset( $_POST["cari"])){
     </header>
     <!-- ***** Header Area End ***** -->
 
-<br>
+<br>   
 <section class="section" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
-                        <div class="section-heading">
+                    <div class="section-heading">
                             <h6>About Us</h6>
-                            <h2>Data Admin</h2>
-                            <div style="margin-top:30px;margin-bottom:30px;">
-                            <h4 style="color:black;">
-                            <a style="font-style: unset;color:black;" href="registrasi.php?username=<?= $username;?>">Tambah</a></h4></div>
+                            <h2>Data petani</h2>
 
                             <div style="font-family: arial;
                             font-size: 20px;
@@ -124,57 +125,67 @@ if(isset( $_POST["cari"])){
                        
             </div>
         </div>
-        
 
 </section>
 
+<div style="font-family: arial;
+  font-size: 20px;
 
+  /* Center child horizontally*/
+  display: flex;
+  justify-content: center;">
 
-
-
+  <div style="width: auto;
+  height:20px;     
+  ">
+   
+  </div>
+</div>
+<br>
+<br>
 
 <div style="margin:30px;margin-top:0px;overflow-x:auto;">
-<div >
-<table border="1" cellpadding="10" cellspacing="0"style="margin-top:50px;">
 
-<tr>
-<!-- kop tabel-->
-<th>No.</th>
-<th>Aksi</th>
-<th>Nama</th>
-<th>Email</th>
-<th>NomorHp</th>
-<th>JenisKelamin</th>
-<th>Alamat</th>
-</tr>
-<?php $i=1?><!--  nomor urut -->
-<?php foreach($adm as $row) :?>
-<tr>
-<td><?= $i?></td>
-<td style="width:150px;">
-    <a href="ubahadmin.php?id=<?= $row["id"];	
-    ?>">ubah</a> 
-    <a style="opacity:0;" href="hapus.php?id=<?= $row["id"];	
-    ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>
-</td>
-<td><?= $row["nama"];	?></td>
-<td><?= $row["email"];	?></td>
-<td><?= $row["nomorhp"];	?></td>
-<td><?= $row["jeniskelamin"];	?></td>
-<td><?= $row["alamat"];	?></td>
-</tr>
-<?php $i++?>
-<?php	endforeach; ?>
-</table></div>
- </div>
+<table border="1" cellpadding="10" cellspacing="0">
+
+    <tr>
+        <!-- kop tabel-->
+        <th>No.</th>
+        <th>Aksi</th>
+        <th>Nama</th>
+        <th>Email</th>
+        <th>NomorHp</th>
+        <th>status</th>
+        <th>JenisKelamin</th>
+        <th>Alamat</th>
+        <th>Kabupaten</th>
+    </tr>
+    <?php $i=1?><!--  nomor urut -->
+    <?php foreach($petani as $row) :?>
+    <tr>
+        <td><?= $i?></td>
+        <td style="width:150px;">
+            <a href="ubahstatuspetani.php?id=<?= $row["id"];	
+            ?>">ubah status</a> 
+            <a href="hapuspetani.php?id=<?= $row["id"];	
+    ?>&username=<?= $username?> onclick="return confirm('yakin akan menghapus?')" style="width:150px;opacity:0;">hapus</a>
+        </td>
+        <td><?= $row["nama"];	?></td>
+        <td><?= $row["email"];	?></td>
+        <td><?= $row["nomorhp"];	?></td>
+        <td><?= $row["status"];	?></td>
+        <td><?= $row["jeniskelamin"];	?></td>
+        <td><?= $row["alamat"];	?></td>
+        <td><?= $row["kabupaten"];	?></td>
+    </tr>
+    <?php $i++?>
+    <?php	endforeach; ?>
+</table>
+<br>
+</div>
 
 <!-- navigasi jumlah halaman -->
 
 
 </body>
 </html>
-
-
-
-
-

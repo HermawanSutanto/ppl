@@ -160,11 +160,10 @@ if(isset($_POST["posting"])){
                         <img src="gambarpostingan/<?=$adm["gambar"];?>" alt="" width="90"><br>
                         <input type="file" name="gambar" id="gambar">
 
-
                     </div>
                     
 		            <div class="form-group">
-		            	<button type="submit" name="posting" class="form-control btn btn-primary rounded submit px-3" >Kirimkan</button>
+		            	<button type="submit" name="posting" class="form-control btn btn-primary rounded submit px-3" >Kirim</button>
                     
 		            </div>
 				</div>

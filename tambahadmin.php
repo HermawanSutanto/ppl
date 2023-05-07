@@ -2,11 +2,11 @@
 require'..\ppl\config\functions.php';
 
 
-$username=$_GET["username"];
+
 $tabel='admin';
 if(isset($_POST["register"])){
 
-    if (pendaftaranAdmin($_POST)>0){
+    if (tambahadmin($_POST)>0){
         echo "<script>
         alert('user baru berhasil ditambahkan!');
         </script>";
@@ -37,7 +37,7 @@ if(isset($_POST["register"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="dataadmin.php">Kembali</a></h3>
+        <h3 class="mb-4"><a href="daftaradmin.php">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>
@@ -81,6 +81,13 @@ if(isset($_POST["register"])){
 			      			<label class="label" for="alamat">Alamat</label>
 			      			<input type="text" class="form-control" name="alamat" id="alamat" placeholder="alamat" required>
 			      		</div>
+				<div class="form-group mb-3">
+                  <label for="kabupaten">Kabupaten :</label>
+                  <select name="kabupaten" id="kabupaten"required>
+                          <option value="">pilih Kabupaten</option><option value="1">jember</option>
+                          <option value="2">Banyuwangi</option>
+                  </select>
+                </div>
                 <div class="form-group mb-3">
                   <label for="jeniskelamin">Jenis Kelamin :</label>
                   <select name="jeniskelamin" id="jeniskelamin"required>

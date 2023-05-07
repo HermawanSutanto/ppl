@@ -163,7 +163,7 @@ if(isset($_POST["komentar"])){
                     
 
 		            <div class="form-group">
-		            	<button type="submit" name="komentar" class="form-control btn btn-primary rounded submit px-3" >Kirimkan</button>
+		            	<button type="submit" name="komentar" class="form-control btn btn-primary rounded submit px-3" >Kirim</button>
                     
 		            </div>
 

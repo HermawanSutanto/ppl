@@ -1,29 +1,38 @@
 <?php
-require'..\ppl\config\functions.php';
-
 session_start();	
 // cek session
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 $username=$_SESSION["username"];
-$tabel=$_SESSION["tabel"];
+$tabel='admin';
 
-$id=$_GET["id"];
-;
 
-$result = mysqli_query($conn,"SELECT * FROM 
-modul WHERE id = '$id'");
+// koneksi ke database
+// seolah olah file function ada di sini
+require'..\ppl\config\functions.php';
+
+
+
+$adm = query("SELECT * FROM admin ORDER BY id DESC ");//ASC urut id membesar, DESC mengecil,
+
+//limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
+//  ambil data dari database tabel admin / query
+
+// tombol cari di klik
+if(isset( $_POST["cari"])){
+    $adm = cari($_POST["keyword"]);
+    
+}
 
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>Halaman Data Sales</title>
-    <link rel="stylesheet" href="design/styleindex.css">
-    
+    <link rel="stylesheet" href="styleindex.css">
+    <link rel="stylesheet" href="design/tabel.css">
 
 <style>
     
@@ -50,7 +59,6 @@ modul WHERE id = '$id'");
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-    <link rel="stylesheet" href="design/section.css">
 
     </head>
     
@@ -76,7 +84,7 @@ modul WHERE id = '$id'");
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="modul.php">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="halamanutamaadmin.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -89,57 +97,86 @@ modul WHERE id = '$id'");
     </header>
     <!-- ***** Header Area End ***** -->
 
-<!-- navigasi jumlah halaman -->
-<?php foreach($result as $row) :?>
-<?php	endforeach;?>
-</div>
+<br>
 <section class="section" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h2><?= $row["judul"];?></h2>
+                            <h6>About Us</h6>
+                            <h2>Data Admin</h2>
+                            <div style="margin-top:30px;margin-bottom:30px;">
+                            <h4 style="color:black;">
+                            <a style="font-style: unset;color:black;" href="tambahadmin.php">Tambah</a></h4></div>
+
+                            <div style="font-family: arial;
+                            font-size: 20px;
+                            display: flex;
+                            justify-content: left;">
+                                <form action="" method="post">
+
+                                <input type="text" name="keyword" id="keyword" size="40px" autofocus 
+                                placeholder="Masukkan keyword pencarian" autocomplete="off">
+                                <button type="submit" name="cari">cari</button></form></div>
+
                         </div>
-                        <p>Deskripsi:<?= $row["deskripsi"];?></p>
-                        <!-- <div class="row">
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-01.jpg" alt="">
-                            </div>
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-02.jpg" alt="">
-                            </div>
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-03.jpg" alt="">
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="right-content">
-                    <div style="width: 50%;
-                                float: left;
-                                padding: 20px;">
-                            <iframe class="fa fa-play" src="<?= $row["video"];?>" frameborder="0" width="540px" height="307px"></iframe>
-                            </div>
-                        
-                    </div>
-                </div>
+                       
             </div>
-            <div style="width:40rem;height:40rem;
-
-                            text-align:center;
-                            margin: 0 auto;">
-                            <h6>Modul</h6>
-                            <embed src="modul\pdf\<?= $row["modul"];?>#toolbar=0" type="" style="width:40rem;height:40rem;">
-                            </div>
         </div>
-    </section>
-   
+        
+
+</section>
 
 
-<br>
+
+
+
+
+<div style="margin:30px;margin-top:0px;overflow-x:auto;">
+<div >
+<table border="1" cellpadding="10" cellspacing="0"style="margin-top:50px;">
+
+<tr>
+<!-- kop tabel-->
+<th>No.</th>
+<th>Aksi</th>
+<th>Nama</th>
+<th>Email</th>
+<th>NomorHp</th>
+<th>JenisKelamin</th>
+<th>Alamat</th>
+<th>Kabupaten</th>
+</tr>
+<?php $i=1?><!--  nomor urut -->
+<?php foreach($adm as $row) :?>
+<tr>
+<td><?= $i?></td>
+<td style="width:150px;">
+    <a href="ubahadmin.php?id=<?= $row["id"];	
+    ?>">ubah</a> 
+    <a style="opacity:0;" href="hapus.php?id=<?= $row["id"];	
+    ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>
+</td>
+<td><?= $row["nama"];	?></td>
+<td><?= $row["email"];	?></td>
+<td><?= $row["nomorhp"];	?></td>
+<td><?= $row["jeniskelamin"];	?></td>
+<td><?= $row["alamat"];	?></td>
+<td><?= $row["kabupaten"];	?></td>
+</tr>
+<?php $i++?>
+<?php	endforeach; ?>
+</table></div>
+ </div>
+
+<!-- navigasi jumlah halaman -->
 
 
 </body>
 </html>
+
+
+
+
+

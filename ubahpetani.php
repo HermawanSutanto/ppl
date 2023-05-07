@@ -23,19 +23,19 @@ $adm =query("SELECT * FROM petani WHERE id = $id")[0];
 // cek apakah submit telah ditekan
 if(isset($_POST["submit"])){
 
-// cek apakah data berhasil ditambahkan atau tidak llalu kembali ke halaman akun
+// cek apakah data berhasil ditambahkan atau tidak llalu kembali ke halaman profil
     // //var_dump(mysqli_affected_rows($conn));
     if (ubahpetani($_POST)>0){
         echo" <script>
             alert('data berhasil diubah!');
-            document.location.href = 'akun.php'
+            document.location.href = 'profil.php'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('data gagal diubah!');
-        document.location.href = 'akun.php'
+        document.location.href = 'profil.php'
         </script>
         ";
     }
@@ -62,7 +62,7 @@ if(isset($_POST["submit"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="akun.php">Kembali</a></h3>
+        <h3 class="mb-4"><a href="profil.php">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>
@@ -116,6 +116,12 @@ if(isset($_POST["submit"])){
 			      			<label class="label" for="alamat">Alamat</label>
 			      			<input type="text" class="form-control" name="alamat" id="alamat" placeholder="alamat" required value="<?=$adm["alamat"]?>">
 			      		</div>
+				<div class="form-group mb-3">
+                  <label for="kabupaten">Kabupaten :</label>
+                  <select name="kabupaten" id="kabupaten"required>
+                          <option value="<?=$adm["kabupaten"]?>"><?=$adm["kabupaten"]?></option><option value="1">jember</option>
+                          <option value="2">Banyuwangi</option>
+                  </select>
                 <div class="form-group mb-3">
                   <label for="jeniskelamin">Jenis Kelamin :</label>
                   <select name="jeniskelamin" id="jeniskelamin"required>

@@ -20,7 +20,10 @@ if(isset($_POST["tambah"])){
     }
 
 }
-$modul = query("SELECT * FROM modul ORDER BY id ")
+$modul = query("SELECT * FROM modul ORDER BY id ");
+$admin = mysqli_query($conn,"SELECT * FROM admin WHERE username = '$username'");
+$admin = mysqli_fetch_assoc($admin);
+
 
 ?>
 <!DOCTYPE html>
@@ -100,7 +103,6 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
                     <div class="left-text-content">
                         <div class="section-heading">
                             <h2>Tambah Modul</h2>
-
                         </div>
                        
             </div>
@@ -112,7 +114,8 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
 
 <div class="tabelmodul">
 <form action="" method="post" enctype="multipart/form-data">
-    <ul>
+    
+    <ul><input type="hidden" name="id_admin" value="<?=$admin["id"];?>">
             <li>
                 <label for="judul">Judul : </label>
                 <input type="text" name="judul" id="judul"required>

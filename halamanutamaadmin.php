@@ -1,20 +1,22 @@
-<?php	
+<?php
 require'..\ppl\config\functions.php';
-
 session_start();	
 // cek session
 if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
-
-
 $username=$_SESSION["username"];
-$tabel=$_SESSION["tabel"];
+$table=$_SESSION["tabel"];
 $result = mysqli_query($conn,"SELECT * FROM 
-    petani WHERE username = '$username'");
+    admin WHERE username = '$username'");
 $adm = mysqli_fetch_assoc($result);
+// koneksi ke database
+// seolah olah file function ada di sini
+
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,22 +77,40 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" >Trend Pasar</a></li>
-                            <li class="scroll-to-section"><a href="komunitas.php">Komunitas</a></li> 
+                            <li class="scroll-to-section"><a href="daftarmodul.php" >Modul</a></li>
+                            <li class="scroll-to-section"><a href="#about">Trend Harga Pasar</a></li>
                            	
-                    
-                        <li class="scroll-to-section"><a href="modul.php">Modul</a></li>
-                            
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                        <li class="submenu">
-                            <a href="javascript:;">Profil</a>
-                            <ul>
-                                <li class="scroll-to-section"><a href="akun.php">Profil Saya</a>
-                                <li class="scroll-to-section"><a href="logout.php">Logout</a></li> 
-                            </ul>
-                        </li>
-                        </ul>        
                         
+                            <li class="submenu">
+                                <a href="javascript:;">Data Akun</a>
+                                <ul>
+                                    <li class="scroll-to-section"><a href="daftaradmin.php">Admin</a></li>
+                                    <li class="scroll-to-section"><a href="daftarpetani.php">Petani</a></li> 
+                                    <li class="scroll-to-section"><a href="daftarsales.php">Sales</a></li> 
+                                </ul>
+                            </li>
+                       
+                            
+                            <!-- <li class="submenu">
+                                <a href="javascript:;">Features</a>
+                                <ul>
+                                    <li><a href="#">Features Page 1</a></li>
+                                    <li><a href="#">Features Page 2</a></li>
+                                    <li><a href="#">Features Page 3</a></li>
+                                    <li><a href="#">Features Page 4</a></li>
+                                </ul>
+                            </li> -->
+                            <li class="scroll-to-section"><a href="komunitas.php">Komunitas</a></li> 
+                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
+                            <li class="submenu">
+                                <a href="javascript:;">Profil</a>
+                                <ul>
+                                    <li class="scroll-to-section"><a href="profil.php">Profil Saya</a>
+                                    <li class="scroll-to-section"><a href="logout.php">Logout</a></li> 
+                                </ul>
+                            </li>
+                            </li> 
+                        </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -107,9 +127,9 @@ https://templatemo.com/tm-558-klassy-cafe
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="left-content">
+                    <div class="left-content" >
                         <div class="inner-content">
-                            <h4>Selamat Datang <br> <?= $adm["nama"];?></h4>
+                            <h4>Selamat Datang Admin<br><?= $adm["nama"];?></h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
                                 <a href="#reservation">Mulai Sekarang!</a>
@@ -147,13 +167,12 @@ https://templatemo.com/tm-558-klassy-cafe
             </div>
         </div>
     </div>
-    <!-- ***** Main Banner Area End ***** -->
+    
+ <div>
+    <div><!-- navigasi jumlah halaman -->
 
-    <!-- ***** About Area Starts ***** -->
-    
-    <!-- ***** Chefs Area Ends ***** --> 
-    
-    <!-- ***** Footer Start ***** -->
+<div>
+
     <footer>
         <div class="container">
             <div class="row">
@@ -169,7 +188,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="logout.php">l<img src="assets/images/simtanilogo.png"alt=""></a>
+                    <a href="logout.php"><img src="assets/images/simtanilogo.png"alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">

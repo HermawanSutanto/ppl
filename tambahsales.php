@@ -1,10 +1,20 @@
 <?php	
 require'..\ppl\config\functions.php';
 
+session_start();	
+// cek session
+if (!isset($_SESSION["login"])){
+    header("Location: login.php");
+}
+
+
+$username=$_SESSION["username"];
+$tabel=$_SESSION["tabel"];
+
 
 if(isset($_POST["register"])){
 
-    if (registrasipetani($_POST)>0){
+    if (tambahsales($_POST)>0){
         echo "<script>
         alert('user baru berhasil ditambahkan!');
         </script>";
@@ -16,6 +26,7 @@ if(isset($_POST["register"])){
 }
 
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -35,7 +46,7 @@ if(isset($_POST["register"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="index.php">Kembali</a></h3>
+        <h3 class="mb-4"><a href="daftarsales.php">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>
@@ -43,11 +54,11 @@ if(isset($_POST["register"])){
 			      	<div class="d-flex">
 			      		<div class="w-100">
        
-			      			<h3 class="mb-4">Pendaftaran</h3>
+			      			<h3 class="mb-4">Pendaftaran Sales</h3>
 			      		</div>
 								
 			      	</div>
- 
+
 							<form action="" class="signin-form" method="post" enctype="multipart/form-data">
 			      		<div class="form-group mb-3">
 			      			<label class="label" for="name">Username</label>
@@ -61,6 +72,15 @@ if(isset($_POST["register"])){
 			      			<label class="label" for="email">Email</label>
 			      			<input type="text" class="form-control" name="email" id="email" placeholder="email" required>
 			      		</div>
+				<div class="form-group mb-3">
+						<label class="label" for="perusahaan">Perusahaan</label>
+						<input type="text" class="form-control" name="perusahaan" id="perusahaan" placeholder="perusahaan" required>
+					</div>
+				<div class="form-group mb-3">
+						<label class="label" for="tanggallahir">Tanggal Lahir</label>
+						<input type="text" class="form-control" name="tanggallahir" id="tanggallahir" placeholder="tanggallahir" required>
+					</div>
+
                 <div class="form-group mb-3">
 			      			<label class="label" for="nomorhp">Nomor Handphone</label>
 			      			<input type="text" class="form-control" name="nomorhp" id="nomorhp" placeholder="nomorhp" required>
@@ -79,6 +99,12 @@ if(isset($_POST["register"])){
 			      			<label class="label" for="alamat">Alamat</label>
 			      			<input type="text" class="form-control" name="alamat" id="alamat" placeholder="alamat" required>
 			      		</div>
+						  <div class="form-group mb-3">
+                  <label for="kabupaten">Kabupaten :</label>
+                  <select name="kabupaten" id="kabupaten"required>
+                          <option value="">pilih Kabupaten</option><option value="1">jember</option>
+                          <option value="2">Banyuwangi</option>
+                  </select>
                 <div class="form-group mb-3">
                   <label for="jeniskelamin">Jenis Kelamin :</label>
                   <select name="jeniskelamin" id="jeniskelamin"required>

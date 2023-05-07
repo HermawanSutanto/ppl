@@ -39,6 +39,8 @@ if(isset($_POST["ubah"])){
     }
 
 }
+$admin = mysqli_query($conn,"SELECT * FROM admin WHERE username = '$username'");
+$admin = mysqli_fetch_assoc($admin);
 
 ?>
 <!DOCTYPE html>
@@ -113,6 +115,7 @@ if(isset($_POST["ubah"])){
 <input type="hidden" name="id" value="<?=$adm["id"];?>">
 <input type="hidden" name="gambarlama" value="<?=$adm["gambarsampul"];?>">
 <input type="hidden" name="modullama" value="<?=$adm["modul"];?>">
+<input type="hidden" name="id_admin" value="<?=$admin["id"];?>">
     <ul>
             <li>
                 <label for="judul">Judul : </label>

@@ -80,7 +80,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <li class="submenu">
                         <a href="javascript:;">Profil</a>
                         <ul>
-                            <li class="scroll-to-section"><a href="akun.php">Profil Saya</a>
+                            <li class="scroll-to-section"><a href="profil.php">Profil Saya</a>
                             <li class="scroll-to-section"><a href="logout.php">Logout</a></li> 
                         </ul>
                         </li>

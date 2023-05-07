@@ -21,19 +21,19 @@ $username = $adm['username'];
 // cek apakah submit telah ditekan
 if(isset($_POST["submit"])){
 
-// cek apakah data berhasil ditambahkan atau tidak llalu kembali ke halaman akun
+// cek apakah data berhasil ditambahkan atau tidak llalu kembali ke halaman profil
     // //var_dump(mysqli_affected_rows($conn));
     if (ubahstatuspetani($_POST)>0){
         echo" <script>
             alert('data berhasil diubah!');
-            document.location.href = 'datapetani.php'
+            document.location.href = 'daftarpetani.php'
         </script>
         ";
 
     }else{
         echo" <script>
         alert('data gagal diubah!');
-        document.location.href = 'datapetani.php'
+        document.location.href = 'daftarpetani.php'
         </script>
         ";
     }
@@ -96,7 +96,7 @@ if(isset($_POST["submit"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"> <a href="datapetani.php">Kembali</a></li> 
+                            <li class="scroll-to-section"> <a href="daftarpetani.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

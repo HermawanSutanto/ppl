@@ -12,34 +12,35 @@ function query($querry){
     }
     return $rows;
 }
-function tambahsales($data){
-    // vmbil data dari tiap elemen form
-    global $conn;
-    // html special char agar kode html yang diinputkan tidak berjalan
-    // ndak wajib se, cuman buat keamanan
-    $nama = htmlspecialchars($data["nama"]);
-    $username = htmlspecialchars($data["username"]);
-    $perusahaan = htmlspecialchars($data["perusahaan"]);
-    $email = htmlspecialchars($data["email"]);
-    $tanggallahir = htmlspecialchars($data["tanggallahir"]);
-    $nomorhp = htmlspecialchars($data["nomorhp"]);
-    $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
-    $alamat = htmlspecialchars($data["alamat"]);
-    $password = htmlspecialchars($data["password"]);
+// function tambahsales($data){
+//     // vmbil data dari tiap elemen form
+//     global $conn;
+//     // html special char agar kode html yang diinputkan tidak berjalan
+//     // ndak wajib se, cuman buat keamanan
+//     $nama = htmlspecialchars($data["nama"]);
+//     $username = htmlspecialchars($data["username"]);
+//     $perusahaan = htmlspecialchars($data["perusahaan"]);
+//     $email = htmlspecialchars($data["email"]);
+//     $tanggallahir = htmlspecialchars($data["tanggallahir"]);
+//     $nomorhp = htmlspecialchars($data["nomorhp"]);
+//     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
+//     $alamat = htmlspecialchars($data["alamat"]);
+//     $password = htmlspecialchars($data["password"]);
+//     $kabupaten = htmlspecialchars($data["kabupaten"]);
     
     
-    $password = password_hash($password,PASSWORD_DEFAULT);
-    $querry = "INSERT INTO sales
-    Values
-    ('','$nama','$username','$perusahaan','$email','$tanggallahir','$nomorhp',
-    '$jeniskelamin','$alamat','$password')
-    ";
-    mysqli_query($conn,$querry);
+//     $password = password_hash($password,PASSWORD_DEFAULT);
+//     $querry = "INSERT INTO sales
+//     Values
+//     ('','$nama','$username','$perusahaan','$email','$tanggallahir','$nomorhp',
+//     '$jeniskelamin','$alamat','$password','$kabupaten')
+//     ";
+//     mysqli_query($conn,$querry);
 
 
 
-    // tambah user baru ke database
-}
+//     // tambah user baru ke database
+// }
 function hapus($id){
     global $conn;
     mysqli_query($conn,"DELETE FROM admin WHERE id = $id ");
@@ -120,6 +121,7 @@ function ubah($data){
     $alamat = htmlspecialchars($data["alamat"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
+    $kabupaten = htmlspecialchars($data["kabupaten"]);
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
       
@@ -149,7 +151,8 @@ function ubah($data){
         jeniskelamin = '$jeniskelamin',
         alamat = '$alamat',
         password ='$password',
-        fotoprofil ='$fotoprofil'
+        fotoprofil ='$fotoprofil',
+        kabupaten ='$kabupaten'
         WHERE id = $id
     ";
     mysqli_query($conn,$querry);
@@ -178,6 +181,7 @@ function ubahsales($data){
     $nomorhp = htmlspecialchars($data["nomorhp"]);
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
+    $kabupaten = htmlspecialchars($data["kabupaten"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
 
@@ -211,7 +215,8 @@ function ubahsales($data){
                         jeniskelamin = '$jeniskelamin',
                         alamat = '$alamat',
                         password ='$password',
-                        fotoprofil = '$fotoprofil'
+                        fotoprofil = '$fotoprofil',
+                        kabupaten = '$kabupaten'
                         WHERE id = $id
         ";
     
@@ -240,6 +245,7 @@ function ubahpetani($data){
     $nomorhp = htmlspecialchars($data["nomorhp"]);
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
+    $kabupaten = htmlspecialchars($data["kabupaten"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
 
@@ -271,7 +277,9 @@ function ubahpetani($data){
                         jeniskelamin = '$jeniskelamin',
                         alamat = '$alamat',
                         password ='$password',
-                        fotoprofil='$fotoprofil'
+                        fotoprofil='$fotoprofil',
+                        kabupaten='$kabupaten'
+                        
                         WHERE id = $id
         ";
         mysqli_query($conn,$querry);
@@ -313,7 +321,8 @@ function cari($keyword){
              nama LIKE '%$keyword%' OR 
              username LIKE '%$keyword%' OR
              nomorhp LIKE '%$keyword%' OR
-             email LIKE '%$keyword%'
+             email LIKE '%$keyword%' OR
+             kabupaten LIKE '%$keyword%'
              ";// Like dengan %cari yang mirip dari depan
     
     return query($query);
@@ -327,7 +336,8 @@ function carisales($keyword){
              username LIKE '%$keyword%' OR
              perusahaan LIKE '%$keyword%' OR
              nomorhp LIKE '%$keyword%' OR
-             email LIKE '%$keyword%'
+             email LIKE '%$keyword%'OR
+             kabupaten LIKE '%$keyword%'
              ";// Like dengan %cari yang mirip dari depan
     
     return query($query);
@@ -341,13 +351,14 @@ function caripetani($keyword){
              username LIKE '%$keyword%' OR
              nomorhp LIKE '%$keyword%' OR
              email LIKE '%$keyword%' OR
-             status LIKE '%$keyword%'
+             status LIKE '%$keyword%'OR
+             kabupaten LIKE '%$keyword%'
              ";// Like dengan %cari yang mirip dari depan
     
     return query($query);
 
 }
-function akun($data){
+function profil($data){
     global $conn; 
     $username = $data;
 
@@ -377,11 +388,11 @@ function akun($data){
 }
 function login($data){
     global $conn; 
-    // mysqli_query($conn,"CREATE VIEW admin2 as SELECT * FROM 
+    // mysqli_query($conn,"CREATE VIEW admin as SELECT * FROM 
     // admin");
-    // mysqli_query($conn,"CREATE VIEW sales2 as SELECT * FROM 
+    // mysqli_query($conn,"CREATE VIEW sales as SELECT * FROM 
     // sales");
-    // mysqli_query($conn,"CREATE VIEW petani2 as SELECT * FROM 
+    // mysqli_query($conn,"CREATE VIEW petani as SELECT * FROM 
     // petani");
     
     $username = $data;
@@ -396,14 +407,14 @@ function login($data){
 
     }
     $result = mysqli_query($conn,"SELECT * FROM 
-    sales2 WHERE username = '$username'");
+    sales WHERE username = '$username'");
     // //var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
         return [$result,"sales"];
     }
     $result = mysqli_query($conn,"SELECT * FROM 
-    petani2 WHERE username = '$username'");
+    petani WHERE username = '$username'");
     // //var_dump($result);
     if (mysqli_fetch_assoc($result)){
 
@@ -423,7 +434,7 @@ function login($data){
     }
 
 }
-function pendaftaranAdmin($data){
+function tambahadmin($data){
     // vambil data dari tiap elemen form
     global $conn;
     // html special char agar kode html yang diinputkan tidak berjalan
@@ -434,6 +445,7 @@ function pendaftaranAdmin($data){
     $nomorhp = htmlspecialchars($data["nomorhp"]);
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
+    $kabupaten = htmlspecialchars($data["kabupaten"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
 
@@ -481,7 +493,7 @@ function pendaftaranAdmin($data){
     mysqli_query($conn,"INSERT INTO admin
     Values
     ('','$nama','$username','$email','$nomorhp',
-    '$jeniskelamin','$alamat','$password','profil.png')");
+    '$jeniskelamin','$alamat','$password','profil.png',$kabupaten)");
 
     return mysqli_affected_rows($conn);
 
@@ -496,7 +508,7 @@ function pendaftaranAdmin($data){
     
 
 }
-function registrasisales($data){
+function tambahsales($data){
     // vambil data dari tiap elemen form
     global $conn;
     // html special char agar kode html yang diinputkan tidak berjalan
@@ -509,6 +521,7 @@ function registrasisales($data){
     $nomorhp = htmlspecialchars($data["nomorhp"]);
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
+    $kabupaten = htmlspecialchars($data["kabupaten"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
 
@@ -554,7 +567,7 @@ function registrasisales($data){
        mysqli_query($conn,"INSERT INTO sales
        Values
        ('','$nama','$username','$perusahaan','$email','$tanggallahir','$nomorhp',
-       '$jeniskelamin','$alamat','$password','profil.png')
+       '$jeniskelamin','$alamat','$password','profil.png',$kabupaten)
        ");
         // tambah user baru ke database
         return mysqli_affected_rows($conn);
@@ -564,7 +577,7 @@ function registrasisales($data){
     } else {
       echo"<script>
       alert('email yang anda masukkan tidak valid');
-      document.location.href = 'registrasipetani.php'
+      document.location.href = 'tambahsales.php'
       </script>";
     }
 
@@ -573,7 +586,7 @@ function registrasisales($data){
     
 
 }
-function registrasipetani($data){
+function tambahpetani($data){
     // vambil data dari tiap elemen form
     global $conn;
     // html special char agar kode html yang diinputkan tidak berjalan
@@ -584,6 +597,7 @@ function registrasipetani($data){
     $nomorhp = htmlspecialchars($data["nomorhp"]);
     $jeniskelamin = htmlspecialchars($data["jeniskelamin"]);
     $alamat = htmlspecialchars($data["alamat"]);
+    $kabupaten = htmlspecialchars($data["kabupaten"]);
     $password = mysqli_real_escape_string($conn,$data["password"]);
     $password2 = mysqli_real_escape_string($conn,$data["password2"]);
 
@@ -630,7 +644,7 @@ function registrasipetani($data){
         mysqli_query($conn,"INSERT INTO petani
         Values
         ('','$nama','$username','$email','$nomorhp',
-        '$jeniskelamin','$alamat','$password','Tidak Aktif','profil.png')
+        '$jeniskelamin','$alamat','$password','Tidak Aktif','profil.png',$kabupaten)
         ");
         // tambah user baru ke database
         return mysqli_affected_rows($conn);
@@ -783,6 +797,7 @@ function ubahmodul($data){
     $deskripsi = htmlspecialchars($data["deskripsi"]);
     $narasumber = htmlspecialchars($data["narasumber"]);
     $video = htmlspecialchars($data["video"]);
+    $id_admin = $data["id_admin"];
     // upload gambar/modul  
     $modullama = htmlspecialchars($data["modullama"]);
     $gambarsampullama = htmlspecialchars($data["gambarlama"]);
@@ -808,7 +823,8 @@ function ubahmodul($data){
                     gambarsampul = '$gambarsampul',
                     video = '$video',
                     narasumber = '$narasumber',
-                    modul = '$modul'
+                    modul = '$modul',
+                    id_admin = '$id_admin'
                     WHERE id = $id";
      //tambah user baru ke database
 

@@ -10,7 +10,7 @@ if (!isset($_SESSION["login"])){
 
 $username=$_SESSION["username"];
 $tabel=$_SESSION["tabel"];
-$aktor=akun($username);
+$aktor=profil($username);
 
 $result = mysqli_query($conn,"SELECT username FROM 
 admin WHERE username = '$username'");
@@ -125,7 +125,7 @@ if(isset($_POST["komentar"])){
                 <div class="col-12">
                     <nav class="main-nav">
                         
-                        <a href="index<?= $tabel;?>.php"class="logo" style=" padding-top:1%;">
+                        <a href="halamanutama<?= $tabel;?>.php"class="logo" style=" padding-top:1%;">
                             <img src="assets/images/simtanilogo.png" align="klassy cafe html template">
                         </a>
 
@@ -134,7 +134,7 @@ if(isset($_POST["komentar"])){
                         
 
                        
-                            <li class="scroll-to-section"><a href="index<?= $tabel;?>.php">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="halamanutama<?= $tabel;?>.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

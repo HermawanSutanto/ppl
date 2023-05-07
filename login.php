@@ -57,7 +57,7 @@ if(isset($_POST["login"])){
                 setcookie('key',hash('sha256',  $row["username"],
                 time()+60));
             }
-                       header("Location: index$tabel.php");
+                       header("Location: halamanutama$tabel.php");
                        // masuk ke halaman index
 // masuk ke halaman index
             exit;
@@ -89,7 +89,7 @@ if(isset($_POST["login"])){
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
-        <h3 class="mb-4"><a href="index.php">Kembali</a></h3>
+        <h3 class="mb-4"><a href="landingpage.php">Kembali</a></h3>
 					<div class="wrap d-md-flex">
 						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
 			      </div>
@@ -134,7 +134,7 @@ if(isset($_POST["login"])){
             </div>
 		            </div>
 		          </form>
-		          <p class="text-center">Tidak Punya Akun? <a href="registrasipetani.php">Daftar</a></p>
+		          <p class="text-center">Tidak Punya profil? <a href="tambahpetani.php">Daftar</a></p>
 
 		        </div>
 		      </div>

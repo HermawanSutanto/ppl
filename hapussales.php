@@ -17,13 +17,13 @@ $id = $_GET["id"];
     if ( hapussales($id)>0){
         echo" <script>
          alert('data berhasil dihapus!');
-        document.location.href = 'datasales.php'
+        document.location.href = 'daftarsales.php'
          ";
 
         }else{
         echo" <script>
         alert('data gagal dihapus!');
-        document.location.href = 'dataadmin.php'
+        document.location.href = 'daftaradmin.php'
         </script>
         ";
 }
