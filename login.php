@@ -10,7 +10,7 @@ if (isset($_COOKIE['login']) && isset($_COOKIE['key'])){
     
     // ambil username berdasarkan id
     $result=mysqli_query($conn,"SELECT username FROM 
-    admin1 WHERE id = '$id'");
+    admin WHERE id = '$id'");
     $row= mysqli_fetch_assoc($result);
 
     // cek coockie dan username

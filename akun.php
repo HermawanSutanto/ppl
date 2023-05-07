@@ -11,10 +11,10 @@ $tabel=$_SESSION["tabel"];
 $aktor=akun($username);
 
 $result = mysqli_query($conn,"SELECT username FROM 
-admin1 WHERE username = '$username'");
+admin WHERE username = '$username'");
 if (mysqli_fetch_assoc($result)){
     
-    $tabel="admin1";
+    $tabel="admin";
 
 }
 $result = mysqli_query($conn,"SELECT username FROM 

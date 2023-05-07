@@ -21,7 +21,7 @@ require'..\ppl\config\functions.php';
 $petani = query("SELECT * FROM petani ORDER BY id DESC");//ASC urut id membesar, DESC mengecil,
 
 //limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
-//  ambil data dari database tabel admin1 / query
+//  ambil data dari database tabel admin / query
 
 // tombol cari di klik
 if(isset( $_POST["cari"])){
@@ -88,7 +88,7 @@ if(isset( $_POST["cari"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="indexadmin1.php">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="indexadmin.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>

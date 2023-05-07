@@ -5,7 +5,7 @@ if (!isset($_SESSION["login"])){
     header("Location: login.php");
 }
 $username=$_SESSION["username"];
-$tabel='admin1';
+$tabel='admin';
 
 
 // koneksi ke database
@@ -14,10 +14,10 @@ require'..\ppl\config\functions.php';
 
 
 
-$adm = query("SELECT * FROM admin1 ORDER BY id DESC ");//ASC urut id membesar, DESC mengecil,
+$adm = query("SELECT * FROM admin ORDER BY id DESC ");//ASC urut id membesar, DESC mengecil,
 
 //limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
-//  ambil data dari database tabel admin1 / query
+//  ambil data dari database tabel admin / query
 
 // tombol cari di klik
 if(isset( $_POST["cari"])){
@@ -84,7 +84,7 @@ if(isset( $_POST["cari"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="indexadmin1.php">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="indexadmin.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -106,7 +106,9 @@ if(isset( $_POST["cari"])){
                         <div class="section-heading">
                             <h6>About Us</h6>
                             <h2>Data Admin</h2>
-                            <div style="margin-top:30px;margin-bottom:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" href="registrasi.php?username=<?= $username;?>">Tambahkan Admin</a></h4></div>
+                            <div style="margin-top:30px;margin-bottom:30px;">
+                            <h4 style="color:black;">
+                            <a style="font-style: unset;color:black;" href="registrasi.php?username=<?= $username;?>">Tambah</a></h4></div>
 
                             <div style="font-family: arial;
                             font-size: 20px;
@@ -133,7 +135,7 @@ if(isset( $_POST["cari"])){
 
 <div style="margin:30px;margin-top:0px;overflow-x:auto;">
 <div >
-<table border="1" cellpadding="10" cellspacing="0">
+<table border="1" cellpadding="10" cellspacing="0"style="margin-top:50px;">
 
 <tr>
 <!-- kop tabel-->
@@ -150,7 +152,7 @@ if(isset( $_POST["cari"])){
 <tr>
 <td><?= $i?></td>
 <td style="width:150px;">
-    <a href="ubahadmin1.php?id=<?= $row["id"];	
+    <a href="ubahadmin.php?id=<?= $row["id"];	
     ?>">ubah</a> 
     <a style="opacity:0;" href="hapus.php?id=<?= $row["id"];	
     ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>

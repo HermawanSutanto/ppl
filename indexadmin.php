@@ -8,7 +8,7 @@ if (!isset($_SESSION["login"])){
 $username=$_SESSION["username"];
 $table=$_SESSION["tabel"];
 $result = mysqli_query($conn,"SELECT * FROM 
-    admin1 WHERE username = '$username'");
+    admin WHERE username = '$username'");
 $adm = mysqli_fetch_assoc($result);
 // koneksi ke database
 // seolah olah file function ada di sini

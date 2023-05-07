@@ -12,7 +12,7 @@ $username=$_SESSION["username"];
 // ambil data di url
 $id=$_GET["id"];
 // querry data admin berdasar id
-$adm =query("SELECT * FROM admin1 WHERE id = $id")[0];
+$adm =query("SELECT * FROM admin WHERE id = $id")[0];
 // //var_dump($adm["nomorhp"]);
 
 
@@ -24,7 +24,7 @@ if(isset($_POST["submit"])){
     if (ubah($_POST)>0){
         echo" <script>
             alert('data berhasil diubah!');
-            document.location.href = 'akun.php'
+            document.location.href = 'loginn.php'
         </script>
         ";
 

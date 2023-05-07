@@ -142,7 +142,7 @@ $modul = query("SELECT * FROM modul ORDER BY id ")
             
         <button type="submit" name="tambah">Tambah Modul</button>
 
-        <a href="indexadmin1.php">Kembali</a>
+        <a href="indexadmin.php">Kembali</a>
 
     </ul>
 

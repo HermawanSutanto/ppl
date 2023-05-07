@@ -42,12 +42,12 @@ function tambahsales($data){
 }
 function hapus($id){
     global $conn;
-    mysqli_query($conn,"DELETE FROM admin1 WHERE id = $id ");
+    mysqli_query($conn,"DELETE FROM admin WHERE id = $id ");
     return mysqli_affected_rows($conn); 
     
     // $username = strtolower(stripslashes($data["username"]));
     // $result = mysqli_query($conn,"SELECT username FROM 
-    // admin1 WHERE username = '$username'");
+    // admin WHERE username = '$username'");
     // if (mysqli_fetch_assoc($result)){
     //     echo"<script>
     //     alert('username sudah terdaftar');
@@ -141,7 +141,7 @@ function ubah($data){
         }
         // enkripsi password
         $password = password_hash($password,PASSWORD_DEFAULT);
-        $querry = "UPDATE admin1 SET 
+        $querry = "UPDATE admin SET 
         nama = '$nama',
         username ='$username',
         email = '$email',
@@ -308,7 +308,7 @@ function ubahstatuspetani($data){
     
 function cari($keyword){
 
-    $query = "SELECT * FROM admin1
+    $query = "SELECT * FROM admin
             WHERE 
              nama LIKE '%$keyword%' OR 
              username LIKE '%$keyword%' OR
@@ -352,7 +352,7 @@ function akun($data){
     $username = $data;
 
     $result = mysqli_query($conn,"SELECT username FROM 
-    admin1 WHERE username = '$username'");
+    admin WHERE username = '$username'");
     if (mysqli_fetch_assoc($result)){
         
         return $result;
@@ -378,7 +378,7 @@ function akun($data){
 function login($data){
     global $conn; 
     // mysqli_query($conn,"CREATE VIEW admin2 as SELECT * FROM 
-    // admin1");
+    // admin");
     // mysqli_query($conn,"CREATE VIEW sales2 as SELECT * FROM 
     // sales");
     // mysqli_query($conn,"CREATE VIEW petani2 as SELECT * FROM 
@@ -387,12 +387,12 @@ function login($data){
     $username = $data;
     
     $result = mysqli_query($conn,"SELECT * FROM 
-    admin1 WHERE username = '$username'");
+    admin WHERE username = '$username'");
     // //var_dump($result);
     
     if (mysqli_fetch_assoc($result)){
 
-        return [$result,"admin1"];
+        return [$result,"admin"];
 
     }
     $result = mysqli_query($conn,"SELECT * FROM 
@@ -423,7 +423,7 @@ function login($data){
     }
 
 }
-function registrasi($data){
+function pendaftaranAdmin($data){
     // vambil data dari tiap elemen form
     global $conn;
     // html special char agar kode html yang diinputkan tidak berjalan
@@ -441,7 +441,7 @@ function registrasi($data){
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
       // cek username sudah ada apa lom
     $result = mysqli_query($conn,"SELECT username FROM 
-    admin1 WHERE username = '$username'");
+    admin WHERE username = '$username'");
 
     if (mysqli_fetch_assoc($result)){
         echo"<script>
@@ -478,7 +478,7 @@ function registrasi($data){
     $password = password_hash($password,PASSWORD_DEFAULT);
 
     // tambah user baru ke database
-    mysqli_query($conn,"INSERT INTO admin1
+    mysqli_query($conn,"INSERT INTO admin
     Values
     ('','$nama','$username','$email','$nomorhp',
     '$jeniskelamin','$alamat','$password','profil.png')");
@@ -532,7 +532,7 @@ function registrasisales($data){
             return false;
         }
         $result = mysqli_query($conn,"SELECT username FROM 
-        admin1 WHERE username = '$username'");
+        admin WHERE username = '$username'");
         if (mysqli_fetch_assoc($result)){
             echo"<script>
             alert('username sudah terdaftar');
@@ -607,7 +607,7 @@ function registrasipetani($data){
             return false;
         }
         $result = mysqli_query($conn,"SELECT username FROM 
-        admin1 WHERE username = '$username'");
+        admin WHERE username = '$username'");
         if (mysqli_fetch_assoc($result)){
             echo"<script>
             alert('username sudah terdaftar');
@@ -1050,10 +1050,10 @@ function gambarprofilkomunitas($data){
     global $conn; 
     $username = $data;
     $result = mysqli_query($conn,"SELECT * FROM 
-    admin1 WHERE username = '$username'");
+    admin WHERE username = '$username'");
     if (mysqli_fetch_assoc($result)){
 
-        return [$result,"admin1"];
+        return [$result,"admin"];
 
     }
     $result = mysqli_query($conn,"SELECT * FROM 

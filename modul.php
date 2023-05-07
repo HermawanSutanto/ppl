@@ -99,7 +99,7 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
                     <div class="left-text-content">
                         <div class="section-heading" style="margin-bottom: 40px;">
                             <h2>Daftar Modul</h2>
-                            <?php	if ($tabel==='admin1'):?>
+                            <?php	if ($tabel==='admin'):?>
                                 <div style="margin-top:30px;"><h4 style="color:black;"><a style="font-style: unset;color:black;" 
                                 href="tambahmodul.php">Tambahkan Modul</a></h4></div>
                                 <?php	endif;?>
@@ -117,7 +117,7 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
 <br>
 <br>
 <br>
-<?php	if ($tabel==='admin1'):?>
+<?php	if ($tabel==='admin'):?>
 <table border="1" cellpadding="10" cellspacing="0" style="width:500px;">
 <tr>
 <!-- kop tabel-->
@@ -135,7 +135,7 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
 <tr>
 <td><?= $i?></td>
 <td >
-    <?php	if ($tabel==='admin1'):?>
+    <?php	if ($tabel==='admin'):?>
         <a href="ubahmodul.php?id=<?= $row["id"];	
     ?>">ubah</a> |
     <a href="hapusmodul.php?id=<?= $row["id"];	

@@ -13,10 +13,10 @@ $tabel=$_SESSION["tabel"];
 $aktor=akun($username);
 
 $result = mysqli_query($conn,"SELECT username FROM 
-admin1 WHERE username = '$username'");
+admin WHERE username = '$username'");
 if (mysqli_fetch_assoc($result)){
     
-    $tabel="admin1";
+    $tabel="admin";
 
 }
 $result = mysqli_query($conn,"SELECT username FROM 
@@ -232,7 +232,7 @@ if(isset($_POST["komentar"])){
 
                 ?>
 <!-- dengan gambar -->
-          <?php	if( $row["status"]==="tampil"|$row["status"]==="tersembunyi"&$tabel==="admin1"):?>
+          <?php	if( $row["status"]==="tampil"|$row["status"]==="tersembunyi"&$tabel==="admin"):?>
 
             <?php	if( $row["gambar"]!="null"):?>
               
@@ -259,7 +259,7 @@ if(isset($_POST["komentar"])){
       <a href="#">
         <h3 class="article-title"><?=$row["konten"];?></h3>
       </a>
-      <?php	if( $row["status"]==="tersembunyi"&$tabel==="admin1"):?>
+      <?php	if( $row["status"]==="tersembunyi"&$tabel==="admin"):?>
 
       <p class="article-text" style="color:red;">Postingan ini tersembunyi</p>
       <?php	endif;?>
@@ -284,7 +284,7 @@ if(isset($_POST["komentar"])){
             <?php	endif;?>
 
             <button class="share-button">
-            <?php	if( $tabel==="admin1"):?>
+            <?php	if( $tabel==="admin"):?>
               <?php	if( $row["status"]!="tersembunyi"):?>
             <a href="hidepostingan.php?id=<?=$row["id"];?>" style="color:gray;">Sembunyikan</a>         
              <?php	endif;?>
@@ -350,7 +350,7 @@ if(isset($_POST["komentar"])){
       <a href="#">
         <h3 class="article-title"><?=$row["konten"];?></h3>
       </a>
-      <?php	if( $row["status"]==="tersembunyi"&$tabel==="admin1"):?>
+      <?php	if( $row["status"]==="tersembunyi"&$tabel==="admin"):?>
 
       <p class="article-text" style="color:red;">Postingan ini tersembunyi</p>
       <?php	endif;?>
@@ -371,7 +371,7 @@ if(isset($_POST["komentar"])){
             </button>
             <?php	endif;?>
             <button class="share-button">
-            <?php	if( $tabel==="admin1"):?>
+            <?php	if( $tabel==="admin"):?>
               <?php	if( $row["status"]!="tersembunyi"):?>
             <a href="hidepostingan.php?id=<?=$row["id"];?>" style="color:gray;">Sembunyikan</a>         
              <?php	endif;?>        
@@ -434,7 +434,7 @@ $komentar = query("SELECT * FROM komentar WHERE id_postingan='$id'");//jumlah se
                 // //var_dump($adm);
                 $id=$row['id'];
                 ?>
-<?php	if( $row4["status"]==="tampil"|$row4["status"]==="tersembunyi"&$tabel==="admin1"):?>
+<?php	if( $row4["status"]==="tampil"|$row4["status"]==="tersembunyi"&$tabel==="admin"):?>
 
 <div class="komentar">
 <article class="article-card-komentar" >
@@ -453,7 +453,7 @@ $komentar = query("SELECT * FROM komentar WHERE id_postingan='$id'");//jumlah se
       <a href="#">
         <h3 class="article-title"><?=$row4['konten'];?></h3>
       </a>
-      <?php	if( $row4["status"]==="tersembunyi"&$tabel==="admin1"):?>
+      <?php	if( $row4["status"]==="tersembunyi"&$tabel==="admin"):?>
 
         <p class="article-text" style="color:red;">Komentar ini tersembunyi</p>
         <?php	endif;?>
@@ -476,7 +476,7 @@ $komentar = query("SELECT * FROM komentar WHERE id_postingan='$id'");//jumlah se
             </button>
       <?php	endif;?>
             <button class="share-button">
-            <?php	if( $tabel==="admin1"):?>
+            <?php	if( $tabel==="admin"):?>
               <?php	if( $row["status"]!="tersembunyi"):?>
                 <?php	if( $row4["status"]!="tersembunyi"):?>
                 <a href="hidekomentar.php?id=<?=$row4["id_komentar"];?>" style="color:gray;">Sembunyikan</a>             

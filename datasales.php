@@ -11,20 +11,12 @@ $username=$_GET["username"];
 require'..\ppl\config\functions.php';
 
 //  PAGINATION
-$jumlahadataperhalaman = 2 ; //jumlah data/halaman
-$jumlahdata = count(query("SELECT * FROM sales"));//jumlah seluruh data
-$jumlahhalaman = ceil($jumlahdata/$jumlahadataperhalaman);//hasil diulatkan keatas
-$halamanaktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1 ; //ternari,
 
-//halaman =2,awaldata =2
-//halaman =3, awawldata=4
-//menentukan data pertama di tiap halaman
-$awaldata = ($jumlahadataperhalaman*$halamanaktif)-$jumlahadataperhalaman;
 
-$sales = query("SELECT * FROM sales ORDER BY id DESC LIMIT $awaldata,$jumlahadataperhalaman");//ASC urut id membesar, DESC mengecil,
+$sales = query("SELECT * FROM sales ORDER BY id DESC ");//ASC urut id membesar, DESC mengecil,
 
 //limit membuat batasan data  yang ditampilkan index ke berapa,berapa data
-//  ambil data dari database tabel admin1 / query
+//  ambil data dari database tabel admin / query
 
 // tombol cari di klik
 if(isset( $_POST["cari"])){
@@ -92,7 +84,7 @@ if(isset( $_POST["cari"])){
                            	
                        
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="indexadmin1.php?username=<?= $username;?>">Kembali</a></li> 
+                            <li class="scroll-to-section"><a href="indexadmin.php?username=<?= $username;?>">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -136,39 +128,6 @@ if(isset( $_POST["cari"])){
 
 
 
-<div style="font-family: arial;
-  font-size: 20px;
-
-  /* Center child horizontally*/
-  display: flex;
-  justify-content: center;">
-
-  <div style="width: auto;
-  height:20px;     
-  ">
-    <?php	if($halamanaktif>1):?>
-        <a href="?halaman=<?=$halamanaktif -1; ?> ">&laquo;</a>
-    <?php	endif;?>
-    <br>
-
-    <?php for ( $i = 1 ; $i <= $jumlahhalaman; $i ++):?>
-
-        <?php	if($i == $halamanaktif):?>
-        <a href="?halaman=<?= $i ; ?>" style="font-weight:bold; color:black;"> <?php echo$i	?></a>
-        <?php	else:?>
-        <a href="?halaman=<?= $i ; ?>"> <?php echo$i	?></a>
-        <?php	endif;?>
-
-    <?php endfor; ?>
-    <?php	if($halamanaktif < $jumlahhalaman):?>
-        <a href="?halaman=<?=$halamanaktif +1; ?> ">&raquo;</a>
-    <?php	endif;?>
-  </div>
-</div>
-<br>
-<br>
-
-<div style="margin:30px;margin-top:0px;overflow-x:auto;">
 
 <table border="1" cellpadding="10" cellspacing="0">
 <tr>

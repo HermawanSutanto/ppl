@@ -3,10 +3,10 @@ require'..\ppl\config\functions.php';
 
 
 $username=$_GET["username"];
-$tabel='admin1';
+$tabel='admin';
 if(isset($_POST["register"])){
 
-    if (registrasi($_POST)>0){
+    if (pendaftaranAdmin($_POST)>0){
         echo "<script>
         alert('user baru berhasil ditambahkan!');
         </script>";

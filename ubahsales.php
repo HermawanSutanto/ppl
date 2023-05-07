@@ -39,7 +39,7 @@ if(isset($_POST["submit"])){
 			";
 		}
 	// }
-	// elseif ($tabel='admin1'){
+	// elseif ($tabel='admin'){
 
 	// 	if (ubahsales($_POST)>0){
 			
