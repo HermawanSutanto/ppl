@@ -208,7 +208,7 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                                 <div class="phone">
                                     <i class="fa fa-phone"></i>
                                     <h4>Contact Person</h4>
-                                    <span><a href="#">0895-3672-35621</a><br><a href="#">0881-989-1602</a></span>
+                                    <span><a href="https://wa.me/62895367235621">0895-3672-35621</a><br><a href="https://wa.me/68819891602">0881-989-1602</a></span>
                                 </div>
                             </div>
                             <div class="col-lg-6">
