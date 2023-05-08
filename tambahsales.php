@@ -24,7 +24,7 @@ if(isset($_POST["register"])){
     }
 
 }
-
+$kabupaten=query("SELECT * FROM kabupaten");
 ?>
 
 <!doctype html>
@@ -102,8 +102,10 @@ if(isset($_POST["register"])){
 						  <div class="form-group mb-3">
                   <label for="kabupaten">Kabupaten :</label>
                   <select name="kabupaten" id="kabupaten"required>
-                          <option value="">pilih Kabupaten</option><option value="1">jember</option>
-                          <option value="2">Banyuwangi</option>
+				  <option value="">pilih Kabupaten</option>
+						  <?php	foreach($kabupaten as $row):?> 
+						  <option value="<?= $row['id_kabupaten']?>"><?= $row['nama_kabupaten']?></option>
+						  <?php	endforeach;?>
                   </select>
                 <div class="form-group mb-3">
                   <label for="jeniskelamin">Jenis Kelamin :</label>

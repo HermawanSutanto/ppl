@@ -32,6 +32,13 @@ if (mysqli_fetch_assoc($result)){
 }
 
 $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
+$tabel2 = query("SELECT * FROM $tabel WHERE username='$username'")[0];
+$id_kabupaten=$tabel2['kabupaten'];
+$kabupaten1=query("SELECT * FROM kabupaten WHERE id_kabupaten='$id_kabupaten'")[0];
+$kodeprovinsi=$kabupaten1['kode_provinsi'];
+$namakabupaten=$kabupaten1['nama_kabupaten'];
+$provinsi=query("SELECT * FROM provinsi WHERE kode_provinsi='$kodeprovinsi'")[0];
+$namaprovinsi=$provinsi['nama_provinsi'];
 
 ?>
 
@@ -145,15 +152,30 @@ $tabel1 = query("SELECT * FROM $tabel WHERE username='$username'");
                                 <table style="margin-top:-10px;width:600px;">
                                 <?php	if(array_search($satuan, $row)=="password"| array_search($satuan, $row)=="id"| array_search($satuan, $row)=="fotoprofil"):?>
                                     <?php	else:?>
+                                       
+                                        
                                         <tr >
-                                            <td style="width:200px;"><?php echo array_search($satuan, $row);?> <?php	if($satuan==='Aktif'):?> Membership<?php endif;?>
+                                            <td style="width:200px;"><?php echo array_search($satuan, $row);?> 
+                                            <?php if($satuan==='Aktif'):?> Membership<?php endif;?>
                                             </td>
                                             <td style="width:20px;">:</td>
-                                            <td <?php	if($satuan==='Aktif'):?> style="background-color:#e3b04b;"<?php endif;?>><?= $satuan;?></td>
-                                        </tr>
+                                            <td <?php	if($satuan==='Aktif'):?> style="background-color:#e3b04b;"<?php endif;?>>
+                                                <?php	if(array_search($satuan, $row)=="kabupaten"):?>
+                                                    <?= $namakabupaten;?>
+                                                    <?php else:?>
+                                                    <?= $satuan;?>
+                                                <?php endif;?></td>
+                                        
                                         <br>
+                                        </tr>
                                     <?php	endif;?>
                                 <?php	endforeach;?>
+                                            <td style="width:200px;">Provinsi</td>
+                                            <td style="width:20px;">:</td>
+                                            <td ><?= $namaprovinsi;?></td>
+
+                                            
+                                        
                                 </table>
 
                             <?php	endforeach;?>

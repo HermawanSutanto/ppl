@@ -41,7 +41,10 @@ if(isset($_POST["submit"])){
     }
 
 }
-
+$kabupaten=query("SELECT * FROM kabupaten");
+$id_kabupaten=$adm['kabupaten'];
+$kabupaten1=query("SELECT * FROM kabupaten WHERE id_kabupaten='$id_kabupaten'")[0];
+$namakabupaten=$kabupaten1['nama_kabupaten'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -118,9 +121,13 @@ if(isset($_POST["submit"])){
 			      		</div>
 				<div class="form-group mb-3">
                   <label for="kabupaten">Kabupaten :</label>
+				  <?=var_dump($adm['nama']);?>
+						  <?=$namakabupaten;?>
                   <select name="kabupaten" id="kabupaten"required>
-                          <option value="<?=$adm["kabupaten"]?>"><?=$adm["kabupaten"]?></option><option value="1">jember</option>
-                          <option value="2">Banyuwangi</option>
+                          <option value="<?=$adm['kabupaten']?>"><?= $namakabupaten?></option>
+						  <?php	foreach($kabupaten as $row):?> 
+						  <option value="<?= $row['id_kabupaten']?>"><?= $row['nama_kabupaten']?></option>
+						  <?php	endforeach;?>
                   </select>
                 <div class="form-group mb-3">
                   <label for="jeniskelamin">Jenis Kelamin :</label>
