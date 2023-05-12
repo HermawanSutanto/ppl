@@ -75,7 +75,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" >Trend Pasar</a></li>
+                            <li class="scroll-to-section"><a href="trendpasar.php" >Trend Pasar</a></li>
                             <li class="scroll-to-section"><a href="komunitas.php">Komunitas</a></li> 
                            	
                     

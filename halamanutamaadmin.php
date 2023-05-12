@@ -78,7 +78,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="daftarmodul.php" >Modul</a></li>
-                            <li class="scroll-to-section"><a href="#about">Trend Harga Pasar</a></li>
+                            <li class="scroll-to-section"><a href="trendpasar.php">Trend Harga Pasar</a></li>
                            	
                         
                             <li class="submenu">
