@@ -74,7 +74,7 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="komunitas.php" >Komunitas</a></li>
-                            <li class="scroll-to-section"><a href="#about">Katalog Produk</a></li>
+                            <li class="scroll-to-section"><a href="daftarproduk.php">Katalog Produk</a></li>
 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                         <li class="submenu">

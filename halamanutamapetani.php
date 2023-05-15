@@ -77,6 +77,8 @@ https://templatemo.com/tm-558-klassy-cafe
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="trendpasar.php" >Trend Pasar</a></li>
                             <li class="scroll-to-section"><a href="komunitas.php">Komunitas</a></li> 
+                            <li class="scroll-to-section"><a href="daftarproduk.php">Katalog Produk</a></li> 
+
                            	
                     
                         <li class="scroll-to-section"><a href="daftarmodul.php">Modul</a></li>

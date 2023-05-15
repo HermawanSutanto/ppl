@@ -156,6 +156,14 @@ frameborder="0" width="400px" height="225px"
 ></iframe></td>
 <td><?= $row["narasumber"];	?></td>
 
+
+<?php	
+$id_admin=$row["id_admin"];
+$admin = query("SELECT * FROM admin WHERE id='$id_admin'")[0];
+$nama_admin=$admin['nama'];
+?>
+<td><?= $nama_admin;	?></td>
+
 </tr>
 <?php $i++?>
 <?php	endforeach; ?>

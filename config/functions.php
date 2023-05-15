@@ -105,6 +105,27 @@ function hapuskomentar($id){
     return mysqli_affected_rows($conn);
 
 }
+function hapusproduk($id){
+    global $conn;
+    mysqli_query($conn,"DELETE FROM produk WHERE id_produk = $id ");
+    mysqli_query($conn,"DELETE FROM wishlistpetani WHERE id_produk = $id ");
+    return mysqli_affected_rows($conn);
+
+}
+function hapuswishlist($id){
+    global $conn;
+    $wishlist = query("SELECT * FROM 
+    wishlistpetani WHERE id_wishlist = '$id'")[0];
+    $id_produk=$wishlist['id_produk'];
+
+    $querry = "UPDATE produk SET 
+    wishlist = -1
+    WHERE id_produk = $id_produk";
+    mysqli_query($conn,$querry);
+    mysqli_query($conn,"DELETE FROM wishlistpetani WHERE id_wishlist = $id ");
+    return mysqli_affected_rows($conn);
+
+}
 
 
 function ubah($data){
@@ -1089,4 +1110,151 @@ function gambarprofilkomunitas($data){
         
     }
 }
+
+function tambahproduk($data){
+    // vmbil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $namaproduk = htmlspecialchars($data["nama_produk"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
+    $jumlahstok = htmlspecialchars($data["jumlah_stok"]);
+
+    $username = htmlspecialchars($data["username"]);
+    // upload gambar/modul  
+
+    $gambarproduk= uploadgambarproduk();
+    if (!$gambarproduk) {
+        return false;
+    }
+
+    
+    mysqli_query($conn,"INSERT INTO produk
+   Values
+   ('','$namaproduk','$gambarproduk','$deskripsi','$jumlahstok',
+   0,'$username')
+   ");
+    // tambah user baru ke database
+    return mysqli_affected_rows($conn);
+
+
+}
+
+function tambahwishlist($data){
+    // vmbil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id_produk = htmlspecialchars($data["id_produk"]);
+    $id_petani = htmlspecialchars($data["id_petani"]);
+    $id_sales = htmlspecialchars($data["id_sales"]);
+     
+    $result = mysqli_query($conn,"SELECT id_produk FROM 
+    wishlistpetani WHERE id_petani = '$id_petani'");
+    if (mysqli_fetch_assoc($result)){
+        echo"<script>
+        alert('produk sudah ada di wihslist');
+        </script>";
+        return false;
+    }
+
+
+    mysqli_query($conn,"INSERT INTO wishlistpetani
+   Values
+   ('','$id_produk','$id_petani','$id_sales')
+   ");
+    $querry = "UPDATE produk SET 
+    wishlist = +1
+    WHERE id_produk = $id_produk";
+    //tambah user baru ke database
+
+    mysqli_query($conn,$querry);
+    // tambah user baru ke database
+    return mysqli_affected_rows($conn);
+
+
+}
+
+
+function ubahproduk($data){
+    // vambil data dari tiap elemen form
+    global $conn;
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    var_dump($data);
+    $id = $data["id_produk"];
+    $namaproduk = htmlspecialchars($data["nama_produk"]);
+    $deskripsi = htmlspecialchars($data["deskripsi"]);
+    $jumlahstok = htmlspecialchars($data["jumlah_stok"]);
+    $username = htmlspecialchars($data["username"]);
+    // upload gambar/modul  
+    $gambarproduklama = htmlspecialchars($data["gambarlama"]);
+
+// cek user memilih gambar baru apa nda
+    if($_FILES['gambarproduk']['error']===4){
+        $gambarproduk = $gambarproduklama;
+    }else{
+        $gambarproduk= uploadgambarproduk();
+
+    }
+    
+    $querry = "UPDATE produk SET 
+                    nama_produk = '$namaproduk',
+                    deskripsi ='$deskripsi',
+                    gambar = '$gambarproduk',
+                    jumlah_stok = '$jumlahstok',
+                    username = '$username'
+                    WHERE id_produk = $id";
+     //tambah user baru ke database
+
+     mysqli_query($conn,$querry);
+     return mysqli_affected_rows($conn);
+
+}
+function uploadgambarproduk(){
+
+    $namafile = $_FILES['gambarproduk']['name'];
+    $ukuranfile=$_FILES['gambarproduk']['size'];
+    $error=$_FILES['gambarproduk']['error'];
+    $tmpName=$_FILES['gambarproduk']['tmp_name'];
+
+    if ( $error === 4 ){
+        echo"<script/>
+        alert ('pilih gambar terlebih dahulu');
+        </script/>";
+        return false;
+    }
+
+    // cek apakah yang diupload adalah gambar
+    $typegambarvalid = ['jpg','jpeg','png'];
+    $ekstensigambar = explode('.',$namafile);
+    $ekstensigambar = strtolower(end($ekstensigambar));
+    if( !in_array($ekstensigambar,$typegambarvalid)){
+        echo"<script/>
+        alert ('yang anda upload bukan gambar');
+        </script/>";
+        return false;
+    }
+    // cek ukuran 
+    if ($ukuranfile > 100000000){
+        echo"<script/>
+        alert ('ukuran gambar terlalu besar');
+        </script/>";
+        return false;
+
+    }
+    // lolos pengecaekan gambar , siap diupload
+    //generate nama baru
+    $namafilebaru = uniqid();
+    $namafilebaru .= '.';
+    $namafilebaru .= $ekstensigambar;
+    //var_dump($namafilebaru);
+    move_uploaded_file($tmpName,'produk/gambar/'.$namafilebaru);
+
+    return $namafilebaru;   
+}
+
+
+
+
  ?>
