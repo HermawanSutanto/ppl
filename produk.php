@@ -16,7 +16,7 @@ $petani = query("SELECT * FROM
 petani WHERE username = '$username'")[0];
 $idpetani=$petani['id'];
 $wishlist = mysqli_query($conn,"SELECT * FROM 
-wishlistpetani WHERE id_petani = '$idpetani'");
+wishlistpetani WHERE id_produk = '$id'");
 $wishlist = mysqli_fetch_assoc($wishlist);
 
 endif;
@@ -34,8 +34,9 @@ if(isset($_POST["wishlist"])){
                 document.location.href = 'produk.php?id=$id'
             </script>
             ";
-    
         }else{
+            var_dump(tambahwishlist($_POST));
+          
             echo" <script>
             alert('gagal menambah wishlist!');
             document.location.href = 'produk.php?id=$id'
@@ -84,7 +85,7 @@ sales WHERE username = '$username2'")[0];
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
-    <link rel="stylesheet" href="design/section.css">
+    <link rel="stylesheet" href="halamanproduk.css">
 
     </head>
     
@@ -130,64 +131,82 @@ sales WHERE username = '$username2'")[0];
     
 <?php	endforeach;?>
 </div>
-<section class="section" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="left-text-content">
-                        <div class="section-heading">
-                            <h2><?= $row["nama_produk"];?></h2>
-                        </div>
-                        <p>Deskripsi:<?= $row["deskripsi"];?></p>
-                        <!-- <div class="row">
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-01.jpg" alt="">
-                            </div>
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-02.jpg" alt="">
-                            </div>
-                            <div class="col-4">
-                                <img src="assets/images/about-thumb-03.jpg" alt="">
-                            </div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-            <div >
-                <h6>gambarproduk</h6>
-                <img src="produk\gambar\<?= $row["gambar"];?>" type="" style="width:100px;height:150px;">
-                </div>
-        </div>
-    </section>
-   
-
-
 <br>
-<?php	if ($tabel=='petani'):?>
-<?php	
-    $result = mysqli_query($conn,"SELECT id_produk FROM 
-    wishlistpetani WHERE id_petani = '$idpetani'");
-    if (mysqli_fetch_assoc($result)):?>
-    <?php	else:?>
-<form action="" method="post" >
-
-<input type="hidden" name="id_produk" value="<?=$row["id_produk"];?>">
-<input type="hidden" name="id_petani" value="<?=$petani["id"];?>">
-<input type="hidden" name="id_sales" value="<?=$sales["id"];?>">  
-
-<button type="submit" name="wishlist"> masukkan wishlist</button>
-
-</form>
-    <?php	endif;?>
-<?php	
-
-$result = mysqli_query($conn,"SELECT id_produk FROM 
-    wishlistpetani WHERE id_petani = '$idpetani'");
-    if (mysqli_fetch_assoc($result)){?>
-        <button onclick="window.location.href='hapuswishlist.php?id=<?=$wishlist['id_wishlist'];?>'">hapus dari wishlist</button>
-       <?php return false;
-    }	?>
+<br>
+<br>
+<main class="container2">
+ 
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+    <img data-image="black" src="produk\gambar\<?= $row["gambar"];?>" alt="">
     
-<?php	endif;?>
+  </div>
+ 
+ 
+  <!-- Right Column -->
+  <div class="right-column">
+ 
+    <!-- Product Description -->
+    <div class="product-description">
+      <span>Produk</span>
+      <h1><?= $row["nama_produk"];?></h1>
+      <p><?= $row["deskripsi"];?></p>
+    </div>
+ 
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+ 
+      <!-- Product Color -->
+      <div class="product-color">
+      </div>
+      <!-- Cable Configuration -->
+      <div class="cable-config">
+ 
+        <a href="#">Masukkan kedalam wishlist jika anda suka!</a>
+      </div>
+    </div>
+ 
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span>stok :<?= $row["jumlah_stok"];?> </span>
+      <?php	if ($tabel=='petani'):?>
+        <?php	
+        
+        
+        
+        $result3 = mysqli_query($conn,"SELECT * FROM 
+        wishlistpetani WHERE id_produk = '$id'");
+           ;
+
+        // if ($row["id_produk"]!=$idproduk):
+        if (mysqli_fetch_assoc($result3)):?>
+        
+        <button class="cart-btn" onclick="window.location.href='hapuswishlist.php?id=<?=$wishlist['id_wishlist'];?>'" >hapus dari wishlist</button>
+
+        <?php	 else:?>
+        <form action="" method="post" >
+        <input type="hidden" name="id_produk" value="<?=$row["id_produk"];?>">
+        <input type="hidden" name="id_petani" value="<?=$petani["id"];?>">
+        <input type="hidden" name="id_sales" value="<?=$sales["id"];?>">  
+        <button class="cart-btn" type="submit" name="wishlist"> masukkan wishlist</button>
+        </form>
+        
+            
+            
+        <?php	endif;?>
+        <?php	endif;?>
+
+    </div>
+  </div>
+</main>
+
+    
+    <script src="script.js"></script>
+
+
+
+
+
+
 </body>
 </html>

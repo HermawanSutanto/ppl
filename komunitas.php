@@ -70,6 +70,7 @@ if(isset($_POST["komentar"])){
 
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +88,8 @@ if(isset($_POST["komentar"])){
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
 
     <link rel="stylesheet" href="assets/css/index.css">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
@@ -118,7 +120,7 @@ if(isset($_POST["komentar"])){
 
 
 
-<body style="background-color: #e3b04b;">
+<body style="background-color: #F0F0F0;">
 <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
@@ -133,7 +135,7 @@ if(isset($_POST["komentar"])){
                          
                         
 
-                       
+                            <li class="scroll-to-section"><a href="komunitas2.php">komunitas2</a></li> 
                             <li class="scroll-to-section"><a href="halamanutama<?= $tabel;?>.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
@@ -149,27 +151,15 @@ if(isset($_POST["komentar"])){
 <!-- navigasi jumlah halaman -->
 
 <!-- komunitas -->
-
-
-<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center" >
-				<div class="col-md-12 col-lg-10" style="padding-left:0;padding-top:100px;justify-content:center; display:flex;align-items:center; ">
-					<div class="wrap d-md-flex">
-						<div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
-			      </div>
-						<div class="login-wrap p-4 p-md-5" style="justify-content:center; display:table-cell;align-items:center; ">
-              <div style="text-align:center;justify-content:center;display:flex;"><h1 >KOMUNITAS</h1></div>
+<div class="kontainer" style="display:flex; align-items:center; justify-content:center;max-width:auto;padding-top:140px ">
+<div style="padding-top:140px;width:730px; align-items:center; justify-content:center;background-color:white;padding:40px;" >
+<div style="text-align:center;justify-content:center;display:flex;"><h1 >KOMUNITAS</h1></div>
               <br>
               <br>
 
               <br>
-
-
-
-			      	<div class="d-flex">
+			      	<div class="d-flex" style="text-align:center;">
 			      		<div class="w-100">
-       
 			      			<h3 class="mb-4">Tambah Postingan</h3>
 			      		</div>
 								
@@ -183,7 +173,7 @@ if(isset($_POST["komentar"])){
                         </div>
                     <div class="form-group mb-3">
 			      			<label class="label" for="konten">Konten</label>
-			      			<input type="text" class="form-control" name="konten" id="konten" placeholder="konten" required>
+			      			<input type="text" class="form-control" name="konten" id="konten" placeholder="konten" >
 			      		</div>
                     <div class="form-group mb-3">
                         <label for="gambar">gambar : </label><br>
@@ -196,31 +186,32 @@ if(isset($_POST["komentar"])){
 		            	<button type="submit" name="posting" class="form-control btn btn-primary rounded submit px-3" >Kirimkan</button>
                     
 		            </div>
-
+                </form >
 				</div>
-		        </form>
 
-		        
-		      </div>
-				</div>
-			</div>
-		</div>
-</section>
+</div>
+
+
+
+</div>
+
+
 
 
    
 <br>
 <div>
     <head>
-        <link rel="stylesheet" href="styleartikel.css">
+        <link rel="stylesheet" href="styleartikel1.css">
     </head>
 </div>
 
-<section class="halamanpostingan" style="background-color:#e3b04b;">
+<section class="halamanpostingan" style="background-color:#F0F0F0;">
             <?php foreach($postingan as $row) :?>
             <?php	$periksa=gambarprofilkomunitas($row['username']);
                 $usernamelist=$row['username'];
                 $tabelumum=$periksa[1];
+               
 
                 $tabel2 = mysqli_query($conn,"SELECT * FROM $tabelumum WHERE username='$usernamelist'");
 
@@ -229,7 +220,11 @@ if(isset($_POST["komentar"])){
 
                 // //var_dump($adm);
                 $id=$row['id'];
-
+                $jumlahkomen = mysqli_query($conn,"SELECT COUNT(*) FROM komentar WHERE id_postingan=$id");
+                $jumlahkomentar2 = mysqli_fetch_assoc($jumlahkomen);
+                $jumlahkomentar = $jumlahkomentar2["COUNT(*)"];
+                
+               
                 ?>
 <!-- dengan gambar -->
           <?php	if( $row["status"]==="tampil"|$row["status"]==="tersembunyi"&$tabel==="admin"):?>
@@ -240,89 +235,74 @@ if(isset($_POST["komentar"])){
 <div class="artikel">
 <article class="article-card">
 
-    <div class="img-box">
-      <img src="gambarpostingan/<?=$row["gambar"];?>" alt="" class="article-banner">
-    </div>
 
 
-    <div class="article-content">
-        <div class="author">
-            <img src="fotoprofil/<?=$adm["fotoprofil"];?>" alt="" class="author-avater" >
+  <div class="article-contentnoimage"    >
+      <div class="author">
+          <img src="fotoprofil/<?=$adm["fotoprofil"];?>" alt="" class="author-avater" >
 
-            <div class="author-info">
-                <a href="#">
-                <h4 class="author-name"><?=$adm["nama"];?></h4>
-                </a>
-                <div class="publish-date"><?=$row["tanggaldibuat"];?></div>
-            </div>
-            </div>
-      <a href="#">
-        <h3 class="article-title"><?=$row["konten"];?></h3>
-      </a>
-      <?php	if( $row["status"]==="tersembunyi"&$tabel==="admin"):?>
-
-      <p class="article-text" style="color:red;">Postingan ini tersembunyi</p>
-      <?php	endif;?>
-      <!-- <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
-        it felt slightly bare and uninviting. I’ve got some simple tips
-        to help you make any room feel complete.</p> -->
-
-      <div class="acticle-content-footer">
-
-       
-
-
-        <div class="share">
-        <?php if( $username===$row['username']):	?>
-          <button class="share-button">
-                <a href="hapuspostingan.php?id=<?=$row["id"];?>" style="color:gray;">hapus</a>         
-            </button>
-            <button class="share-button">
-                <a href="ubahpostingan.php?id=<?=$row["id"];?>" style="color:gray;">ubah</a>    
-                     
-            </button>
-            <?php	endif;?>
-
-            <button class="share-button">
-            <?php	if( $tabel==="admin"):?>
-              <?php	if( $row["status"]!="tersembunyi"):?>
-            <a href="hidepostingan.php?id=<?=$row["id"];?>" style="color:gray;">Sembunyikan</a>         
-             <?php	endif;?>
-            <?php	endif;?>
-            </button>
+          <div class="author-info">
+              <a href="#">
+              <h4 class="author-name"><?=$adm["nama"];?></h4>
+              </a>
+              <div class="publish-date"><?=$row["tanggaldibuat"];?></div>
+              
+          </div>
+          <div class="share" style="margin-right: 0px;">
+      <?php if( $username===$row['username']):	?>
+        <button class="share-button">
+              <a href="hapuspostingan.php?id=<?=$row["id"];?>" style="color:gray;">
+              <div class="material-icons">delete</div>
+            </a>         
+          </button>
+          <button class="share-button" >
+              <a href="ubahpostingan.php?id=<?=$row["id"];?>" style="color:gray;">
+              <div class="material-icons">edit</div>
+            </a>    
+                    
+          </button>
 
           
-        </div>
+          <?php	endif;?>
+
+          <?php	if( $tabel==="admin"):?>
+            <button class="share-button" > 
+            <a href="hidepostingan.php?id=<?=$row["id"];?>" style="color:gray;">
+            <?php	if( $row["status"]==="tersembunyi"&$tabel==="admin"):?>
+            <div class="material-icons" style="color:red;">visibility_off</div>
+
+            <?php	else:?>
+            <div class="material-icons">visibility_off</div>
+          <?php	endif;?>
+          <?php	endif;?>
+            </a>
+          </button>
+
         
-
       </div>
+          </div>
+    <a href="#">
+      <h3 class="article-title"><?=$row["konten"];?></h3>
       
-
+    </a>
+   
+    <div class="postgambar"><img src="gambarpostingan/<?=$row["gambar"];?>" alt="" class="article-banner">
+</div>
+    <div class="commentsection">
+    <p ><?=	 $jumlahkomentar?></p>
+             <button class="share-button" type="#">
+              <a href="komentar.php?id=<?=$row["id"];?>" style="color:gray;">
+              <div class="material-icons">chat_bubble</div>
+            </a>    
+            </button>
     </div>
     
-    <div class="tambahkomentar1" >komentar
-        
+    <!-- <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
+      it felt slightly bare and uninviting. I’ve got some simple tips
+      to help you make any room feel complete.</p> -->
+    <div class="acticle-content-footer">
     </div>
-    <form action="" class="" method="post" enctype="multipart/form-data">
-			      		<div class=>
-                            <?php foreach($tabel1 as $row3):?>
-                                
-			      			<input type="hidden" class="form-control" name="username" id="username" placeholder="Username" required value="<?=$row3["username"]?>">
-                            <?php endforeach;?>
-                        </div>
-                    <div class="" style="display:flex;">
-			      			<input type="text" class="form-control" name="konten" id="konten" placeholder="Tambahkan Komentar" required>
-                            <input type="hidden" class="form-control" name="id" id="id" placeholder="id" value="<?=$row['id'];?>">
-                            <button type="submit" name="komentar" class="" >Kirimkan</button>
-			      		</div>
-		            <div class="">
-
-		            	
-                    
-		            </div>
-				</div>
-		        </form>
-    <div> 
+  </div>    
 </div>
     
 
@@ -346,158 +326,73 @@ if(isset($_POST["komentar"])){
                 </a>
                 <div class="publish-date"><?=$row["tanggaldibuat"];?></div>
             </div>
+            <div class="share" style="margin-right: 0px;">
+      <?php if( $username===$row['username']):	?>
+        <button class="share-button">
+              <a href="hapuspostingan.php?id=<?=$row["id"];?>" style="color:gray;">
+              <div class="material-icons">delete</div>
+            </a>         
+          </button>
+          <button class="share-button" >
+              <a href="ubahpostingan.php?id=<?=$row["id"];?>" style="color:gray;">
+              <div class="material-icons">edit</div>
+            </a>    
+                    
+          </button>
+
+          
+          <?php	endif;?>
+
+
+          
+          <?php	if( $tabel==="admin"):?>
+            <?php	if( $row["status"]!="tersembunyi"):?>
+          <button class="share-button" >
+          <a href="hidepostingan.php?id=<?=$row["id"];?>" style="color:gray;">
+          <?php	endif;?>
+          <?php	if( $row["status"]==="tersembunyi"&$tabel==="admin"):?>
+            <button class="share-button" > 
+            <div class="material-icons" style="color:red;">visibility_off</div>
+
+            <?php	else:?>
+            <div class="material-icons">visibility_off</div>
+          <?php	endif;?>
+          <?php	endif;?>
+
+        </a>         
+            
+          </button>
+
+        
+      </div>
+
             </div>
       <a href="#">
         <h3 class="article-title"><?=$row["konten"];?></h3>
       </a>
-      <?php	if( $row["status"]==="tersembunyi"&$tabel==="admin"):?>
-
-      <p class="article-text" style="color:red;">Postingan ini tersembunyi</p>
-      <?php	endif;?>
+      
       <!-- <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
         it felt slightly bare and uninviting. I’ve got some simple tips
         to help you make any room feel complete.</p> -->
 
       <div class="acticle-content-footer">
-
-      <div class="share">
-
-      <?php if( $username===$row['username']):	?>
-          <button class="share-button">
-                <a href="hapuspostingan.php?id=<?=$row["id"];?>" style="color:gray;">hapus</a>         
-            </button>
-            <button class="share-button">
-            <a href="ubahpostingan.php?id=<?=$row["id"];?>" style="color:gray;">ubah</a>         
-            </button>
-            <?php	endif;?>
-            <button class="share-button">
-            <?php	if( $tabel==="admin"):?>
-              <?php	if( $row["status"]!="tersembunyi"):?>
-            <a href="hidepostingan.php?id=<?=$row["id"];?>" style="color:gray;">Sembunyikan</a>         
-             <?php	endif;?>        
-            <?php	endif;?>
-            </button>
-        
-
-
+      <div class="commentsection">
+        <p ><?= $jumlahkomentar?></p>
+        <button class="share-button" >
+                  <a href="komentar.php?id=<?=$row["id"];?>" style="color:gray;">
+                  <div class="material-icons">chat_bubble</div>
+                  </a>    
+                </button>
         </div>
-      </div>
   
     </div>
-    <div></div>
-    <div class="tambahkomentar1" >komentar
-        
-    </div>
-    <form action="" class="" method="post" enctype="multipart/form-data">
-			      		<div class=>
-                            <?php foreach($tabel1 as $row3):?>
-                                
-			      			<input type="hidden" class="form-control" name="username" id="username" placeholder="Username" required value="<?=$row3["username"]?>">
-                            <?php endforeach;?>
-                        </div>
-                    <div class="" style="display:flex;">
-			      			<input type="text" class="form-control" name="konten" id="konten" placeholder="Tambahkan Komentar" required>
-                            <input type="hidden" class="form-control" name="id" id="id" placeholder="id" value="<?=$row['id'];?>">
-                            <button type="submit" name="komentar" class="" >Kirimkan</button>
-			      		</div>
-		            <div class="">
-
-		            	
-                    
-		            </div>
-				</div>
-		        </form>
-    <div ></div>
+   </div>
 </div>
     
   </article>
 
 </div>
 <?php	endif;?>
-
-
-
-
-
-<?php	
-$id=$row['id'];
-$komentar = query("SELECT * FROM komentar WHERE id_postingan='$id'");//jumlah seluruh data
-
-?>
-<?php foreach($komentar as $row4):?>
-    <?php	$periksa=gambarprofilkomunitas($row4['username']);
-                $usernamelist=$row4['username'];
-                $tabelumum=$periksa[1];
-                $tabel2 = mysqli_query($conn,"SELECT * FROM $tabelumum WHERE username='$usernamelist'");
-
-                $adm2 = mysqli_fetch_assoc($tabel2);
-                // //var_dump($adm);
-                $id=$row['id'];
-                ?>
-<?php	if( $row4["status"]==="tampil"|$row4["status"]==="tersembunyi"&$tabel==="admin"):?>
-
-<div class="komentar">
-<article class="article-card-komentar" >
-
-    <div class="article-contentkomentar">
-        <div class="author">
-          <img src="fotoprofil/<?=$adm2['fotoprofil'];?>" alt="" class="author-avater">
-
-          <div class="author-info">
-            <a href="#">
-              <h4 class="author-name"><?=$adm2['nama'];?></h4>
-            </a>
-            <div class="publish-date"><?=$row4['tanggal'];?></div>
-          </div>
-        </div>
-      <a href="#">
-        <h3 class="article-title"><?=$row4['konten'];?></h3>
-      </a>
-      <?php	if( $row4["status"]==="tersembunyi"&$tabel==="admin"):?>
-
-        <p class="article-text" style="color:red;">Komentar ini tersembunyi</p>
-        <?php	endif;?>
-
-      <!-- <p class="article-text">Ever been in a room and felt like something was missing? Perhaps
-        it felt slightly bare and uninviting. I’ve got some simple tips
-        to help you make any room feel complete.</p> -->
-
-      <div class="acticle-content-footer">
-
-        
-
-
-      <?php if( $username===$row4['username']):	?>
-          <button class="share-button">
-                <a href="hapuskomentar.php?id=<?=$row4["id_komentar"];?>" style="color:gray;">Hapus</a>         
-            </button>
-            <button class="share-button">
-            <a href="ubahkomentar.php?id=<?=$row4["id_komentar"];?>" style="color:gray;">Ubah</a> 
-            </button>
-      <?php	endif;?>
-            <button class="share-button">
-            <?php	if( $tabel==="admin"):?>
-              <?php	if( $row["status"]!="tersembunyi"):?>
-                <?php	if( $row4["status"]!="tersembunyi"):?>
-                <a href="hidekomentar.php?id=<?=$row4["id_komentar"];?>" style="color:gray;">Sembunyikan</a>             
-                <?php	endif;?>
-              <?php	endif;?>
-                
-            <?php	endif;?>
-            </button>
-       
-      </div>
-    </div>
-    
-  </article>
-
-  
-
-
-</div>
-<?php	endif;?>
-
-<?php endforeach;?>
 <?php	endif;?>
 
 <?php	endforeach;?>
