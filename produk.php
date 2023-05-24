@@ -35,7 +35,6 @@ if(isset($_POST["wishlist"])){
             </script>
             ";
         }else{
-            var_dump(tambahwishlist($_POST));
           
             echo" <script>
             alert('gagal menambah wishlist!');
@@ -126,7 +125,6 @@ sales WHERE username = '$username2'")[0];
 
 <!-- navigasi jumlah halaman -->
 <?php foreach($result as $row) :
-    var_dump($result)
     ?>
     
 <?php	endforeach;?>

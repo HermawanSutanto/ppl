@@ -11,11 +11,15 @@ $tabel=$_SESSION["tabel"];
 if ($tabel==='sales'):
 $produksales = query("SELECT * FROM produk WHERE username='$username'");
 endif;
+
+
 if ($tabel==='petani'):
-$produksales = query("SELECT * FROM produk ORDER BY id_produk");
-$wishlist = query("SELECT * FROM wishlistpetani ORDER BY id_wishlist");
-endif;
 $petani = query("SELECT * FROM petani WHERE username='$username'");
+$id_petani = $petani[0]['id'];
+$produksales = query("SELECT * FROM produk ORDER BY id_produk");
+$wishlist = query("SELECT * FROM wishlistpetani  WHERE id_petani='$id_petani'ORDER BY id_wishlist");
+endif;
+
 
 
 ?>
@@ -141,10 +145,12 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
 </div>
 <?php	endforeach; ?>
 </div>
-<div>
+
 <?php	else:?>
+
+<section class="produkpetani" style="width:auto; display:flex; justify-content:center;">
+
 <!-- product -->
-<section class="product">
 <div class="tabs">
 <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
 <label for="tab1" class="tabs__label">katalog Produk</label>
@@ -181,6 +187,7 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
 <label for="tab2" class="tabs__label">Wishlist</label>
 <div class="tabs__content">
 <h2>Daftar Wishlist</h2>
+<section class="product">
 
 <div class="container mt-5 mb-5">
     <div class="d-flex justify-content-center row">
@@ -208,7 +215,8 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
                     </div>
                     <h6 class="text-success">Silahkan dilihat</h6>
                     <div class="d-flex flex-column mt-4">
-                    <button class="btn btn-primary btn-sm" type="button" > <a href="produk.php?id=<?= $row["id_produk"];	
+                    <button class="btn btn-primary btn-sm" type="button" onclick="location.href='produk.php?id=<?= $row3["id_produk"];	
+                    ?>'"> <a href="produk.php?id=<?= $row3["id_produk"];	
                     ?>" style="color:white;">lihat</a> </button>
                     </div>
                 </div>
@@ -221,6 +229,10 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
 </div>
 
 </div>
+
+
+</section>
+
 
 
 <?php	endif; ?>

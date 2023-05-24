@@ -105,5 +105,7 @@ html, body {
     background-color: #64af3d;
   }
 
-  
+  .containerproduk{
+     width:fit-content;
+  }
   

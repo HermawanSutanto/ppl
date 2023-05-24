@@ -133,7 +133,6 @@ if(isset( $_POST["cari"])){
 <tr>
     <!-- kop tabel-->
     <th>No.</th>
-    <th>Aksi</th>
     <th>Nama</th>
     <th>Email</th>
     <th>NomorHp</th>
@@ -147,10 +146,7 @@ if(isset( $_POST["cari"])){
 <?php foreach($sales as $row) :?>
 <tr>
     <td><?= $i?></td>
-    <td style="width:150px; opacity:0;">
-        <a href="hapussales.php?id=<?= $row["id"];	
-    ?>&username=<?= $username?> onclick="return confirm('yakin akan menghapus?')">hapus</a>
-    </td>
+   
     <td><?= $row["nama"];	?></td>
     <td><?= $row["email"];	?></td>
     <td><?= $row["nomorhp"];	?></td>
