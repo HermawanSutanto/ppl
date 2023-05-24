@@ -39,9 +39,7 @@ $kodeprovinsi=$kabupaten1['kode_provinsi'];
 $namakabupaten=$kabupaten1['nama_kabupaten'];
 $provinsi=query("SELECT * FROM provinsi WHERE kode_provinsi='$kodeprovinsi'")[0];
 $namaprovinsi=$provinsi['nama_provinsi'];
-var_dump($id_kabupaten);
-var_dump($kabupaten1);
-var_dump($provinsi);
+
 
 
 ?>

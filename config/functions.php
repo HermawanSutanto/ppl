@@ -119,7 +119,7 @@ function hapuswishlist($id){
     $id_produk=$wishlist['id_produk'];
     $jumlahwishlistsekarang=query("SELECT wishlist FROM 
     produk WHERE id_produk = '$id_produk'")[0];
-    var_dump($jumlahwishlistsekarang);
+   // var_dump($jumlahwishlistsekarang);
     $hasil=$jumlahwishlistsekarang["wishlist"]-1;
     
     $querry = "UPDATE produk SET 
@@ -1187,7 +1187,7 @@ function ubahproduk($data){
     global $conn;
     // html special char agar kode html yang diinputkan tidak berjalan
     // ndak wajib se, cuman buat keamanan
-    var_dump($data);
+    //var_dump($data);
     $id = $data["id_produk"];
     $namaproduk = htmlspecialchars($data["nama_produk"]);
     $deskripsi = htmlspecialchars($data["deskripsi"]);

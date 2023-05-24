@@ -117,7 +117,7 @@ $sales = mysqli_fetch_assoc($sales);
 <form action="" method="post" enctype="multipart/form-data">
     
     <ul>
-        <?php	var_dump($sales["username"]);?>
+        <?php	//var_dump($sales["username"]);?>
             <li>
                 <label for="nama_produk">Nama Produk : </label>
                 <input type="text" name="nama_produk" id="nama_produk"required>
