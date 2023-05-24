@@ -135,9 +135,7 @@ $namakabupaten=$kabupaten1['nama_kabupaten'];
                           <option value="Perempuan">Perempuan</option>
                   </select>
                 </div>
-                
-
-
+            
 		            <div class="form-group">
 		            	<button type="submit" name="submit" class="form-control btn btn-primary rounded submit px-3" >Ubah Data</button>
                     

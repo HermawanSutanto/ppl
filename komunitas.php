@@ -135,7 +135,6 @@ if(isset($_POST["komentar"])){
                          
                         
 
-                            <li class="scroll-to-section"><a href="komunitas2.php">komunitas2</a></li> 
                             <li class="scroll-to-section"><a href="halamanutama<?= $tabel;?>.php">Kembali</a></li> 
                         </ul>        
                         <a class='menu-trigger'>
