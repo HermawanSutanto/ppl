@@ -122,12 +122,15 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
                     <div class="d-flex flex-column mt-4">
 
                     <?php	if ($tabel==='sales'):?>
-                    <button class="btn btn-primary btn-sm" type="button"style="margin-bottom:10px;" ><a href="ubahproduk.php?id=<?= $row["id_produk"];	
+                    <button class="btn btn-primary btn-sm" type="button"style="margin-bottom:10px;" onclick="location.href='ubahproduk.php?id=<?= $row["id_produk"];	
+                    ?>'" ><a href="ubahproduk.php?id=<?= $row["id_produk"];	
                     ?>" style="color:white;">ubah</a></button>
-                    <button class="btn btn-primary btn-sm" type="button" style="margin-bottom:10px;" > <a href="hapusproduk.php?id=<?= $row["id_produk"];	
-                    ?>" onclick="return confirm('yakin akan menghapus?')" style="color:white;">hapus</a></button>
+                    <button class="btn btn-primary btn-sm" type="button" style="margin-bottom:10px;" onclick="return confirm('yakin akan menghapus?'),location.href='hapusproduk.php?id=<?= $row["id_produk"];	
+                    ?>'" > <a href="hapusproduk.php?id=<?= $row["id_produk"];	
+                    ?>"  style="color:white;">hapus</a></button>
                     <?php	endif;?>
-                    <button class="btn btn-primary btn-sm" type="button" > <a href="produk.php?id=<?= $row["id_produk"];	
+                    <button class="btn btn-primary btn-sm" type="button" onclick="location.href='produk.php?id=<?= $row["id_produk"];	
+                    ?>'"> <a href="produk.php?id=<?= $row["id_produk"];	
                     ?>" style="color:white;">lihat</a> </button>
                     </div>
                 </div>
