@@ -121,7 +121,7 @@ $namakabupaten=$kabupaten1['nama_kabupaten'];
 			      		</div>
 				<div class="form-group mb-3">
                   <label for="kabupaten">Kabupaten :</label>
-						  <?=$namakabupaten;?>
+						  
                   <select name="kabupaten" id="kabupaten"required>
                           <option value="<?=$adm['kabupaten']?>"><?= $namakabupaten?></option>
 						  <?php	foreach($kabupaten as $row):?> 
