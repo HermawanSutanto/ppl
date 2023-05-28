@@ -67,13 +67,14 @@
   }
   
   .artikel {
+    
     margin: auto;
     position: relative;
     max-height: auto;
     display:         flex;
     justify-content: center;
     align-items:     center;
-    padding: 20px;
+    
   }
   .komentar {
     display:         flex;
@@ -135,12 +136,17 @@
     background: var(--white);
     padding: 32px 40px;
     border-radius: 0 10px 10px 0;
+    border-bottom-color:red ;
   }
   .article-contentnoimage {
     width: 730px;
+    margin: auto;
+    border-bottom:gray;
+    border-bottom-style: solid;
     background: var(--white);
     padding: 32px 40px;
     border-radius: 0 10px 10px 0;
+    
   }
   .article-contentkomentar {
     width: 690px;
