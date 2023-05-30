@@ -13,7 +13,7 @@ if (isset($_POST["tambah"])) {
     if (tambahproduk($_POST) > 0) {
         echo " <script>  
         alert('produk baru berhasil ditambahkan!');
-       document.location.href = 'daftarproduk.php'
+       document.location.href = 'katalogproduk.php'
        </script>
         ";
     } else {
@@ -84,7 +84,7 @@ $sales = mysqli_fetch_assoc($sales);
 
 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="daftarproduk.php">Kembali</a></li>
+                            <li class="scroll-to-section"><a href="katalogproduk.php">Kembali</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
