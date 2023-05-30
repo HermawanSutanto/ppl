@@ -82,7 +82,7 @@ if (isset($_POST["komentar"])) {
   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
   <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
-
+  <link rel="stylesheet" href="assets/css/lightbox.css">
   <link rel="stylesheet" href="assets/css/index.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/owl-carousel.css">
@@ -176,7 +176,7 @@ if (isset($_POST["komentar"])) {
   <div>
 
     <head>
-      <link rel="stylesheet" href="styleartikel1.css">
+      <link rel="stylesheet" href="styleartikel.css">
     </head>
   </div>
 
@@ -203,9 +203,6 @@ if (isset($_POST["komentar"])) {
 
           <div class="artikel" style="background-color: aqua;">
             <article class="article-card">
-
-
-
               <div class="article-contentnoimage">
                 <div class="author">
                   <img src="fotoprofil/<?= $adm["fotoprofil"]; ?>" alt="" class="author-avater">

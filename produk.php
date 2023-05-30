@@ -15,7 +15,7 @@ if ($tabel == 'petani') :
 petani WHERE username = '$username'")[0];
     $idpetani = $petani['id'];
     $wishlist = mysqli_query($conn, "SELECT * FROM 
-wishlistpetani WHERE id_petani = '$idpetani'");
+wishlistpetani WHERE id_petani = '$idpetani' AND id_produk='$id'");
     $wishlist = mysqli_fetch_assoc($wishlist);
 
 endif;
@@ -93,7 +93,7 @@ sales WHERE username = '$username2'")[0];
 
 <body>
 
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky" style="position:sticky;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -179,7 +179,7 @@ sales WHERE username = '$username2'")[0];
                     // if ($row["id_produk"]!=$idproduk):
                     if (mysqli_fetch_assoc($result3)) : ?>
 
-                        <button class="cart-btn" onclick="window.location.href='hapuswishlist.php?id=<?= $wishlist['id_wishlist']; ?>&idpetani=<?= $idpetani ?>'">hapus dari wishlist</button>
+                        <button class="cart-btn" onclick="window.location.href='hapuswishlist.php?id=<?= $wishlist['id_wishlist']; ?>'">hapus dari wishlist</button>
 
                     <?php else : ?>
                         <form action="" method="post">

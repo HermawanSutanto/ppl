@@ -115,7 +115,7 @@ if (isset($_POST["komentar"])) {
 
 
 <body style="background-color: #F0F0F0;">
-  <header class="header-area header-sticky">
+  <header class="header-area header-sticky" style="position:sticky;">
     <div class="container">
       <div class="row">
         <div class="col-12">

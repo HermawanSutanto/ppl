@@ -232,7 +232,7 @@ header
 
 .header-area {
   background-color: #fff;
-  position: absolute;
+  position: sticky;
   top: 0px;
   left: 0px;
   right: 0px;

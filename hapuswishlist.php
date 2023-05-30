@@ -16,7 +16,7 @@ $id = $_GET["id"];
 $wishlist = query("SELECT * FROM 
     wishlistpetani WHERE id_wishlist = '$id'")[0];
 $id_produk = $wishlist['id_produk'];
-if (hapuswishlist($id, $idpetani) > 0) {
+if (hapuswishlist($id) > 0) {
     echo " <script>  
          alert('berhasil dihapus dari wishlist!');
         document.location.href = 'produk.php?id=$id_produk;'

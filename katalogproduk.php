@@ -54,7 +54,7 @@ endif;
     <title>Katalog Produk</title>
 </head>
 
-<header class="header-area header-sticky">
+<header class="header-area header-sticky" style="position:sticky;">
     <div class="container">
         <div class="row">
             <div class="col-12">

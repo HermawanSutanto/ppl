@@ -114,24 +114,26 @@ function hapusproduk($id)
     mysqli_query($conn, "DELETE FROM wishlistpetani WHERE id_produk = $id ");
     return mysqli_affected_rows($conn);
 }
-function hapuswishlist($id, $idpetani)
+function hapuswishlist($id)
 {
     global $conn;
     var_dump($id);
-    var_dump($idpetani);
-    $wishlist = query("SELECT * FROM 
-    wishlistpetani WHERE id_wishlist = '$id'")[0];
+
+    $wishlist = mysqli_query($conn, "SELECT * FROM 
+    wishlistpetani WHERE id_wishlist = '$id'");
+    $wishlist = mysqli_fetch_assoc($wishlist);
     $id_produk = $wishlist['id_produk'];
     $jumlahwishlistsekarang = query("SELECT wishlist FROM 
-    produk WHERE id_produk = '$id_produk' ")[0];
+    produk WHERE id_produk = '$id_produk' ");
     // var_dump($jumlahwishlistsekarang);
-    $hasil = $jumlahwishlistsekarang["wishlist"] - 1;
+    $hasil = $jumlahwishlistsekarang[0]['wishlist'] - 1;
+
 
     $querry = "UPDATE produk SET 
     wishlist = '$hasil'
     WHERE id_produk = $id_produk";
     mysqli_query($conn, $querry);
-    mysqli_query($conn, "DELETE FROM wishlistpetani WHERE id_wishlist = $id AND id_petani='$idpetani'");
+    mysqli_query($conn, "DELETE FROM wishlistpetani WHERE id_wishlist = $id ");
     return mysqli_affected_rows($conn);
 }
 
