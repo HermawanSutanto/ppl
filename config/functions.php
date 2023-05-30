@@ -1259,8 +1259,3 @@ function uploadgambarproduk(){
 
     return $namafilebaru;   
 }
-
-
-
-
- ?>
