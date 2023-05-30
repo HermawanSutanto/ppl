@@ -8,24 +8,26 @@ if (!isset($_SESSION["login"])) {
 }
 
 
+
 $username = $_SESSION["username"];
 $tabel = $_SESSION["tabel"];
+
+
 
 $id = $_GET["id"];
 $komentar = mysqli_query($conn, "SELECT * FROM komentar WHERE id_komentar='$id'");
 $idpostingan = mysqli_fetch_assoc($komentar);
 $id_postingan = $idpostingan['id_postingan'];
 
-
-if (hidekomentar($id) > 0) {
+if (showkomentar($id) > 0) {
 
     echo " <script>
-        alert('Komentar ini telah disembunyikan!');
+        alert('Komentar ini telah ditampilkan!');
         document.location.href = 'komentar.php?id=$id_postingan'
         </script>";
 } else {
     echo " <script>
-        alert('Komentar ini gagal disembunyikan!');
+        alert('Komentar ini gagal ditampilkan!');
         document.location.href = 'komentar.php?id=$id_postingan'
         </script>";
 }

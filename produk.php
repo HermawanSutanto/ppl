@@ -34,7 +34,7 @@ if (isset($_POST["wishlist"])) {
             </script>
             ";
     } else {
-
+        var_dump($_POST["wishlist"]);
         echo " <script>
             alert('gagal menambah wishlist!');
             document.location.href = 'produk.php?id=$id'

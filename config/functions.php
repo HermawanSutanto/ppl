@@ -992,6 +992,27 @@ function hidekomentar($data)
     mysqli_query($conn, $querry);
     return mysqli_affected_rows($conn);
 }
+function showkomentar($data)
+{
+    // vmbil data dari tiap elemen form
+    global $conn;
+
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+
+    //var_dump($data);
+    $id = $data;
+    // upload gambar/modul  
+    // cek user memilih gambar baru apa nda
+
+    // tambah user baru ke database
+    $querry = "UPDATE komentar SET 
+                    status = 'tampil'
+                    WHERE id_komentar = $id";
+    //tambah user baru ke database
+    mysqli_query($conn, $querry);
+    return mysqli_affected_rows($conn);
+}
 function hidepostingan($data)
 {
     // vmbil data dari tiap elemen form
@@ -1006,6 +1027,25 @@ function hidepostingan($data)
     // tambah user baru ke database
     $querry = "UPDATE postingan SET 
                     status = 'tersembunyi'
+                    WHERE id = $id";
+    //tambah user baru ke database
+    mysqli_query($conn, $querry);
+    return mysqli_affected_rows($conn);
+}
+function showpostingan($data)
+{
+    // vmbil data dari tiap elemen form
+    global $conn;
+
+    // html special char agar kode html yang diinputkan tidak berjalan
+    // ndak wajib se, cuman buat keamanan
+    $id = $data;
+    // upload gambar/modul  
+    // cek user memilih gambar baru apa nda
+
+    // tambah user baru ke database
+    $querry = "UPDATE postingan SET 
+                    status = 'tampil'
                     WHERE id = $id";
     //tambah user baru ke database
     mysqli_query($conn, $querry);

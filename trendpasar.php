@@ -62,7 +62,7 @@ $tabel = $_SESSION["tabel"];
 
 <body>
 
-    <header class="header-area header-sticky">
+    <header class="header-area header-sticky" style="position: sticky;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -97,18 +97,18 @@ $tabel = $_SESSION["tabel"];
         <section class="ftco-section">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-12 col-lg-10" style="padding-left:0;padding-top:100px;justify-content:center; display:flex;align-items:center; ">
+                    <div class="col-md-12 col-lg-10" style="padding-left:0;justify-content:center; display:flex;align-items:center; ">
                         <div class="wrap d-md-flex">
                             <div class="img" style="background-image: url(assets/images/pexels-tomas-anunziata-3876417.jpg);">
                             </div>
-                            <div class="login-wrap p-4 p-md-5" style="justify-content:center; display:table-cell;align-items:center; ">
-                                <div style="text-align:center;justify-content:center;display:flex;">
+                            <div class="login-wrap p-4 p-md-5" style="justify-content:center; display:flex;align-items:center;">
+                                <div style="text-align:center;justify-content:center;display:absolute;">
                                     <h1>Trend Pasar</h1>
                                 </div>
                                 <br>
                                 <br>
                                 <br>
-                                <iframe class="trend" src="https://siskaperbapo.jatimprov.go.id/harga/tabel" frameborder="0" width="1000px" height="640px"></iframe>
+                                <iframe class="trend" src="https://siskaperbapo.jatimprov.go.id/harga/tabel" style="position:absolute;margin-top:400px;clip:rect(230px,1200px,1000px,0px);width:1000px;height:720px;"></iframe>
 
 
                             </div>

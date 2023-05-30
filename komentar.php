@@ -158,19 +158,11 @@ if (isset($_POST["komentar"])) {
                 <h1>KOMUNITAS</h1>
               </div>
 
-
-
-
-
-
-
             </div>
           </div>
         </div>
       </div>
   </section>
-
-
 
   <br>
   <div>
@@ -233,15 +225,18 @@ if (isset($_POST["komentar"])) {
 
                     <?php if ($tabel === "admin") : ?>
                       <button class="share-button">
-                        <a href="hidepostingan.php?id=<?= $row["id"]; ?>" style="color:gray;">
-                          <?php if ($row["status"] === "tersembunyi" & $tabel === "admin") : ?>
-                            <div class="material-icons" style="color:red;">visibility_off</div>
 
-                          <?php else : ?>
+                        <?php if ($row["status"] === "tersembunyi" & $tabel === "admin") : ?>
+                          <a href="showpostingan.php?id=<?= $row["id"]; ?>" style="color:gray;">
+                            <div class="material-icons" style="color:red;">visibility_off</div>
+                          </a>
+                        <?php else : ?>
+                          <a href="hidepostingan.php?id=<?= $row["id"]; ?>" style="color:gray;">
                             <div class="material-icons">visibility_off</div>
-                          <?php endif; ?>
+                          </a>
                         <?php endif; ?>
-                        </a>
+                      <?php endif; ?>
+
                       </button>
 
 
@@ -317,20 +312,24 @@ if (isset($_POST["komentar"])) {
                     <?php if ($tabel === "admin") : ?>
                       <?php if ($row["status"] != "tersembunyi") : ?>
                         <button class="share-button">
-                          <a href="hidepostingan.php?id=<?= $row["id"]; ?>" style="color:gray;">
-                          <?php endif; ?>
-                          <?php if ($row["status"] === "tersembunyi" & $tabel === "admin") : ?>
-                            <button class="share-button">
+
+                        <?php endif; ?>
+                        <?php if ($row["status"] === "tersembunyi" & $tabel === "admin") : ?>
+
+                          <button class="share-button">
+                            <a href="showpostingan.php?id=<?= $row["id"]; ?>" style="color:gray;">
                               <div class="material-icons" style="color:red;">visibility_off</div>
-
-                            <?php else : ?>
+                            </a>
+                          <?php else : ?>
+                            <a href="hidepostingan.php?id=<?= $row["id"]; ?>" style="color:gray;">
                               <div class="material-icons">visibility_off</div>
-                            <?php endif; ?>
+                            </a>
                           <?php endif; ?>
+                        <?php endif; ?>
 
-                          </a>
 
-                        </button>
+
+                          </button>
 
 
                   </div>
@@ -412,7 +411,7 @@ if (isset($_POST["komentar"])) {
                             <?php endif; ?>
                           <?php endif; ?>
                           <?php if ($row4["status"] === "tersembunyi" & $tabel === "admin") : ?>
-                            <a href="" style="color:red;"><span class="material-icons">visibility_off</span></a>
+                            <a href="showkomentar.php?id=<?= $row4["id_komentar"]; ?>" style="color:red;"><span class="material-icons">visibility_off</span></a>
                           <?php endif; ?>
                       </div>
                       <div class="comment-text-sm" style="padding-top: 10px;padding-left:6px;"><span><?= $row4['konten']; ?></span></div>

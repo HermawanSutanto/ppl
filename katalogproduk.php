@@ -89,8 +89,11 @@ endif;
                     <div class="left-text-content">
                         <div class="section-heading" style="margin-bottom: 40px;">
                             <?php if ($tabel === 'sales') : ?>
+                                <button class="btn btn-primary btn-sm">
+                                    <h5 style="color:black;"><a style="font-style: unset;color:white;" href="tambahproduk.php">Tambahkan Produk</a></h5>
+                                </button>
                                 <div style="margin-top:30px;">
-                                    <h4 style="color:black;"><a style="font-style: unset;color:black;" href="tambahproduk.php">Tambahkan Produk</a></h4>
+
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -117,7 +120,7 @@ endif;
                                         <div class="ratings mr-2"><i class="fa fa-archive"> stok:</i></div><span><?= $row["jumlah_stok"]; ?></span>
                                     </div>
                                     <div class="mt-1 mb-1 spec-1"><span><?= $row["deskripsi"];    ?></span></div>
-                                    <div class="mt-1 mb-1 spec-1"></div>
+                                    <div class="mt-1 mb-1 spec-1"><span>jumlah wishlist:<?= $row["wishlist"];    ?></span></div>
                                     <p class="text-justify text-truncate para mb-0"><?= $row["username"];    ?><br><br></p>
                                 </div>
                                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
