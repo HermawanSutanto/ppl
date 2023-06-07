@@ -122,7 +122,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Main Banner Area Start ***** -->
-    <div id="top">
+    <div id="top" style="padding:0%;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-4">

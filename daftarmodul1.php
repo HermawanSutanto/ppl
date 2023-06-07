@@ -35,8 +35,6 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Cards</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
         <link rel="stylesheet" href="style.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -121,61 +119,62 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
             <br>
             <br>
             <?php if ($tabel === 'admin') : ?>
-                <div style="display:block;">
-                    <?php $i = 1 ?><!--  nomor urut -->
-                    <?php foreach ($modul as $row) : ?>
-                        <?php
-                        $id_admin = $row["id_admin"];
-                        $admin2 = mysqli_query($conn, "SELECT * FROM admin WHERE id='$id_admin'");
-                        $admin = mysqli_fetch_assoc($admin2);
-                        $nama_admin = $admin['nama'];
-                        ?>
-                        <div style="display:flex;width:1000px;margin-left:20px;margin-right:20px;margin-bottom:20px;justify-content:center;border: 2px solid whitesmoke;">
-                            <div style="width:120px;margin-left:0 ; padding:10px;object-fit:cover;">
-                                <img class="img-fluid img-responsive rounded product-image" src="modul/sampul/<?= $row["gambarsampul"]; ?>" style="object-fit:cover;width:100px;height:150px;border-radius:20px;">
-                            </div>
-                            <div style="width:600px;padding:10px;">
-                                <div style="display: flex;">
-                                    <div style="width:500px;">
-                                        <h5 style="text-align:left;font-size:20px;"><?= $row["judul"];    ?></h5>
-                                    </div>
-                                    <div style=" margin:auto;margin-right:0;width:82px;margin-top:0;">
-                                        <a href="ubahmodul.php?id=<?= $row["id"]; ?>">
-                                            <div class="material-icons" style="color:gray;">edit</div>
-                                        </a>
-                                        <a href="hapusmodul.php?id=<?= $row["id"]; ?>" onclick="return confirm('yakin akan menghapus?')">
-                                            <div class="material-icons" style="color:gray;">delete</div>
-                                        </a>
-                                        <a href="modul.php?id=<?= $row["id"]; ?>">
-                                            <div class="material-icons" style="color:gray;">file_open</div>
-                                        </a>
-
-                                    </div>
-                                </div>
-                                <div>
-                                    <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                        Deskripsi : <?= $row["deskripsi"];    ?></p>
-                                </div>
-                                <div>
-                                    <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                        Narasumber : <?= $row["narasumber"];    ?></p>
-                                </div>
-                                <div>
-                                    <p style=" white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
-                                        Pengupload : <?= $nama_admin;    ?></p>
-                                </div>
-                            </div>
-                            <div style="width:250px;background-color:white;margin-left:0 ; padding:10px;object-fit:cover;">
-                                <iframe class="fa fa-play" src="<?= $row["video"]; ?>" style="object-fit:cover;width:250px;height:150px;border-radius:20px;padding-right:10px;" frameborder="0" width="250px" height="150px"></iframe>
-
-                            </div>
-                        </div>
 
 
-                        <?php $i++ ?>
-                    <?php endforeach; ?>
-                </div>
-                <!-- <div style="display:flex ;">
+                <div style="display:table-column;">
+                    <div>
+                        <table border="1" cellpadding="10" cellspacing="0" style="width:500px;">
+                            <tr>
+                                <!-- kop tabel-->
+                                <th>No.</th>
+                                <th>Aksi</th>
+                                <th>judul</th>
+                                <th>deskripsi</th>
+                                <th>gambarsampul</th>
+                                <th>video</th>
+                                <th>narasumber</th>
+                                <th>pengupload</th>
+
+                            </tr>
+                            <?php $i = 1 ?><!--  nomor urut -->
+                            <?php foreach ($modul as $row) : ?>
+                                <tr>
+                                    <td><?= $i ?></td>
+                                    <td>
+                                        <?php if ($tabel === 'admin') : ?>
+                                            <a href="ubahmodul.php?id=<?= $row["id"];
+                                                                        ?>">ubah</a> |
+                                            <a href="hapusmodul.php?id=<?= $row["id"];
+                                                                        ?>" onclick="return confirm('yakin akan menghapus?')">hapus</a>
+                                        <?php endif; ?>
+
+                                        <a href="modul.php?id=<?= $row["id"];
+                                                                ?>">lihat</a>
+                                    </td>
+                                    <td><?= $row["judul"];    ?></td>
+                                    <td><?= $row["deskripsi"];    ?></td>
+                                    <td><img style="width: 100%;float: left;padding: 20px;
+                            " src="modul/sampul/<?= $row["gambarsampul"]; ?>" alt=""></td>
+
+                                    <td><iframe class="fa fa-play" src="<?= $row["video"]; ?>" style=" float: left;padding: 20px;" frameborder="0" width="400px" height="225px"></iframe></td>
+                                    <td><?= $row["narasumber"];    ?></td>
+
+
+                                    <?php
+                                    $id_admin = $row["id_admin"];
+                                    $admin2 = mysqli_query($conn, "SELECT * FROM admin WHERE id='$id_admin'");
+                                    $admin = mysqli_fetch_assoc($admin2);
+                                    $nama_admin = $admin['nama'];
+                                    ?>
+                                    <td><?= $nama_admin;    ?></td>
+
+                                </tr>
+                                <?php $i++ ?>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
+
+                    <!-- <div style="display:flex ;">
                         <div style=" outline: 1px solid red;">judul</div>
                         <div style="width:100px;">
                             <div class="cover" style="width: 100px; height: 50px; outline: 1px solid red;">sampul</div>
@@ -185,7 +184,7 @@ $petani = query("SELECT * FROM petani WHERE username='$username'");
                         <div class="speaker" style="order: 4; outline: 1px solid red;">narasumber</div>
                         <div class="uploader" style="order: 5; outline: 1px solid red;">pengupload</div>
                     </div> -->
-
+                </div>
 
 
 

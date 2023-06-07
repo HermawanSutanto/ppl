@@ -89,7 +89,7 @@ endif;
                     <div class="left-text-content">
                         <div class="section-heading" style="margin-bottom: 40px;">
                             <?php if ($tabel === 'sales') : ?>
-                                <button class="btn btn-primary btn-sm">
+                                <button class="btn btn-primary btn-sm" style="margin-bottom:10px;width:content-fit;background-color:#E3B04B;border-color:#E3B04B;">
                                     <h5 style="color:black;"><a style="font-style: unset;color:white;" href="tambahproduk.php">Tambahkan Produk</a></h5>
                                 </button>
                                 <div style="margin-top:30px;">
@@ -104,12 +104,16 @@ endif;
     </section>
     <?php if ($tabel === 'sales' | $tabel === 'admin') : ?>
         <div>
-
+            <h2 style="margin-left:400px;">Katalog Produk</h2>
             <?php $i = 1 ?><!--  nomor urut -->
             <?php foreach ($produksales as $row) : ?>
+                <?php $username = $row["username"];
+                $namasales = query("SELECT nama FROM sales WHERE username='$username'")[0];
+                ?>
 
                 <?php $i++ ?>
                 <div class="container mt-5 mb-5">
+
                     <div class="d-flex justify-content-center row">
                         <div class="col-md-10">
                             <div class="row p-2 bg-white border rounded">
@@ -120,27 +124,26 @@ endif;
                                         <div class="ratings mr-2"><i class="fa fa-archive"> stok:</i></div><span><?= $row["jumlah_stok"]; ?></span>
                                     </div>
                                     <div class="mt-1 mb-1 spec-1"><span><?= $row["deskripsi"];    ?></span></div>
-                                    <div class="mt-1 mb-1 spec-1"><span>jumlah wishlist:<?= $row["wishlist"];    ?></span></div>
-                                    <p class="text-justify text-truncate para mb-0"><?= $row["username"];    ?><br><br></p>
+                                    <div class="mt-1 mb-1 spec-1"><span>jumlah wishlist : <?= $row["wishlist"];    ?></span></div>
+                                    <p class="text-justify text-truncate para mb-0">Produk dari : <?= $namasales['nama'];  ?><br><br></p>
                                 </div>
                                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                                     <div class="d-flex flex-row align-items-center">
                                         <h4 class="mr-1"></h4>
                                     </div>
-                                    <h6 class="text-success">Silahkan dilihat</h6>
                                     <div class="d-flex flex-column mt-4">
 
                                         <?php if ($tabel === 'sales') : ?>
-                                            <button class="btn btn-primary btn-sm" type="button" style="margin-bottom:10px;" onclick="location.href='ubahproduk.php?id=<?= $row["id_produk"];
-                                                                                                                                                                        ?>'"><a href="ubahproduk.php?id=<?= $row["id_produk"];
-                                                                                                                                                                                                        ?>" style="color:white;">ubah</a></button>
-                                            <button class="btn btn-primary btn-sm" type="button" style="margin-bottom:10px;" onclick="return confirm('yakin akan menghapus?'),location.href='hapusproduk.php?id=<?= $row["id_produk"];
-                                                                                                                                                                                                                ?>'"> <a href="hapusproduk.php?id=<?= $row["id_produk"];
-                                                                                                                                                                                                                                                    ?>" style="color:white;">hapus</a></button>
+                                            <button class="btn btn-primary btn-sm" type="button" style="margin-bottom:10px;width:100%;background-color:#E3B04B;border-color:#E3B04B;" onclick="location.href='ubahproduk.php?id=<?= $row["id_produk"];
+                                                                                                                                                                                                                                ?>'"><a href="ubahproduk.php?id=<?= $row["id_produk"];
+                                                                                                                                                                                                                                                                ?>" style="color:white;">ubah</a></button>
+                                            <button class="btn btn-primary btn-sm" type="button" style="margin-bottom:10px;width:100%;background-color:#E3B04B;border-color:#E3B04B;" onclick="return confirm('yakin akan menghapus?'),location.href='hapusproduk.php?id=<?= $row["id_produk"];
+                                                                                                                                                                                                                                                                            ?>'"> <a href="hapusproduk.php?id=<?= $row["id_produk"];
+                                                                                                                                                                                                                                                                                                                ?>" style="color:white;">hapus</a></button>
                                         <?php endif; ?>
-                                        <button class="btn btn-primary btn-sm" type="button" onclick="location.href='produk.php?id=<?= $row["id_produk"];
-                                                                                                                                    ?>'"> <a href="produk.php?id=<?= $row["id_produk"];
-                                                                                                                                                                    ?>" style="color:white;">lihat</a> </button>
+                                        <button class="btn btn-primary btn-sm" type="button" style="width:100%;background-color:#E3B04B;border-color:#E3B04B;" onclick="location.href='produk.php?id=<?= $row["id_produk"];
+                                                                                                                                                                                                        ?>'"> <a href="produk.php?id=<?= $row["id_produk"];
+                                                                                                                                                                                                                                        ?>" style="color:white;">lihat</a> </button>
                                     </div>
                                 </div>
                             </div>
@@ -158,9 +161,9 @@ endif;
             <!-- product -->
             <div class="tabs">
                 <input type="radio" class="tabs__radio" name="tabs-example" id="tab1" checked>
-                <label for="tab1" class="tabs__label">katalog Produk</label>
+                <label for="tab1" class="tabs__label">Katalog Produk</label>
                 <div class="tabs__content">
-                    <h2>katalog Produk</h2>
+                    <h2 style="margin-left:100px;">Katalog Produk</h2>
                     <section class="product">
                         <button class="pre-btn"><img src="images/arrow.png" alt=""></button>
                         <button class="nxt-btn"><img src="images/arrow.png" alt=""></button>
@@ -173,12 +176,12 @@ endif;
                                         <div class="product-image">
                                             <span class="discount-tag">Produk <?php echo $b; ?></span>
                                             <img src="produk/gambar/<?= $row["gambar"]; ?>" class="product-thumb" alt="">
-                                            <button class="card-btn" onclick="window.location.href='produk.php?id=<?= $row['id_produk']; ?>'">lihat</button>
+                                            <button class="card-btn" style="width:100%;background-color:#E3B04B;border-color:#E3B04B;" onclick="window.location.href='produk.php?id=<?= $row['id_produk']; ?>'">lihat</button>
                                         </div>
                                         <div class="product-info">
-                                            <h2 class="product-brand"><?= $row["nama_produk"];    ?></h2>
+                                            <h2 class="product-brand" style="font-size:20px;font-weight:500;"><?= $row["nama_produk"];    ?></h2>
                                             <p class="product-short-description"><?= $row["deskripsi"];    ?></p>
-                                            <span class="price">$20</span><span class="actual-price">$40</span>
+                                            <span class="price"></span><span class="actual-price"></span>
                                         </div>
                                     </div>
                                     <?php $b++ ?>
@@ -191,62 +194,49 @@ endif;
                 <input type="radio" class="tabs__radio" name="tabs-example" id="tab2">
                 <label for="tab2" class="tabs__label">Wishlist</label>
                 <div class="tabs__content">
-                    <h2>Daftar Wishlist</h2>
-                    <section class="product">
+                    <h2 style="margin-left:100px;margin-bottom:80px;">Daftar Wishlist</h2>
+                    <section class="wishlist" style="justify-content:center;width:1200px; margin:auto;display: flex;flex-wrap: wrap;">
+                        <?php $b = 1 ?>
+                        <?php foreach ($wishlist as $row3) : ?>
+                            <?php foreach ($petani as $row4) : ?>
+                                <?php
+                                $idproduk = $row3['id_produk'];
+                                $produkwishlist = query("SELECT * FROM produk WHERE id_Produk='$idproduk'")[0];
+                                ?>
+                                <div style="width:250px;margin-left:20px;margin-right:20px;margin-bottom:20px;justify-content:center;border: 1px solid whitesmoke;">
+                                    <div style="width:250px;height:160px;background-color:white; padding:10px;object-fit:cover;"><img class="img-fluid img-responsive rounded product-image" src="produk/gambar/<?= $produkwishlist["gambar"]; ?>" style="object-fit:cover;width:250px;height:150px;border-radius:20px;"></div>
+                                    <div style="width:250px;height:160px;background-color:white; padding:10px;">
+                                        <h5 style="text-align:center;"><?= $produkwishlist["nama_produk"];    ?></h5>
+                                        <div style="height:100px;">
+                                            <p style=" white-space: nowrap;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;">
+                                                <?= $produkwishlist["deskripsi"]; ?></p>
+                                        </div>
+                                    </div>
+                                    <div style="display:flex;align-items:flex-start;padding:20px;">
+                                        <button class="btn btn-primary btn-sm" style="width:80px;background-color:#E3B04B;border-color:#E3B04B;" type="button" onclick="location.href='produk.php?id=<?= $row3["id_produk"];
+                                                                                                                                                                                                        ?>'"> <a href="produk.php?id=<?= $row3["id_produk"];
+                                                                                                                                                                                                                                        ?>" style="color:white;">lihat</a> </button>
 
-                        <div class="container mt-5 mb-5">
-                            <div class="d-flex justify-content-center row">
-                                <div class="col-md-10">
-                                    <?php $b = 1 ?>
-                                    <?php foreach ($wishlist as $row3) : ?>
-
-                                        <?php foreach ($petani as $row4) : ?>
-                                            <?php
-                                            $idproduk = $row3['id_produk'];
-                                            $produkwishlist = query("SELECT * FROM produk WHERE id_Produk='$idproduk'")[0];
-                                            ?>
-                                            <div class="row p-2 bg-white border rounded">
-                                                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="produk/gambar/<?= $produkwishlist["gambar"]; ?>" style="object-fit:cover;"></div>
-                                                <div class="col-md-6 mt-1">
-                                                    <h5><?= $produkwishlist["nama_produk"];    ?></h5>
-
-                                                    <div class="mt-1 mb-1 spec-1"><span><?= $produkwishlist["deskripsi"]; ?></span></div>
-                                                    <div class="mt-1 mb-1 spec-1"></div>
-
-                                                </div>
-                                                <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                                                    <div class="d-flex flex-row align-items-center">
-                                                        <h4 class="mr-1"></h4>
-                                                    </div>
-                                                    <h6 class="text-success">Silahkan dilihat</h6>
-                                                    <div class="d-flex flex-column mt-4">
-                                                        <button class="btn btn-primary btn-sm" type="button" onclick="location.href='produk.php?id=<?= $row3["id_produk"];
-                                                                                                                                                    ?>'"> <a href="produk.php?id=<?= $row3["id_produk"];
-                                                                                                                                                                                    ?>" style="color:white;">lihat</a> </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    <?php endforeach; ?>
+                                    </div>
 
                                 </div>
-                            </div>
-                        </div>
+                            <?php endforeach; ?>
+
+                        <?php endforeach; ?>
+                    </section>
+
+
+
+
+                <?php endif; ?>
 
                 </div>
 
 
-        </section>
 
-
-
-    <?php endif; ?>
-
-    </div>
-
-
-
-    <script src="script.js"></script>
+                <script src="script.js"></script>
 </body>
 
 </html>

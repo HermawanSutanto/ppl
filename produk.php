@@ -54,7 +54,7 @@ sales WHERE username = '$username2'")[0];
 <html>
 
 <head>
-    <title>Halaman Data Sales</title>
+
     <link rel="stylesheet" href="design/styleindex.css">
 
 
@@ -72,9 +72,9 @@ sales WHERE username = '$username2'")[0];
         <meta name="author" content="">
         <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-        <title>Klassy Cafe - Restaurant HTML Template</title>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Produk</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
 
         <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
@@ -106,9 +106,6 @@ sales WHERE username = '$username2'")[0];
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-
-
-
 
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                             <li class="scroll-to-section"><a href="katalogproduk.php">Kembali</a></li>
@@ -160,8 +157,13 @@ sales WHERE username = '$username2'")[0];
                 </div>
                 <!-- Cable Configuration -->
                 <div class="cable-config">
-
-                    <a href="#">Masukkan kedalam wishlist jika anda suka!</a>
+                    <?php
+                    $user = $row["username"];
+                    $nomorsales = query("SELECT nomorhp FROM sales WHERE username= '$user'")[0];
+                    $nomorsales = $nomorsales['nomorhp']; ?>
+                    <a href="https://wa.me/$nomorsales " style="font-style:unset;color:gray;">
+                        <i class="fa fa-whatsapp"> Hubungi Penjual</i>
+                    </a>
                 </div>
             </div>
 

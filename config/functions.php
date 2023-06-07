@@ -661,6 +661,7 @@ function tambahmodul($data)
     global $conn;
     // html special char agar kode html yang diinputkan tidak berjalan
     // ndak wajib se, cuman buat keamanan
+    $id_admin = htmlspecialchars($data["id_admin"]);;
     $judul = htmlspecialchars($data["judul"]);
     $deskripsi = htmlspecialchars($data["deskripsi"]);
     $narasumber = htmlspecialchars($data["narasumber"]);
@@ -676,11 +677,10 @@ function tambahmodul($data)
         return false;
     }
 
-
     mysqli_query($conn, "INSERT INTO modul
    Values
    ('','$judul','$deskripsi','$gambarsampul','$video',
-   '$narasumber','$modul')
+   '$narasumber','$modul','$id_admin')
    ");
     // tambah user baru ke database
     return mysqli_affected_rows($conn);

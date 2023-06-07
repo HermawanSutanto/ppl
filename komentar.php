@@ -172,7 +172,7 @@ if (isset($_POST["komentar"])) {
     </head>
   </div>
 
-  <section class="halamanpostingan" style="background-color:#F0F0F0;">
+  <section class="halamanpostingan" style="background-color:#F0F0F0;margin-bottom:50px;">
     <?php foreach ($postingan as $row) : ?>
       <?php $periksa = gambarprofilkomunitas($row['username']);
       $usernamelist = $row['username'];
@@ -181,8 +181,6 @@ if (isset($_POST["komentar"])) {
       $tabel2 = mysqli_query($conn, "SELECT * FROM $tabelumum WHERE username='$usernamelist'");
 
       $adm = mysqli_fetch_assoc($tabel2);
-
-
       // //var_dump($adm);
       $id = $row['id'];
 
@@ -193,7 +191,7 @@ if (isset($_POST["komentar"])) {
         <?php if ($row["gambar"] != "null") : ?>
 
 
-          <div class="artikel" style="background-color: aqua;">
+          <div class="artikel">
             <article class="article-card">
               <div class="article-contentnoimage">
                 <div class="author">
